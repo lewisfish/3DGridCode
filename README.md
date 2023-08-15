@@ -16,7 +16,9 @@ Explanation of the code and the MCRT method can be found [here](http://www-star.
 
 ## References
 
-This code formed the basis of the following research projects:
+Code was adapted and heavily modified from K. Woods code found [here](http://www-star.st-and.ac.uk/~kw25/research/montecarlo/points/points.html).
+
+This code (3DGridCode) formed the basis of the following research projects:
 
 [Depth Penetration of Light into Skin as a Function of Wavelength from 200 to 1000 nm](https://doi.org/10.1111/php.13550)
 
