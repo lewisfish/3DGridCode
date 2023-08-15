@@ -3,14 +3,17 @@
 
 ## How to run
 
-First open a terminal and change directories to this code.
+First Download the code from this [link](https://github.com/lewisfish/3DGridCode/archive/refs/tags/v1.0.zip)
+
+Then open a terminal and change directories to this code location and unzip it.
+
 Then type ```make``` into your terminal to compile the code.
 
 Then type ```./mcgrid``` to run the code.
 
 ## Documentation
 
-Documentation can be found [here](http://lewismcmillan.com/3DGridCode/).
+Documentation of the API can be found [here](http://lewismcmillan.com/3DGridCode/).
 
 Explanation of the code and the MCRT method can be found [here](http://www-star.st-and.ac.uk/~kw25/teaching/mcrt/mcrt.html).
 
