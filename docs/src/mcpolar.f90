@@ -8,7 +8,7 @@ program mcpolar
     use photon_class,             only : photon
     use random_mod,               only : ran2 
     use sourceph_mod,             only : isotropic_point_src
-    use utils,                    only : set_directories
+    use utils,                    only : set_directories, str
     use writer_mod,               only : writer
 
     implicit none
@@ -60,7 +60,7 @@ program mcpolar
 
         !display progress
         if(mod(j,10000) == 0)then
-            print *, j,' scattered photons completed'
+            print *, str(j)//' scattered photons completed'
         end if
 
         ! Release photon from point source
@@ -89,7 +89,7 @@ program mcpolar
         end do
     end do      ! end loop over nph photons
 
-    print*,'Average # of scatters per photon:',nscatt/(nphotons)
+    print*,'Average # of scatters per photon: '//str(nscatt/(nphotons))
     !write out files
     call writer(grid, nphotons)
     print*,'write done'
@@ -99,7 +99,7 @@ program mcpolar
     if(finish-start >= 60.)then
         print*,floor((finish-start)/60.)+mod(finish-start,60.)/100.
     else
-        print*, 'time taken ~',floor(finish-start/60.),'s'
+        print*, 'time taken ~'//str(floor(finish-start/60.))//'s'
     end if
 
 end program mcpolar

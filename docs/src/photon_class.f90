@@ -1,5 +1,5 @@
 module photon_class
-! Module defines the photon class and scattering routines
+!! Module defines the photon class and scattering routines
     
     use vector_class, only : vector
 

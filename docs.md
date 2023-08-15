@@ -4,7 +4,6 @@ src_dir: ./src
 output_dir: ./docs
 summary: Monte Carlo radiation transfer (MCRT) on a 3D grid.
 author: Lewis McMillan
-github: https://github.com/lewisfish
 predocmark_alt: >
 predocmark: <
 docmark_alt:
