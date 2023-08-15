@@ -3,7 +3,8 @@
 
 ## How to run
 
-Simply type ```make``` into your terminal to compile the code.
+First open a terminal and change directories to this code.
+Then type ```make``` into your terminal to compile the code.
 
 Then type ```./mcgrid``` to run the code.
 
