@@ -10,7 +10,7 @@ Then type ```./mcgrid``` to run the code.
 
 ## Documentation
 
-Documentation can be found [here](/link/to/docs).
+Documentation can be found [here](http://lewismcmillan.com/3DGridCode/).
 
 Explanation of the code and the MCRT method can be found [here](http://www-star.st-and.ac.uk/~kw25/teaching/mcrt/mcrt.html).
 
