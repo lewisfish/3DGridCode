@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Monte Carlo radiation transfer (MCRT) on a 3D grid.">
+    <meta name="author" content="Lewis McMillan" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>mcpolar.f90 &ndash; gridMCRT</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+         <script src="../js/jquery-2.1.3.min.js"></script>
+         <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">gridMCRT </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+                 data-toggle="dropdown" role="button"
+                 aria-haspopup="true"
+                 aria-expanded="false">
+                 Contents <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                    <li><a href="../lists/files.html">Source Files</a></li>
+                  <li><a href="../lists/modules.html">Modules</a></li>
+                  <li><a href="../lists/procedures.html">Procedures</a></li>
+                  <li><a href="../lists/types.html">Derived Types</a></li>
+                  <li><a href="../program/mcpolar.html">Program</a></li>
+              </ul>
+            </li>
+                <li class="visible-xs hidden-sm visible-lg">
+                  <a href="../lists/files.html">Source Files</a>
+                </li>
+              <li class="visible-xs hidden-sm visible-lg">
+                <a href="../lists/modules.html">Modules</a>
+              </li>
+              <li class="visible-xs hidden-sm visible-lg">
+                <a href="../lists/procedures.html">Procedures</a>
+              </li>
+              <li class="visible-xs hidden-sm visible-lg">
+                <a href="../lists/types.html">Derived Types</a>
+              </li>
+              <li class="visible-xs hidden-sm visible-lg">
+                <a href="../program/mcpolar.html">Program</a>
+              </li>
+          </ul>
+            <form action="../search.html" class="navbar-form navbar-right" role="search">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+              </div>
+              <!--
+                  <button type="submit" class="btn btn-default">Submit</button>
+                  -->
+            </form>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+  <div class="row">
+    <h1>mcpolar.f90
+      <small>Source File</small>
+      
+    </h1>
+      <div class="row" id="info-bar">
+    <div class="col-lg-12">
+      <div class="well well-sm">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+          <li id="statements"><i class="fa fa-list-ol"></i>
+            <a data-toggle="tooltip"
+               data-placement="bottom" data-html="true"
+               title=" 9.6% of total for source files.">64 statements</a>
+          </li>
+
+            <li id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/mcpolar.f90"> Source File</a>
+            </li>
+        </ul>
+        <ol class="breadcrumb in-well text-right">
+          <li class="active">mcpolar.f90</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+      <div class="panel panel-primary">
+      <div class="panel-heading text-left">
+        <h3 class="panel-title">
+          <a data-toggle="collapse" href="#progs-0">Programs</a>
+        </h3>
+      </div>
+      <div id="progs-0" class="panel-collapse collapse">
+        <div class="list-group">
+            <a class="list-group-item" href="../program/mcpolar.html">mcpolar</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="panel panel-primary">
+      <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../sourcefile/mcpolar.f90.html#src">mcpolar.f90</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    <div class="col-md-9" id='text'>
+      
+      <br>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">This file depends on</h3>
+      </div>
+      <div class="panel-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 8.1.0 (20230707.2238)
+ -->
+<!-- Title: sourcefile~~mcpolar.f90~~EfferentGraph Pages: 1 -->
+<svg id="sourcefilemcpolarf90EfferentGraph" width="464pt" height="330pt"
+ viewBox="0.00 0.00 463.58 329.72" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="sourcefile~~mcpolar.f90~~EfferentGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 325.72)">
+<title>sourcefile~~mcpolar.f90~~EfferentGraph</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-325.72 459.58,-325.72 459.58,4 -4,4"/>
+<!-- sourcefile~mcpolar.f90 -->
+<g id="sourcefile~~mcpolar.f90~~EfferentGraph_node1" class="node">
+<title>sourcefile~mcpolar.f90</title>
+<polygon fill="none" stroke="black" points="455.58,-173.11 388.56,-173.11 388.56,-149.59 455.58,-149.59 455.58,-173.11"/>
+<text text-anchor="middle" x="422.07" y="-157.37" font-family="Helvetica,sans-Serif" font-size="10.50">mcpolar.f90</text>
+</g>
+<!-- sourcefile~constants.f90 -->
+<g id="sourcefile~~mcpolar.f90~~EfferentGraph_node2" class="node">
+<title>sourcefile~constants.f90</title>
+<g id="a_sourcefile~~mcpolar.f90~~EfferentGraph_node2"><a xlink:href=".././sourcefile/constants.f90.html" xlink:title="constants.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="94.77,-234.11 19.5,-234.11 19.5,-210.59 94.77,-210.59 94.77,-234.11"/>
+<text text-anchor="middle" x="57.13" y="-218.37" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">constants.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~mcpolar.f90&#45;&gt;sourcefile~constants.f90 -->
+<g id="sourcefile~~mcpolar.f90~~EfferentGraph_edge1" class="edge">
+<title>sourcefile~mcpolar.f90&#45;&gt;sourcefile~constants.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M417.25,-173.39C406.9,-203.59 375.1,-282.12 316.67,-309.35"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M314.67,-309.35C266.15,-331.96 250.06,-291.66 197.53,-281.35"/>
+</g>
+<!-- sourcefile~gridset.f90 -->
+<g id="sourcefile~~mcpolar.f90~~EfferentGraph_node3" class="node">
+<title>sourcefile~gridset.f90</title>
+<g id="a_sourcefile~~mcpolar.f90~~EfferentGraph_node3"><a xlink:href=".././sourcefile/gridset.f90.html" xlink:title="gridset.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="227.41,-131.11 165.64,-131.11 165.64,-107.59 227.41,-107.59 227.41,-131.11"/>
+<text text-anchor="middle" x="196.53" y="-115.37" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">gridset.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~mcpolar.f90&#45;&gt;sourcefile~gridset.f90 -->
+<g id="sourcefile~~mcpolar.f90~~EfferentGraph_edge2" class="edge">
+<title>sourcefile~mcpolar.f90&#45;&gt;sourcefile~gridset.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M388.25,-150.1C377.04,-146.58 364.35,-142.93 352.56,-140.35 314.23,-131.94 269.79,-126.33 238.34,-123.04"/>
+<polygon fill="#000000" stroke="#000000" points="239.1,-119.5 228.79,-121.98 238.39,-126.46 239.1,-119.5"/>
+</g>
+<!-- sourcefile~inttau2.f90 -->
+<g id="sourcefile~~mcpolar.f90~~EfferentGraph_node4" class="node">
+<title>sourcefile~inttau2.f90</title>
+<g id="a_sourcefile~~mcpolar.f90~~EfferentGraph_node4"><a xlink:href=".././sourcefile/inttau2.f90.html" xlink:title="inttau2.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="346.56,-173.11 284.79,-173.11 284.79,-149.59 346.56,-149.59 346.56,-173.11"/>
+<text text-anchor="middle" x="315.67" y="-157.37" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">inttau2.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~mcpolar.f90&#45;&gt;sourcefile~inttau2.f90 -->
+<g id="sourcefile~~mcpolar.f90~~EfferentGraph_edge3" class="edge">
+<title>sourcefile~mcpolar.f90&#45;&gt;sourcefile~inttau2.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M388.33,-161.35C378.58,-161.35 367.77,-161.35 357.57,-161.35"/>
+<polygon fill="#000000" stroke="#000000" points="357.82,-157.85 347.82,-161.35 357.82,-164.85 357.82,-157.85"/>
+</g>
+<!-- sourcefile~optical_properties.f90 -->
+<g id="sourcefile~~mcpolar.f90~~EfferentGraph_node5" class="node">
+<title>sourcefile~optical_properties.f90</title>
+<g id="a_sourcefile~~mcpolar.f90~~EfferentGraph_node5"><a xlink:href=".././sourcefile/optical_properties.f90.html" xlink:title="optical_properties.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="114.27,-130.11 0,-130.11 0,-106.59 114.27,-106.59 114.27,-130.11"/>
+<text text-anchor="middle" x="57.13" y="-114.37" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">optical_properties.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~mcpolar.f90&#45;&gt;sourcefile~optical_properties.f90 -->
+<g id="sourcefile~~mcpolar.f90~~EfferentGraph_edge4" class="edge">
+<title>sourcefile~mcpolar.f90&#45;&gt;sourcefile~optical_properties.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M417.1,-149.14C409.07,-126.69 388.5,-79.4 352.56,-60.35 263.94,-13.38 142.1,-69.85 87.12,-100.75"/>
+<polygon fill="#000000" stroke="#000000" points="85.58,-98.17 78.66,-106.19 89.07,-104.24 85.58,-98.17"/>
+</g>
+<!-- sourcefile~photon_class.f90 -->
+<g id="sourcefile~~mcpolar.f90~~EfferentGraph_node6" class="node">
+<title>sourcefile~photon_class.f90</title>
+<g id="a_sourcefile~~mcpolar.f90~~EfferentGraph_node6"><a xlink:href=".././sourcefile/photon_class.f90.html" xlink:title="photon_class.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="242.79,-253.11 150.27,-253.11 150.27,-229.59 242.79,-229.59 242.79,-253.11"/>
+<text text-anchor="middle" x="196.53" y="-237.37" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">photon_class.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~mcpolar.f90&#45;&gt;sourcefile~photon_class.f90 -->
+<g id="sourcefile~~mcpolar.f90~~EfferentGraph_edge5" class="edge">
+<title>sourcefile~mcpolar.f90&#45;&gt;sourcefile~photon_class.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M314.67,-210.35C294.76,-215.59 272.95,-221.36 253.61,-226.48"/>
+<polygon fill="#000000" stroke="#000000" points="252.91,-223.31 244.14,-229.25 254.71,-230.08 252.91,-223.31"/>
+</g>
+<!-- sourcefile~random_mod.f90 -->
+<g id="sourcefile~~mcpolar.f90~~EfferentGraph_node7" class="node">
+<title>sourcefile~random_mod.f90</title>
+<g id="a_sourcefile~~mcpolar.f90~~EfferentGraph_node7"><a xlink:href=".././sourcefile/random_mod.f90.html" xlink:title="random_mod.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="103.77,-304.11 10.5,-304.11 10.5,-280.59 103.77,-280.59 103.77,-304.11"/>
+<text text-anchor="middle" x="57.13" y="-288.37" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">random_mod.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~mcpolar.f90&#45;&gt;sourcefile~random_mod.f90 -->
+<g id="sourcefile~~mcpolar.f90~~EfferentGraph_edge6" class="edge">
+<title>sourcefile~mcpolar.f90&#45;&gt;sourcefile~random_mod.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M314.67,-309.35C267.31,-331.42 248.77,-309.12 197.53,-319.35"/>
+</g>
+<!-- sourcefile~sourceph.f90 -->
+<g id="sourcefile~~mcpolar.f90~~EfferentGraph_node8" class="node">
+<title>sourcefile~sourceph.f90</title>
+<g id="a_sourcefile~~mcpolar.f90~~EfferentGraph_node8"><a xlink:href=".././sourcefile/sourceph.f90.html" xlink:title="sourceph.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="352.56,-262.11 278.79,-262.11 278.79,-238.59 352.56,-238.59 352.56,-262.11"/>
+<text text-anchor="middle" x="315.67" y="-246.37" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">sourceph.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~mcpolar.f90&#45;&gt;sourcefile~sourceph.f90 -->
+<g id="sourcefile~~mcpolar.f90~~EfferentGraph_edge7" class="edge">
+<title>sourcefile~mcpolar.f90&#45;&gt;sourcefile~sourceph.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M408.83,-173.41C395.42,-186.44 373.08,-207.58 352.56,-224.35 349.46,-226.88 346.13,-229.46 342.81,-231.96"/>
+<polygon fill="#000000" stroke="#000000" points="341.14,-229.58 335.14,-238.31 345.27,-235.23 341.14,-229.58"/>
+</g>
+<!-- sourcefile~utils.f90 -->
+<g id="sourcefile~~mcpolar.f90~~EfferentGraph_node9" class="node">
+<title>sourcefile~utils.f90</title>
+<g id="a_sourcefile~~mcpolar.f90~~EfferentGraph_node9"><a xlink:href=".././sourcefile/utils.f90.html" xlink:title="utils.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="223.53,-211.11 169.53,-211.11 169.53,-187.59 223.53,-187.59 223.53,-211.11"/>
+<text text-anchor="middle" x="196.53" y="-195.37" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">utils.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~mcpolar.f90&#45;&gt;sourcefile~utils.f90 -->
+<g id="sourcefile~~mcpolar.f90~~EfferentGraph_edge8" class="edge">
+<title>sourcefile~mcpolar.f90&#45;&gt;sourcefile~utils.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M401.11,-173.41C380.69,-185.08 347.65,-202.18 316.67,-210.35"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M314.67,-210.35C288.41,-217.27 257.84,-214.03 234.51,-209.33"/>
+<polygon fill="#000000" stroke="#000000" points="235.53,-205.75 225.01,-207.01 234.03,-212.58 235.53,-205.75"/>
+</g>
+<!-- sourcefile~writer.f90 -->
+<g id="sourcefile~~mcpolar.f90~~EfferentGraph_node10" class="node">
+<title>sourcefile~writer.f90</title>
+<g id="a_sourcefile~~mcpolar.f90~~EfferentGraph_node10"><a xlink:href=".././sourcefile/writer.f90.html" xlink:title="writer.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="343.18,-93.11 288.16,-93.11 288.16,-69.59 343.18,-69.59 343.18,-93.11"/>
+<text text-anchor="middle" x="315.67" y="-77.37" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">writer.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~mcpolar.f90&#45;&gt;sourcefile~writer.f90 -->
+<g id="sourcefile~~mcpolar.f90~~EfferentGraph_edge9" class="edge">
+<title>sourcefile~mcpolar.f90&#45;&gt;sourcefile~writer.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M405.97,-149.16C392.18,-138.1 371.17,-121.41 352.56,-107.35 349.3,-104.88 345.85,-102.32 342.42,-99.81"/>
+<polygon fill="#000000" stroke="#000000" points="344.72,-96.43 334.57,-93.38 340.6,-102.09 344.72,-96.43"/>
+</g>
+<!-- sourcefile~gridset.f90&#45;&gt;sourcefile~optical_properties.f90 -->
+<g id="sourcefile~~mcpolar.f90~~EfferentGraph_edge11" class="edge">
+<title>sourcefile~gridset.f90&#45;&gt;sourcefile~optical_properties.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M165.38,-119.13C153.48,-119.04 139.3,-118.94 125.22,-118.84"/>
+<polygon fill="#000000" stroke="#000000" points="125.53,-115.33 115.5,-118.76 125.48,-122.33 125.53,-115.33"/>
+</g>
+<!-- sourcefile~iarray.f90 -->
+<g id="sourcefile~~mcpolar.f90~~EfferentGraph_node11" class="node">
+<title>sourcefile~iarray.f90</title>
+<g id="a_sourcefile~~mcpolar.f90~~EfferentGraph_node11"><a xlink:href=".././sourcefile/iarray.f90.html" xlink:title="iarray.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="84.64,-52.11 29.62,-52.11 29.62,-28.59 84.64,-28.59 84.64,-52.11"/>
+<text text-anchor="middle" x="57.13" y="-36.37" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">iarray.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~gridset.f90&#45;&gt;sourcefile~iarray.f90 -->
+<g id="sourcefile~~mcpolar.f90~~EfferentGraph_edge10" class="edge">
+<title>sourcefile~gridset.f90&#45;&gt;sourcefile~iarray.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M174.36,-107.18C151.4,-93.97 114.55,-72.78 88.5,-57.81"/>
+<polygon fill="#000000" stroke="#000000" points="90.51,-54.35 80.1,-52.4 87.02,-60.42 90.51,-54.35"/>
+</g>
+<!-- sourcefile~vector_class.f90 -->
+<g id="sourcefile~~mcpolar.f90~~EfferentGraph_node12" class="node">
+<title>sourcefile~vector_class.f90</title>
+<g id="a_sourcefile~~mcpolar.f90~~EfferentGraph_node12"><a xlink:href=".././sourcefile/vector_class.f90.html" xlink:title="vector_class.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="101.52,-172.11 12.75,-172.11 12.75,-148.59 101.52,-148.59 101.52,-172.11"/>
+<text text-anchor="middle" x="57.13" y="-156.37" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">vector_class.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~gridset.f90&#45;&gt;sourcefile~vector_class.f90 -->
+<g id="sourcefile~~mcpolar.f90~~EfferentGraph_edge12" class="edge">
+<title>sourcefile~gridset.f90&#45;&gt;sourcefile~vector_class.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M165.38,-128.35C149.06,-133.22 128.45,-139.37 109.66,-144.97"/>
+<polygon fill="#000000" stroke="#000000" points="108.74,-141.89 100.16,-148.1 110.75,-148.6 108.74,-141.89"/>
+</g>
+<!-- sourcefile~inttau2.f90&#45;&gt;sourcefile~gridset.f90 -->
+<g id="sourcefile~~mcpolar.f90~~EfferentGraph_edge13" class="edge">
+<title>sourcefile~inttau2.f90&#45;&gt;sourcefile~gridset.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M284.51,-150.53C270.3,-145.44 253.14,-139.29 237.84,-133.8"/>
+<polygon fill="#000000" stroke="#000000" points="239.19,-130.21 228.6,-130.13 236.83,-136.8 239.19,-130.21"/>
+</g>
+<!-- sourcefile~inttau2.f90&#45;&gt;sourcefile~photon_class.f90 -->
+<g id="sourcefile~~mcpolar.f90~~EfferentGraph_edge15" class="edge">
+<title>sourcefile~inttau2.f90&#45;&gt;sourcefile~photon_class.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M301.93,-173.51C288.12,-186.26 265.08,-206.35 242.79,-220.35 240.62,-221.71 238.36,-223.03 236.04,-224.32"/>
+<polygon fill="#000000" stroke="#000000" points="234.64,-221.61 227.36,-229.31 237.85,-227.83 234.64,-221.61"/>
+</g>
+<!-- sourcefile~inttau2.f90&#45;&gt;sourcefile~random_mod.f90 -->
+<g id="sourcefile~~mcpolar.f90~~EfferentGraph_edge16" class="edge">
+<title>sourcefile~inttau2.f90&#45;&gt;sourcefile~random_mod.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M299.49,-173.37C292.42,-179.61 284.36,-187.72 278.79,-196.35 253.39,-235.68 273.52,-260.03 242.79,-295.35 227.85,-312.53 219.86,-314.89 197.53,-319.35"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M195.53,-319.35C162.24,-326 124.38,-317.35 96.84,-308.13"/>
+<polygon fill="#000000" stroke="#000000" points="98.42,-304.62 87.83,-304.59 96.09,-311.22 98.42,-304.62"/>
+</g>
+<!-- sourcefile~inttau2.f90&#45;&gt;sourcefile~utils.f90 -->
+<g id="sourcefile~~mcpolar.f90~~EfferentGraph_edge17" class="edge">
+<title>sourcefile~inttau2.f90&#45;&gt;sourcefile~utils.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M284.51,-171.13C269.16,-176.11 250.38,-182.2 234.2,-187.45"/>
+<polygon fill="#000000" stroke="#000000" points="233.44,-184.34 225.01,-190.76 235.6,-191 233.44,-184.34"/>
+</g>
+<!-- sourcefile~inttau2.f90&#45;&gt;sourcefile~iarray.f90 -->
+<g id="sourcefile~~mcpolar.f90~~EfferentGraph_edge14" class="edge">
+<title>sourcefile~inttau2.f90&#45;&gt;sourcefile~iarray.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M306.87,-149.11C283.55,-112.81 214.98,-8 197.53,-3.35"/>
+</g>
+<!-- sourcefile~inttau2.f90&#45;&gt;sourcefile~vector_class.f90 -->
+<g id="sourcefile~~mcpolar.f90~~EfferentGraph_edge18" class="edge">
+<title>sourcefile~inttau2.f90&#45;&gt;sourcefile~vector_class.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M284.49,-161.23C242.33,-161.07 165.08,-160.76 112.69,-160.56"/>
+<polygon fill="#000000" stroke="#000000" points="112.92,-157.06 102.9,-160.52 112.89,-164.06 112.92,-157.06"/>
+</g>
+<!-- sourcefile~photon_class.f90&#45;&gt;sourcefile~constants.f90 -->
+<g id="sourcefile~~mcpolar.f90~~EfferentGraph_edge19" class="edge">
+<title>sourcefile~photon_class.f90&#45;&gt;sourcefile~constants.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M149.78,-235.02C135.6,-233.06 119.94,-230.89 105.64,-228.92"/>
+<polygon fill="#000000" stroke="#000000" points="106.4,-225.35 96.02,-227.45 105.44,-232.28 106.4,-225.35"/>
+</g>
+<!-- sourcefile~photon_class.f90&#45;&gt;sourcefile~optical_properties.f90 -->
+<g id="sourcefile~~mcpolar.f90~~EfferentGraph_edge20" class="edge">
+<title>sourcefile~photon_class.f90&#45;&gt;sourcefile~optical_properties.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M162.05,-229.25C157.75,-226.76 153.67,-223.81 150.27,-220.35 122.64,-192.27 142.95,-166.35 114.27,-139.35 113.11,-138.26 111.89,-137.22 110.62,-136.23"/>
+<polygon fill="#000000" stroke="#000000" points="112.92,-132.91 102.61,-130.48 109.15,-138.81 112.92,-132.91"/>
+</g>
+<!-- sourcefile~photon_class.f90&#45;&gt;sourcefile~random_mod.f90 -->
+<g id="sourcefile~~mcpolar.f90~~EfferentGraph_edge21" class="edge">
+<title>sourcefile~photon_class.f90&#45;&gt;sourcefile~random_mod.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M162.62,-253.56C144.1,-260.44 120.76,-269.1 100.84,-276.5"/>
+<polygon fill="#000000" stroke="#000000" points="99.93,-273.47 91.78,-280.23 102.37,-280.03 99.93,-273.47"/>
+</g>
+<!-- sourcefile~photon_class.f90&#45;&gt;sourcefile~vector_class.f90 -->
+<g id="sourcefile~~mcpolar.f90~~EfferentGraph_edge22" class="edge">
+<title>sourcefile~photon_class.f90&#45;&gt;sourcefile~vector_class.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M167.93,-229.31C162.02,-226.52 155.88,-223.45 150.27,-220.35 127.09,-207.51 101.96,-190.95 83.81,-178.49"/>
+<polygon fill="#000000" stroke="#000000" points="86.22,-175.2 76,-172.38 82.23,-180.95 86.22,-175.2"/>
+</g>
+<!-- sourcefile~sourceph.f90&#45;&gt;sourcefile~constants.f90 -->
+<g id="sourcefile~~mcpolar.f90~~EfferentGraph_edge23" class="edge">
+<title>sourcefile~sourceph.f90&#45;&gt;sourcefile~constants.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M292.42,-262.47C269,-273.76 230.97,-287.91 197.53,-281.35"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M195.53,-281.35C156.68,-273.72 115.35,-254.24 88.29,-239.74"/>
+<polygon fill="#000000" stroke="#000000" points="90.11,-236.19 79.65,-234.46 86.74,-242.33 90.11,-236.19"/>
+</g>
+<!-- sourcefile~sourceph.f90&#45;&gt;sourcefile~gridset.f90 -->
+<g id="sourcefile~~mcpolar.f90~~EfferentGraph_edge24" class="edge">
+<title>sourcefile~sourceph.f90&#45;&gt;sourcefile~gridset.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M295.99,-238.34C290.2,-234.22 283.98,-229.38 278.79,-224.35 276.91,-222.52 236.56,-170.13 213.44,-140.06"/>
+<polygon fill="#000000" stroke="#000000" points="215.75,-138.32 206.88,-132.53 210.2,-142.59 215.75,-138.32"/>
+</g>
+<!-- sourcefile~sourceph.f90&#45;&gt;sourcefile~photon_class.f90 -->
+<g id="sourcefile~~mcpolar.f90~~EfferentGraph_edge25" class="edge">
+<title>sourcefile~sourceph.f90&#45;&gt;sourcefile~photon_class.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M278.57,-247.57C270.81,-246.98 262.43,-246.33 254.11,-245.69"/>
+<polygon fill="#000000" stroke="#000000" points="254.49,-242.14 244.25,-244.86 253.95,-249.12 254.49,-242.14"/>
+</g>
+<!-- sourcefile~sourceph.f90&#45;&gt;sourcefile~random_mod.f90 -->
+<g id="sourcefile~~mcpolar.f90~~EfferentGraph_edge26" class="edge">
+<title>sourcefile~sourceph.f90&#45;&gt;sourcefile~random_mod.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M301.19,-262.49C280.64,-279.95 239.43,-310.98 197.53,-319.35"/>
+</g>
+<!-- sourcefile~utils.f90&#45;&gt;sourcefile~constants.f90 -->
+<g id="sourcefile~~mcpolar.f90~~EfferentGraph_edge27" class="edge">
+<title>sourcefile~utils.f90&#45;&gt;sourcefile~constants.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M169.04,-203.78C151.18,-206.77 127.1,-210.8 105.94,-214.34"/>
+<polygon fill="#000000" stroke="#000000" points="105.48,-211.04 96.19,-216.14 106.63,-217.95 105.48,-211.04"/>
+</g>
+<!-- sourcefile~writer.f90&#45;&gt;sourcefile~constants.f90 -->
+<g id="sourcefile~~mcpolar.f90~~EfferentGraph_edge28" class="edge">
+<title>sourcefile~writer.f90&#45;&gt;sourcefile~constants.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M287.88,-76.46C252.73,-71.62 190.78,-68.67 150.27,-98.35 117.83,-122.11 139.38,-149.95 114.27,-181.35 107.33,-190.02 98.13,-197.76 89.18,-204.11"/>
+<polygon fill="#000000" stroke="#000000" points="87.43,-201.74 81.06,-210.21 91.32,-207.56 87.43,-201.74"/>
+</g>
+<!-- sourcefile~writer.f90&#45;&gt;sourcefile~gridset.f90 -->
+<g id="sourcefile~~mcpolar.f90~~EfferentGraph_edge29" class="edge">
+<title>sourcefile~writer.f90&#45;&gt;sourcefile~gridset.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M287.8,-90.07C273.06,-94.85 254.49,-100.87 238.03,-106.21"/>
+<polygon fill="#000000" stroke="#000000" points="237.01,-103.19 228.58,-109.6 239.17,-109.84 237.01,-103.19"/>
+</g>
+<!-- sourcefile~writer.f90&#45;&gt;sourcefile~iarray.f90 -->
+<g id="sourcefile~~mcpolar.f90~~EfferentGraph_edge30" class="edge">
+<title>sourcefile~writer.f90&#45;&gt;sourcefile~iarray.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M302.72,-69.36C282.93,-50.54 241.21,-14.99 197.53,-3.35"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M195.53,-3.35C158.33,6.57 115.5,-9.3 87.68,-23.24"/>
+<polygon fill="#000000" stroke="#000000" points="86.38,-20.49 79.15,-28.23 89.63,-26.69 86.38,-20.49"/>
+</g>
+</g>
+</svg>
+</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
+          <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                </div>
+              <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 8.1.0 (20230707.2238)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="188pt" height="32pt"
+ viewBox="0.00 0.00 187.89 31.52" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 27.52)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-27.52 183.89,-27.52 183.89,4 -4,4"/>
+<!-- Source File -->
+<g id="node1" class="node">
+<title>Source File</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="65.52,-23.52 0,-23.52 0,0 65.52,0 65.52,-23.52"/>
+<text text-anchor="middle" x="32.76" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Source File</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node2" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="179.89,-23.52 83.62,-23.52 83.62,0 179.89,0 179.89,-23.52"/>
+<text text-anchor="middle" x="131.76" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a file to a file which it depends on. A file
+is dependent upon another if the latter must be compiled before the former
+can be.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<br>
+    <section class="visible-xs visible-sm hidden-md">
+        <h3>Contents</h3>
+  
+  
+  
+  
+      <div class="panel panel-primary">
+      <div class="panel-heading text-left">
+        <h3 class="panel-title">
+          <a data-toggle="collapse" href="#progs-1">Programs</a>
+        </h3>
+      </div>
+      <div id="progs-1" class="panel-collapse collapse">
+        <div class="list-group">
+            <a class="list-group-item" href="../program/mcpolar.html">mcpolar</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="panel panel-primary">
+      <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../sourcefile/mcpolar.f90.html#src">mcpolar.f90</a>
+      </div>
+    </div>
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    <section>
+      <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl"><pre><span></span><a id="ln-1" name="ln-1" href="#ln-1"></a><span class="k">program </span><span class="n">mcpolar</span><span class="w"></span>
+<a id="ln-2" name="ln-2" href="#ln-2"></a>
+<a id="ln-3" name="ln-3" href="#ln-3"></a><span class="w">    </span><span class="c">!imports</span>
+<a id="ln-4" name="ln-4" href="#ln-4"></a><span class="w">    </span><span class="k">use </span><span class="n">constants</span><span class="p">,</span><span class="w">                </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">resdir</span><span class="w"></span>
+<a id="ln-5" name="ln-5" href="#ln-5"></a><span class="w">    </span><span class="k">use </span><span class="n">gridset_mod</span><span class="p">,</span><span class="w">              </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">gridset</span><span class="p">,</span><span class="w"> </span><span class="n">cart_grid</span><span class="w"></span>
+<a id="ln-6" name="ln-6" href="#ln-6"></a><span class="w">    </span><span class="k">use </span><span class="n">inttau2</span><span class="p">,</span><span class="w">                  </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">tauint1</span><span class="w"></span>
+<a id="ln-7" name="ln-7" href="#ln-7"></a><span class="w">    </span><span class="k">use </span><span class="n">optical_properties_class</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">optical_properties</span><span class="p">,</span><span class="w"> </span><span class="n">init_opt_sphere</span><span class="w"></span>
+<a id="ln-8" name="ln-8" href="#ln-8"></a><span class="w">    </span><span class="k">use </span><span class="n">photon_class</span><span class="p">,</span><span class="w">             </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">photon</span><span class="w"></span>
+<a id="ln-9" name="ln-9" href="#ln-9"></a><span class="w">    </span><span class="k">use </span><span class="n">random_mod</span><span class="p">,</span><span class="w">               </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ran2</span><span class="w"> </span>
+<a id="ln-10" name="ln-10" href="#ln-10"></a><span class="w">    </span><span class="k">use </span><span class="n">sourceph_mod</span><span class="p">,</span><span class="w">             </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">isotropic_point_src</span><span class="w"></span>
+<a id="ln-11" name="ln-11" href="#ln-11"></a><span class="w">    </span><span class="k">use </span><span class="n">utils</span><span class="p">,</span><span class="w">                    </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">set_directories</span><span class="w"></span>
+<a id="ln-12" name="ln-12" href="#ln-12"></a><span class="w">    </span><span class="k">use </span><span class="n">writer_mod</span><span class="p">,</span><span class="w">               </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">writer</span><span class="w"></span>
+<a id="ln-13" name="ln-13" href="#ln-13"></a>
+<a id="ln-14" name="ln-14" href="#ln-14"></a><span class="w">    </span><span class="k">implicit none</span><span class="w"></span>
+<a id="ln-15" name="ln-15" href="#ln-15"></a>
+<a id="ln-16" name="ln-16" href="#ln-16"></a><span class="w">    </span><span class="c">! variable that holds all information about the photon to be simulated</span>
+<a id="ln-17" name="ln-17" href="#ln-17"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">photon</span><span class="p">)</span><span class="w">     </span><span class="kd">::</span><span class="w"> </span><span class="n">packet</span><span class="w"></span>
+<a id="ln-18" name="ln-18" href="#ln-18"></a><span class="w">    </span><span class="c">! variable that holds the 3D grid information</span>
+<a id="ln-19" name="ln-19" href="#ln-19"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">cart_grid</span><span class="p">)</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">grid</span><span class="w"></span>
+<a id="ln-20" name="ln-20" href="#ln-20"></a><span class="w">    </span><span class="c">! optical properties variable</span>
+<a id="ln-21" name="ln-21" href="#ln-21"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">optical_properties</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">opt_prop</span><span class="w"></span>
+<a id="ln-22" name="ln-22" href="#ln-22"></a><span class="w">    </span><span class="c">!! number of photons to run in the simulation</span>
+<a id="ln-23" name="ln-23" href="#ln-23"></a><span class="w">    </span><span class="kt">integer</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">nphotons</span><span class="w"></span>
+<a id="ln-24" name="ln-24" href="#ln-24"></a><span class="w">    </span><span class="c">!! counter for number of scatterings for all photons</span>
+<a id="ln-25" name="ln-25" href="#ln-25"></a><span class="w">    </span><span class="kt">double precision</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nscatt</span><span class="w"></span>
+<a id="ln-26" name="ln-26" href="#ln-26"></a><span class="w">    </span><span class="kt">integer</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">nxg</span><span class="p">,</span><span class="w"> </span><span class="n">nyg</span><span class="p">,</span><span class="w"> </span><span class="n">nzg</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="n">u</span><span class="w"></span>
+<a id="ln-27" name="ln-27" href="#ln-27"></a><span class="w">    </span><span class="kt">real</span><span class="w">             </span><span class="kd">::</span><span class="w"> </span><span class="n">xmax</span><span class="p">,</span><span class="w"> </span><span class="n">ymax</span><span class="p">,</span><span class="w"> </span><span class="n">zmax</span><span class="w"></span>
+<a id="ln-28" name="ln-28" href="#ln-28"></a><span class="w">    </span><span class="kt">real</span><span class="w">             </span><span class="kd">::</span><span class="w"> </span><span class="n">ran</span><span class="p">,</span><span class="w"> </span><span class="n">start</span><span class="p">,</span><span class="w"> </span><span class="n">finish</span><span class="w"></span>
+<a id="ln-29" name="ln-29" href="#ln-29"></a>
+<a id="ln-30" name="ln-30" href="#ln-30"></a><span class="w">    </span><span class="k">call </span><span class="nb">cpu_time</span><span class="p">(</span><span class="n">start</span><span class="p">)</span><span class="w"></span>
+<a id="ln-31" name="ln-31" href="#ln-31"></a>
+<a id="ln-32" name="ln-32" href="#ln-32"></a><span class="w">    </span><span class="c">!set directory paths</span>
+<a id="ln-33" name="ln-33" href="#ln-33"></a><span class="w">    </span><span class="k">call </span><span class="n">set_directories</span><span class="p">()</span><span class="w"></span>
+<a id="ln-34" name="ln-34" href="#ln-34"></a><span class="w">    </span><span class="c">!set optical properties</span>
+<a id="ln-35" name="ln-35" href="#ln-35"></a><span class="w">    </span><span class="k">call </span><span class="n">init_opt_sphere</span><span class="p">(</span><span class="n">opt_prop</span><span class="p">)</span><span class="w"></span>
+<a id="ln-36" name="ln-36" href="#ln-36"></a>
+<a id="ln-37" name="ln-37" href="#ln-37"></a><span class="w">    </span><span class="c">!**** Read in parameters from the file input.params</span>
+<a id="ln-38" name="ln-38" href="#ln-38"></a><span class="w">    </span><span class="k">open</span><span class="p">(</span><span class="n">newunit</span><span class="o">=</span><span class="n">u</span><span class="p">,</span><span class="k">file</span><span class="o">=</span><span class="nb">trim</span><span class="p">(</span><span class="n">resdir</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;input.params&#39;</span><span class="p">,</span><span class="n">status</span><span class="o">=</span><span class="s1">&#39;old&#39;</span><span class="p">)</span><span class="w"></span>
+<a id="ln-39" name="ln-39" href="#ln-39"></a><span class="w">        </span><span class="k">read</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">nphotons</span><span class="w"></span>
+<a id="ln-40" name="ln-40" href="#ln-40"></a><span class="w">        </span><span class="k">read</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">xmax</span><span class="w"></span>
+<a id="ln-41" name="ln-41" href="#ln-41"></a><span class="w">        </span><span class="k">read</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">ymax</span><span class="w"></span>
+<a id="ln-42" name="ln-42" href="#ln-42"></a><span class="w">        </span><span class="k">read</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">zmax</span><span class="w"></span>
+<a id="ln-43" name="ln-43" href="#ln-43"></a><span class="w">        </span><span class="k">read</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">nxg</span><span class="w"></span>
+<a id="ln-44" name="ln-44" href="#ln-44"></a><span class="w">        </span><span class="k">read</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">nyg</span><span class="w"></span>
+<a id="ln-45" name="ln-45" href="#ln-45"></a><span class="w">        </span><span class="k">read</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">nzg</span><span class="w"></span>
+<a id="ln-46" name="ln-46" href="#ln-46"></a><span class="w">    </span><span class="k">close</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="w"></span>
+<a id="ln-47" name="ln-47" href="#ln-47"></a>
+<a id="ln-48" name="ln-48" href="#ln-48"></a><span class="w">    </span><span class="k">print</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">      </span>
+<a id="ln-49" name="ln-49" href="#ln-49"></a><span class="w">    </span><span class="k">print</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;# of photons to run&#39;</span><span class="p">,</span><span class="n">nphotons</span><span class="w"></span>
+<a id="ln-50" name="ln-50" href="#ln-50"></a>
+<a id="ln-51" name="ln-51" href="#ln-51"></a><span class="w">    </span><span class="c">! Set up grid</span>
+<a id="ln-52" name="ln-52" href="#ln-52"></a><span class="w">    </span><span class="k">call </span><span class="n">gridset</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span><span class="w"> </span><span class="n">opt_prop</span><span class="p">,</span><span class="w"> </span><span class="n">nxg</span><span class="p">,</span><span class="w"> </span><span class="n">nyg</span><span class="p">,</span><span class="w"> </span><span class="n">nzg</span><span class="p">,</span><span class="w"> </span><span class="n">xmax</span><span class="p">,</span><span class="w"> </span><span class="n">ymax</span><span class="p">,</span><span class="w"> </span><span class="n">zmax</span><span class="p">)</span><span class="w"></span>
+<a id="ln-53" name="ln-53" href="#ln-53"></a>
+<a id="ln-54" name="ln-54" href="#ln-54"></a><span class="w">    </span><span class="c">! inialise the number of scatterings counter</span>
+<a id="ln-55" name="ln-55" href="#ln-55"></a><span class="w">    </span><span class="n">nscatt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+<a id="ln-56" name="ln-56" href="#ln-56"></a>
+<a id="ln-57" name="ln-57" href="#ln-57"></a><span class="w">    </span><span class="k">print</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;Photons now running&#39;</span><span class="w"></span>
+<a id="ln-58" name="ln-58" href="#ln-58"></a><span class="w">    </span><span class="c">!loop over photons </span>
+<a id="ln-59" name="ln-59" href="#ln-59"></a><span class="w">    </span><span class="k">do </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">nphotons</span><span class="w"></span>
+<a id="ln-60" name="ln-60" href="#ln-60"></a>
+<a id="ln-61" name="ln-61" href="#ln-61"></a><span class="w">        </span><span class="c">!display progress</span>
+<a id="ln-62" name="ln-62" href="#ln-62"></a><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="nb">mod</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="mi">10000</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="k">then</span>
+<a id="ln-63" name="ln-63" href="#ln-63"></a><span class="k">            print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">,</span><span class="s1">&#39; scattered photons completed&#39;</span><span class="w"></span>
+<a id="ln-64" name="ln-64" href="#ln-64"></a><span class="w">        </span><span class="k">end if</span><span class="w"></span>
+<a id="ln-65" name="ln-65" href="#ln-65"></a>
+<a id="ln-66" name="ln-66" href="#ln-66"></a><span class="w">        </span><span class="c">! Release photon from point source</span>
+<a id="ln-67" name="ln-67" href="#ln-67"></a><span class="w">        </span><span class="k">call </span><span class="n">isotropic_point_src</span><span class="p">(</span><span class="n">packet</span><span class="p">,</span><span class="w"> </span><span class="n">grid</span><span class="p">)</span><span class="w"></span>
+<a id="ln-68" name="ln-68" href="#ln-68"></a><span class="w">        </span>
+<a id="ln-69" name="ln-69" href="#ln-69"></a><span class="w">        </span><span class="c">! Find scattering location</span>
+<a id="ln-70" name="ln-70" href="#ln-70"></a><span class="w">        </span><span class="k">call </span><span class="n">tauint1</span><span class="p">(</span><span class="n">packet</span><span class="p">,</span><span class="w"> </span><span class="n">grid</span><span class="p">)</span><span class="w"></span>
+<a id="ln-71" name="ln-71" href="#ln-71"></a><span class="w">        </span><span class="c">! Photon scatters in grid until it exits (tflag=TRUE) </span>
+<a id="ln-72" name="ln-72" href="#ln-72"></a><span class="w">        </span><span class="k">do while</span><span class="p">(.</span><span class="nb">not</span><span class="p">.</span><span class="w"> </span><span class="n">packet</span><span class="p">%</span><span class="n">tflag</span><span class="p">)</span><span class="w"></span>
+<a id="ln-73" name="ln-73" href="#ln-73"></a>
+<a id="ln-74" name="ln-74" href="#ln-74"></a><span class="w">            </span><span class="n">ran</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ran2</span><span class="p">()</span><span class="w"></span>
+<a id="ln-75" name="ln-75" href="#ln-75"></a><span class="w">            </span><span class="c">!interact with medium</span>
+<a id="ln-76" name="ln-76" href="#ln-76"></a><span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">ran</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">opt_prop</span><span class="p">%</span><span class="n">albedo</span><span class="p">)</span><span class="k">then</span><span class="w"></span>
+<a id="ln-77" name="ln-77" href="#ln-77"></a><span class="w">                </span><span class="c">! photon is scattered</span>
+<a id="ln-78" name="ln-78" href="#ln-78"></a><span class="w">                </span><span class="k">call </span><span class="n">packet</span><span class="p">%</span><span class="n">scatter</span><span class="p">(</span><span class="n">opt_prop</span><span class="p">)</span><span class="w"></span>
+<a id="ln-79" name="ln-79" href="#ln-79"></a><span class="w">                </span><span class="n">nscatt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nscatt</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w">        </span>
+<a id="ln-80" name="ln-80" href="#ln-80"></a><span class="w">            </span><span class="k">else</span><span class="w"></span>
+<a id="ln-81" name="ln-81" href="#ln-81"></a><span class="w">                </span><span class="c">! photon is absorbed</span>
+<a id="ln-82" name="ln-82" href="#ln-82"></a><span class="w">                </span><span class="n">packet</span><span class="p">%</span><span class="n">tflag</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.</span><span class="w"></span>
+<a id="ln-83" name="ln-83" href="#ln-83"></a><span class="w">                </span><span class="k">exit</span>
+<a id="ln-84" name="ln-84" href="#ln-84"></a><span class="k">            end if</span><span class="w"></span>
+<a id="ln-85" name="ln-85" href="#ln-85"></a>
+<a id="ln-86" name="ln-86" href="#ln-86"></a><span class="w">            </span><span class="c">! Find next scattering location</span>
+<a id="ln-87" name="ln-87" href="#ln-87"></a><span class="w">            </span><span class="k">call </span><span class="n">tauint1</span><span class="p">(</span><span class="n">packet</span><span class="p">,</span><span class="w"> </span><span class="n">grid</span><span class="p">)</span><span class="w"></span>
+<a id="ln-88" name="ln-88" href="#ln-88"></a>
+<a id="ln-89" name="ln-89" href="#ln-89"></a><span class="w">        </span><span class="k">end do</span>
+<a id="ln-90" name="ln-90" href="#ln-90"></a><span class="k">    end do</span><span class="w">      </span><span class="c">! end loop over nph photons</span>
+<a id="ln-91" name="ln-91" href="#ln-91"></a>
+<a id="ln-92" name="ln-92" href="#ln-92"></a><span class="w">    </span><span class="k">print</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;Average # of scatters per photon:&#39;</span><span class="p">,</span><span class="n">nscatt</span><span class="o">/</span><span class="p">(</span><span class="n">nphotons</span><span class="p">)</span><span class="w"></span>
+<a id="ln-93" name="ln-93" href="#ln-93"></a><span class="w">    </span><span class="c">!write out files</span>
+<a id="ln-94" name="ln-94" href="#ln-94"></a><span class="w">    </span><span class="k">call </span><span class="n">writer</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span><span class="w"> </span><span class="n">nphotons</span><span class="p">)</span><span class="w"></span>
+<a id="ln-95" name="ln-95" href="#ln-95"></a><span class="w">    </span><span class="k">print</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;write done&#39;</span><span class="w"></span>
+<a id="ln-96" name="ln-96" href="#ln-96"></a>
+<a id="ln-97" name="ln-97" href="#ln-97"></a><span class="w">    </span><span class="k">call </span><span class="nb">cpu_time</span><span class="p">(</span><span class="n">finish</span><span class="p">)</span><span class="w"></span>
+<a id="ln-98" name="ln-98" href="#ln-98"></a>
+<a id="ln-99" name="ln-99" href="#ln-99"></a><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">finish</span><span class="o">-</span><span class="n">start</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">6</span><span class="mf">0.</span><span class="p">)</span><span class="k">then</span>
+<a id="ln-100" name="ln-100" href="#ln-100"></a><span class="k">        print</span><span class="o">*</span><span class="p">,</span><span class="nb">floor</span><span class="p">((</span><span class="n">finish</span><span class="o">-</span><span class="n">start</span><span class="p">)</span><span class="o">/</span><span class="mi">6</span><span class="mf">0.</span><span class="p">)</span><span class="o">+</span><span class="nb">mod</span><span class="p">(</span><span class="n">finish</span><span class="o">-</span><span class="n">start</span><span class="p">,</span><span class="mi">6</span><span class="mf">0.</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span><span class="mf">0.</span><span class="w"></span>
+<a id="ln-101" name="ln-101" href="#ln-101"></a><span class="w">    </span><span class="k">else</span>
+<a id="ln-102" name="ln-102" href="#ln-102"></a><span class="k">        print</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;time taken ~&#39;</span><span class="p">,</span><span class="nb">floor</span><span class="p">(</span><span class="n">finish</span><span class="o">-</span><span class="n">start</span><span class="o">/</span><span class="mi">6</span><span class="mf">0.</span><span class="p">),</span><span class="s1">&#39;s&#39;</span><span class="w"></span>
+<a id="ln-103" name="ln-103" href="#ln-103"></a><span class="w">    </span><span class="k">end if</span>
+<a id="ln-104" name="ln-104" href="#ln-104"></a>
+<a id="ln-105" name="ln-105" href="#ln-105"></a><span class="k">end program </span><span class="n">mcpolar</span><span class="w"></span>
+</pre></div>
+
+    </section>
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-6 col-md-6"><p>gridMCRT was developed by Lewis McMillan<br>&copy; 2023 
+</p>
+          </div>
+          <div class="col-xs-6 col-md-6">
+            <p class="text-right">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+         ================================================== -->
+         <!-- Placed at the end of the document so the pages load faster -->
+    <!--
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        -->
+        <script src="../js/bootstrap.min.js"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+        <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>
