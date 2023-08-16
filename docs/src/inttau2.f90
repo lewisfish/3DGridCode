@@ -11,7 +11,7 @@ CONTAINS
     !! optical depth integration subroutine. The main workhorse of MCRT
 
         use gridset_mod,  only : cart_grid
-        use iarray,       only : jmean, rhokap
+        use iarray,       only : rhokap
         use photon_class, only : photon
         use random_mod,   only : ran2
         use vector_class, only : vector
@@ -53,15 +53,11 @@ CONTAINS
                 taurun = taurun + taucell
                 d = d + dcell
 
-                jmean(celli, cellj, cellk) = jmean(celli, cellj, cellk) + dcell ! record fluence
-
                 call update_pos(packet, grid, pos, celli, cellj, cellk, dcell, .TRUE., dir)
             else!moved full distance
 
                 dcell = (tau - taurun) / rhokap(celli,cellj,cellk)
                 d = d + dcell
-
-                jmean(celli, cellj, cellk) = jmean(celli, cellj, cellk) + dcell ! record fluence
 
                 call update_pos(packet, grid, pos, celli, cellj, cellk, dcell, .FALSE., dir)
                 exit

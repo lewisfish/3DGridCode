@@ -51,20 +51,17 @@ module gridset_mod
 
             ! allocate and set arrays to 0
             call alloc_array(grid)
-            call zarray
+            call zarray(grid)
 
             ! setup grid cell walls
-            allocate(grid%xface(nxg+1))
             do i = 1, grid%nxg + 1
                 grid%xface(i) = (i - 1) * 2. * grid%dim%x/grid%nxg
             end do
 
-            allocate(grid%yface(nyg+1))
             do i = 1, grid%nyg + 1
                 grid%yface(i) = (i - 1) * 2. * grid%dim%y/grid%nyg
             end do
 
-            allocate(grid%zface(nzg+1))
             do i = 1, grid%nzg + 1
                 grid%zface(i) = (i - 1) * 2. * grid%dim%z/grid%nzg
             end do
@@ -106,24 +103,30 @@ module gridset_mod
 
         end subroutine gridset
 
-        subroutine zarray
+        subroutine zarray(grid)
         !! set all 3D arrays to zero
 
-            use iarray
+            use iarray, only: rhokap
 
-            jmean = 0.
+            type(cart_grid), intent(inout) :: grid
+
             rhokap = 0.
+            grid%xface = 0.
+            grid%yface = 0.
+            grid%zface = 0.
         end subroutine zarray
 
 
         subroutine alloc_array(grid)
         !!  allocates allocatable 3D arrays
 
-            use iarray
+            use iarray, only: rhokap
 
-            type(cart_grid), intent(in) :: grid
+            type(cart_grid), intent(inout) :: grid
 
             allocate(rhokap(grid%nxg, grid%nyg, grid%nzg))
-            allocate(jmean(grid%nxg, grid%nyg, grid%nzg))
+            allocate(grid%xface(grid%nxg+1))
+            allocate(grid%yface(grid%nyg+1))
+            allocate(grid%zface(grid%nzg+1))
         end subroutine alloc_array
 end module gridset_mod

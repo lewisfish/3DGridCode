@@ -100,7 +100,7 @@
           <li id="statements"><i class="fa fa-list-ol"></i>
             <a data-toggle="tooltip"
                data-placement="bottom" data-html="true"
-               title="24.1% of total for procedures.">58 statements</a>
+               title="23.4% of total for procedures.">55 statements</a>
           </li>
 
             <li id="source-file">
@@ -169,8 +169,8 @@
       <ul class="list-group">
           <li class="list-group-item">
             <ul class="list-inline">
-                <li><a href='../module/iarray.html'>iarray</a></li>
                 <li><a href='../module/optical_properties_class.html'>optical_properties_class</a></li>
+                <li><a href='../module/iarray.html'>iarray</a></li>
             </ul>
           </li>
           <li class="list-group-item">
@@ -343,7 +343,7 @@ modules which it uses.
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nxg~2"></span>
+              <span class="anchor" id="variable-nxg~3"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -358,7 +358,7 @@ modules which it uses.
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nyg~2"></span>
+              <span class="anchor" id="variable-nyg~3"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -373,7 +373,7 @@ modules which it uses.
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nzg~2"></span>
+              <span class="anchor" id="variable-nzg~3"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -622,21 +622,18 @@ implementation in a submodule of an interface in a parent module.
 
 <span class="w">            </span><span class="c">! allocate and set arrays to 0</span>
 <span class="w">            </span><span class="k">call </span><span class="n">alloc_array</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span><span class="w"></span>
-<span class="w">            </span><span class="k">call </span><span class="n">zarray</span><span class="w"></span>
+<span class="w">            </span><span class="k">call </span><span class="n">zarray</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span><span class="w"></span>
 
 <span class="w">            </span><span class="c">! setup grid cell walls</span>
-<span class="w">            </span><span class="k">allocate</span><span class="p">(</span><span class="n">grid</span><span class="p">%</span><span class="n">xface</span><span class="p">(</span><span class="n">nxg</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span><span class="w"></span>
 <span class="w">            </span><span class="k">do </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">grid</span><span class="p">%</span><span class="n">nxg</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
 <span class="w">                </span><span class="n">grid</span><span class="p">%</span><span class="n">xface</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2.</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">grid</span><span class="p">%</span><span class="nb">dim</span><span class="p">%</span><span class="n">x</span><span class="o">/</span><span class="n">grid</span><span class="p">%</span><span class="n">nxg</span><span class="w"></span>
 <span class="w">            </span><span class="k">end do</span>
 
-<span class="k">            allocate</span><span class="p">(</span><span class="n">grid</span><span class="p">%</span><span class="n">yface</span><span class="p">(</span><span class="n">nyg</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span><span class="w"></span>
-<span class="w">            </span><span class="k">do </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">grid</span><span class="p">%</span><span class="n">nyg</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="k">            do </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">grid</span><span class="p">%</span><span class="n">nyg</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
 <span class="w">                </span><span class="n">grid</span><span class="p">%</span><span class="n">yface</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2.</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">grid</span><span class="p">%</span><span class="nb">dim</span><span class="p">%</span><span class="n">y</span><span class="o">/</span><span class="n">grid</span><span class="p">%</span><span class="n">nyg</span><span class="w"></span>
 <span class="w">            </span><span class="k">end do</span>
 
-<span class="k">            allocate</span><span class="p">(</span><span class="n">grid</span><span class="p">%</span><span class="n">zface</span><span class="p">(</span><span class="n">nzg</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span><span class="w"></span>
-<span class="w">            </span><span class="k">do </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">grid</span><span class="p">%</span><span class="n">nzg</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="k">            do </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">grid</span><span class="p">%</span><span class="n">nzg</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
 <span class="w">                </span><span class="n">grid</span><span class="p">%</span><span class="n">zface</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2.</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">grid</span><span class="p">%</span><span class="nb">dim</span><span class="p">%</span><span class="n">z</span><span class="o">/</span><span class="n">grid</span><span class="p">%</span><span class="n">nzg</span><span class="w"></span>
 <span class="w">            </span><span class="k">end do</span><span class="w"></span>
 

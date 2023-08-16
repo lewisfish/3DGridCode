@@ -100,7 +100,7 @@
           <li id="statements"><i class="fa fa-list-ol"></i>
             <a data-toggle="tooltip"
                data-placement="bottom" data-html="true"
-               title="19.1% of total for procedures.">46 statements</a>
+               title="18.7% of total for procedures.">44 statements</a>
           </li>
 
             <li id="source-file">
@@ -169,11 +169,11 @@
       <ul class="list-group">
           <li class="list-group-item">
             <ul class="list-inline">
-                <li><a href='../module/gridset_mod.html'>gridset_mod</a></li>
+                <li><a href='../module/random_mod.html'>random_mod</a></li>
                 <li><a href='../module/vector_class.html'>vector_class</a></li>
+                <li><a href='../module/gridset_mod.html'>gridset_mod</a></li>
                 <li><a href='../module/iarray.html'>iarray</a></li>
                 <li><a href='../module/photon_class.html'>photon_class</a></li>
-                <li><a href='../module/random_mod.html'>random_mod</a></li>
             </ul>
           </li>
           <li class="list-group-item">
@@ -678,7 +678,7 @@ implementation in a submodule of an interface in a parent module.
 <span class="w">    </span><span class="c">!! optical depth integration subroutine. The main workhorse of MCRT</span>
 
 <span class="w">        </span><span class="k">use </span><span class="n">gridset_mod</span><span class="p">,</span><span class="w">  </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">cart_grid</span><span class="w"></span>
-<span class="w">        </span><span class="k">use </span><span class="n">iarray</span><span class="p">,</span><span class="w">       </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">jmean</span><span class="p">,</span><span class="w"> </span><span class="n">rhokap</span><span class="w"></span>
+<span class="w">        </span><span class="k">use </span><span class="n">iarray</span><span class="p">,</span><span class="w">       </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">rhokap</span><span class="w"></span>
 <span class="w">        </span><span class="k">use </span><span class="n">photon_class</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">photon</span><span class="w"></span>
 <span class="w">        </span><span class="k">use </span><span class="n">random_mod</span><span class="p">,</span><span class="w">   </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ran2</span><span class="w"></span>
 <span class="w">        </span><span class="k">use </span><span class="n">vector_class</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">vector</span><span class="w"></span>
@@ -720,15 +720,11 @@ implementation in a submodule of an interface in a parent module.
 <span class="w">                </span><span class="n">taurun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">taurun</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">taucell</span><span class="w"></span>
 <span class="w">                </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dcell</span><span class="w"></span>
 
-<span class="w">                </span><span class="n">jmean</span><span class="p">(</span><span class="n">celli</span><span class="p">,</span><span class="w"> </span><span class="n">cellj</span><span class="p">,</span><span class="w"> </span><span class="n">cellk</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jmean</span><span class="p">(</span><span class="n">celli</span><span class="p">,</span><span class="w"> </span><span class="n">cellj</span><span class="p">,</span><span class="w"> </span><span class="n">cellk</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dcell</span><span class="w"> </span><span class="c">! record fluence</span>
-
 <span class="w">                </span><span class="k">call </span><span class="n">update_pos</span><span class="p">(</span><span class="n">packet</span><span class="p">,</span><span class="w"> </span><span class="n">grid</span><span class="p">,</span><span class="w"> </span><span class="n">pos</span><span class="p">,</span><span class="w"> </span><span class="n">celli</span><span class="p">,</span><span class="w"> </span><span class="n">cellj</span><span class="p">,</span><span class="w"> </span><span class="n">cellk</span><span class="p">,</span><span class="w"> </span><span class="n">dcell</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">TRUE</span><span class="p">.,</span><span class="w"> </span><span class="n">dir</span><span class="p">)</span><span class="w"></span>
 <span class="w">            </span><span class="k">else</span><span class="c">!moved full distance</span>
 
 <span class="w">                </span><span class="n">dcell</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">tau</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">taurun</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">rhokap</span><span class="p">(</span><span class="n">celli</span><span class="p">,</span><span class="n">cellj</span><span class="p">,</span><span class="n">cellk</span><span class="p">)</span><span class="w"></span>
 <span class="w">                </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dcell</span><span class="w"></span>
-
-<span class="w">                </span><span class="n">jmean</span><span class="p">(</span><span class="n">celli</span><span class="p">,</span><span class="w"> </span><span class="n">cellj</span><span class="p">,</span><span class="w"> </span><span class="n">cellk</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jmean</span><span class="p">(</span><span class="n">celli</span><span class="p">,</span><span class="w"> </span><span class="n">cellj</span><span class="p">,</span><span class="w"> </span><span class="n">cellk</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dcell</span><span class="w"> </span><span class="c">! record fluence</span>
 
 <span class="w">                </span><span class="k">call </span><span class="n">update_pos</span><span class="p">(</span><span class="n">packet</span><span class="p">,</span><span class="w"> </span><span class="n">grid</span><span class="p">,</span><span class="w"> </span><span class="n">pos</span><span class="p">,</span><span class="w"> </span><span class="n">celli</span><span class="p">,</span><span class="w"> </span><span class="n">cellj</span><span class="p">,</span><span class="w"> </span><span class="n">cellk</span><span class="p">,</span><span class="w"> </span><span class="n">dcell</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">FALSE</span><span class="p">.,</span><span class="w"> </span><span class="n">dir</span><span class="p">)</span><span class="w"></span>
 <span class="w">                </span><span class="k">exit</span>
