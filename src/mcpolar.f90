@@ -6,26 +6,30 @@ program mcpolar
     use inttau2,                  only : tauint1
     use optical_properties_class, only : optical_properties, init_opt_sphere
     use photon_class,             only : photon
-    use random_mod,               only : ran2 
+    use random_mod,               only : ran2, init_seed
     use sourceph_mod,             only : isotropic_point_src
     use utils,                    only : set_directories, str
     use writer_mod,               only : writer
 
     implicit none
 
-    ! variable that holds all information about the photon to be simulated
+    !> variable that holds all information about the photon to be simulated
     type(photon)     :: packet
-    ! variable that holds the 3D grid information
+    !> variable that holds the 3D grid information
     type(cart_grid)  :: grid
-    ! optical properties variable
+    !> optical properties variable
     type(optical_properties) :: opt_prop
-    !! number of photons to run in the simulation
+    !> number of photons to run in the simulation
     integer          :: nphotons
-    !! counter for number of scatterings for all photons
+    !> counter for number of scatterings for all photons
     double precision :: nscatt
+    !> user defined seed
+    integer :: seed
+    !> temp variable or related to I/O from param file
     integer          :: nxg, nyg, nzg, j, u
-    real             :: xmax, ymax, zmax
-    real             :: ran, start, finish
+    real             :: xmax, ymax, zmax, ran
+    !> timing vars
+    real             :: start, finish
 
     call cpu_time(start)
 
@@ -33,6 +37,10 @@ program mcpolar
     call set_directories()
     !set optical properties
     call init_opt_sphere(opt_prop)
+
+    !set random seed
+    seed = 42
+    call init_seed(seed)
 
     !**** Read in parameters from the file input.params
     open(newunit=u,file=trim(resdir)//'input.params',status='old')
