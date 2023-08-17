@@ -5,7 +5,7 @@
 
 ## How to run
 
-First Download the code from this [link](https://github.com/lewisfish/3DGridCode/archive/refs/tags/v1.1.zip)
+First Download the code from this [link](https://github.com/lewisfish/3DGridCode/archive/refs/tags/v1.1.1.zip)
 
 Then open a terminal and change directories to this code location and unzip it.
 
