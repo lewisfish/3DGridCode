@@ -5,13 +5,25 @@
 
 ## How to run
 
+### Using Make
+
 First Download the code from this [link](https://github.com/lewisfish/3DGridCode/archive/refs/tags/v1.1.1.zip)
 
-Then open a terminal and change directories to this code location and unzip it.
+Then open a terminal and change directories to the codes location and unzip it.
 
 Then type ```make``` into your terminal to compile the code.
 
 Then type ```./mcgrid``` to run the code.
+
+### Using FPM
+
+First Download the code from this [link](https://github.com/lewisfish/3DGridCode/archive/refs/tags/v1.1.1.zip)
+
+Then open a terminal and change directories to the codes location and unzip it.
+
+Then type ```fpm run --profile release``` to compile and run the code.
+
+Details on installing FPM on your platform can be found [here](https://fpm.fortran-lang.org/install/index.html#install).
 
 ## Documentation
 
