@@ -3,8 +3,9 @@ project: gridMCRT
 src_dir: ./src
 output_dir: ./docs
 summary: ![3DGridCode](|media|/logo.png)<br> Monte Carlo radiation transfer (MCRT) on a 3D grid.
-author: Lewis McMillan, Kenny Wood
+author: Lewis McMillan, Kenny Wood, Isla Barnard
 media_dir: media
+favicon: ./media/favicon-32x32.png
 predocmark_alt: >
 predocmark: <
 display: public
@@ -16,7 +17,7 @@ search: true
 sort: alpha
 extra_mods: iso_fortran_env:https://gcc.gnu.org/onlinedocs/gfortran/ISO_005fFORTRAN_005fENV.html
 md_extensions: markdown.extensions.toc
-               markdown_checklist.extension
+exclude_dir: ./.github
 ---
 
 --------------------
