@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Monte Carlo radiation transfer (MCRT) on a 3D grid.">
+    <meta name="author" content="Lewis McMillan" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>isotropic_point_src &ndash; gridMCRT</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+         <script src="../js/jquery-2.1.3.min.js"></script>
+         <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">gridMCRT </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+                 data-toggle="dropdown" role="button"
+                 aria-haspopup="true"
+                 aria-expanded="false">
+                 Contents <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                    <li><a href="../lists/files.html">Source Files</a></li>
+                  <li><a href="../lists/modules.html">Modules</a></li>
+                  <li><a href="../lists/procedures.html">Procedures</a></li>
+                  <li><a href="../lists/types.html">Derived Types</a></li>
+                  <li><a href="../program/mcpolar.html">Program</a></li>
+              </ul>
+            </li>
+                <li class="visible-xs hidden-sm visible-lg">
+                  <a href="../lists/files.html">Source Files</a>
+                </li>
+              <li class="visible-xs hidden-sm visible-lg">
+                <a href="../lists/modules.html">Modules</a>
+              </li>
+              <li class="visible-xs hidden-sm visible-lg">
+                <a href="../lists/procedures.html">Procedures</a>
+              </li>
+              <li class="visible-xs hidden-sm visible-lg">
+                <a href="../lists/types.html">Derived Types</a>
+              </li>
+              <li class="visible-xs hidden-sm visible-lg">
+                <a href="../program/mcpolar.html">Program</a>
+              </li>
+          </ul>
+            <form action="../search.html" class="navbar-form navbar-right" role="search">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+              </div>
+              <!--
+                  <button type="submit" class="btn btn-default">Submit</button>
+                  -->
+            </form>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+  <div class="row">
+    <h1>isotropic_point_src
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="row" id="info-bar">
+    <div class="col-lg-12">
+      <div class="well well-sm">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+          <li id="statements"><i class="fa fa-list-ol"></i>
+            <a data-toggle="tooltip"
+               data-placement="bottom" data-html="true"
+               title=" 9.8% of total for procedures.">23 statements</a>
+          </li>
+
+            <li id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/sourceph.f90"> Source File</a>
+            </li>
+        </ul>
+        <ol class="breadcrumb in-well text-right">
+              <li><a href='../sourcefile/sourceph.f90.html'>sourceph.f90</a></li>
+              <li><a href='../module/sourceph_mod.html'>sourceph_mod</a></li>
+          <li class="active">isotropic_point_src</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="panel panel-primary">
+      <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/isotropic_point_src.html#src">isotropic_point_src</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public  subroutine isotropic_point_src(packet, grid)  
+</h2>
+        <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Uses</h3>
+      </div>
+      <ul class="list-group">
+          <li class="list-group-item">
+            <ul class="list-inline">
+                <li><a href='../module/constants.html'>constants</a></li>
+                <li><a href='../module/random_mod.html'>random_mod</a></li>
+                <li><a href='../module/gridset_mod.html'>gridset_mod</a></li>
+                <li><a href='../module/photon_class.html'>photon_class</a></li>
+            </ul>
+          </li>
+          <li class="list-group-item">
+            <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 8.1.0 (20230707.2238)
+ -->
+<!-- Title: proc~~isotropic_point_src~~UsesGraph Pages: 1 -->
+<svg id="procisotropic_point_srcUsesGraph" width="327pt" height="158pt"
+ viewBox="0.00 0.00 326.81 157.52" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~isotropic_point_src~~UsesGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 153.52)">
+<title>proc~~isotropic_point_src~~UsesGraph</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-153.52 322.81,-153.52 322.81,4 -4,4"/>
+<!-- proc~isotropic_point_src -->
+<g id="proc~~isotropic_point_src~~UsesGraph_node1" class="node">
+<title>proc~isotropic_point_src</title>
+<polygon fill="none" stroke="black" points="318.81,-86.52 218.04,-86.52 218.04,-63 318.81,-63 318.81,-86.52"/>
+<text text-anchor="middle" x="268.42" y="-70.79" font-family="Helvetica,sans-Serif" font-size="10.50">isotropic_point_src</text>
+</g>
+<!-- module~constants -->
+<g id="proc~~isotropic_point_src~~UsesGraph_node2" class="node">
+<title>module~constants</title>
+<g id="a_proc~~isotropic_point_src~~UsesGraph_node2"><a xlink:href=".././module/constants.html" xlink:title="constants">
+<polygon fill="#337ab7" stroke="#337ab7" points="173.04,-149.52 115.77,-149.52 115.77,-126 173.04,-126 173.04,-149.52"/>
+<text text-anchor="middle" x="144.41" y="-133.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">constants</text>
+</a>
+</g>
+</g>
+<!-- proc~isotropic_point_src&#45;&gt;module~constants -->
+<g id="proc~~isotropic_point_src~~UsesGraph_edge1" class="edge">
+<title>proc~isotropic_point_src&#45;&gt;module~constants</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M243.9,-86.91C225.33,-96.49 199.2,-109.99 178.52,-120.66"/>
+<polygon fill="#000000" stroke="#000000" points="177.14,-117.95 169.86,-125.65 180.35,-124.17 177.14,-117.95"/>
+</g>
+<!-- module~gridset_mod -->
+<g id="proc~~isotropic_point_src~~UsesGraph_node3" class="node">
+<title>module~gridset_mod</title>
+<g id="a_proc~~isotropic_point_src~~UsesGraph_node3"><a xlink:href=".././module/gridset_mod.html" xlink:title="gridset_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="179.79,-107.52 109.02,-107.52 109.02,-84 179.79,-84 179.79,-107.52"/>
+<text text-anchor="middle" x="144.41" y="-91.79" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">gridset_mod</text>
+</a>
+</g>
+</g>
+<!-- proc~isotropic_point_src&#45;&gt;module~gridset_mod -->
+<g id="proc~~isotropic_point_src~~UsesGraph_edge2" class="edge">
+<title>proc~isotropic_point_src&#45;&gt;module~gridset_mod</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M217.79,-83.3C208.89,-84.83 199.64,-86.43 190.86,-87.94"/>
+<polygon fill="#000000" stroke="#000000" points="190.31,-84.65 181.04,-89.8 191.49,-91.55 190.31,-84.65"/>
+</g>
+<!-- module~photon_class -->
+<g id="proc~~isotropic_point_src~~UsesGraph_node4" class="node">
+<title>module~photon_class</title>
+<g id="a_proc~~isotropic_point_src~~UsesGraph_node4"><a xlink:href=".././module/photon_class.html" xlink:title="photon_class">
+<polygon fill="#337ab7" stroke="#337ab7" points="181.66,-65.52 107.15,-65.52 107.15,-42 181.66,-42 181.66,-65.52"/>
+<text text-anchor="middle" x="144.41" y="-49.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">photon_class</text>
+</a>
+</g>
+</g>
+<!-- proc~isotropic_point_src&#45;&gt;module~photon_class -->
+<g id="proc~~isotropic_point_src~~UsesGraph_edge3" class="edge">
+<title>proc~isotropic_point_src&#45;&gt;module~photon_class</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M217.79,-66.22C209.45,-64.78 200.8,-63.29 192.52,-61.87"/>
+<polygon fill="#000000" stroke="#000000" points="193.34,-58.29 182.89,-60.04 192.15,-65.18 193.34,-58.29"/>
+</g>
+<!-- module~random_mod -->
+<g id="proc~~isotropic_point_src~~UsesGraph_node5" class="node">
+<title>module~random_mod</title>
+<g id="a_proc~~isotropic_point_src~~UsesGraph_node5"><a xlink:href=".././module/random_mod.html" xlink:title="random_mod">
+<polygon fill="#337ab7" stroke="#337ab7" points="182.04,-23.52 106.77,-23.52 106.77,0 182.04,0 182.04,-23.52"/>
+<text text-anchor="middle" x="144.41" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">random_mod</text>
+</a>
+</g>
+</g>
+<!-- proc~isotropic_point_src&#45;&gt;module~random_mod -->
+<g id="proc~~isotropic_point_src~~UsesGraph_edge4" class="edge">
+<title>proc~isotropic_point_src&#45;&gt;module~random_mod</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M243.9,-62.61C225.33,-53.03 199.2,-39.53 178.52,-28.86"/>
+<polygon fill="#000000" stroke="#000000" points="180.35,-25.35 169.86,-23.87 177.14,-31.57 180.35,-25.35"/>
+</g>
+<!-- module~vector_class -->
+<g id="proc~~isotropic_point_src~~UsesGraph_node6" class="node">
+<title>module~vector_class</title>
+<g id="a_proc~~isotropic_point_src~~UsesGraph_node6"><a xlink:href=".././module/vector_class.html" xlink:title="vector_class">
+<polygon fill="#337ab7" stroke="#337ab7" points="70.77,-86.52 0,-86.52 0,-63 70.77,-63 70.77,-86.52"/>
+<text text-anchor="middle" x="35.38" y="-70.79" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">vector_class</text>
+</a>
+</g>
+</g>
+<!-- module~gridset_mod&#45;&gt;module~vector_class -->
+<g id="proc~~isotropic_point_src~~UsesGraph_edge5" class="edge">
+<title>module~gridset_mod&#45;&gt;module~vector_class</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M108.66,-88.94C100.07,-87.26 90.74,-85.43 81.72,-83.66"/>
+<polygon fill="#000000" stroke="#000000" points="82.44,-80.03 71.96,-81.54 81.1,-86.9 82.44,-80.03"/>
+</g>
+<!-- module~photon_class&#45;&gt;module~vector_class -->
+<g id="proc~~isotropic_point_src~~UsesGraph_edge6" class="edge">
+<title>module~photon_class&#45;&gt;module~vector_class</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M106.87,-60.93C98.7,-62.53 89.94,-64.25 81.46,-65.92"/>
+<polygon fill="#000000" stroke="#000000" points="81.09,-62.62 71.95,-67.98 82.43,-69.49 81.09,-62.62"/>
+</g>
+</g>
+</svg>
+</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
+          <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                </div>
+              <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 8.1.0 (20230707.2238)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="485pt" height="32pt"
+ viewBox="0.00 0.00 485.13 31.52" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 27.52)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-27.52 481.13,-27.52 481.13,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-23.52 0,-23.52 0,0 54,0 54,-23.52"/>
+<text text-anchor="middle" x="27" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="137.76,-23.52 72.24,-23.52 72.24,0 137.76,0 137.76,-23.52"/>
+<text text-anchor="middle" x="105" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="218.63,-23.52 155.37,-23.52 155.37,0 218.63,0 218.63,-23.52"/>
+<text text-anchor="middle" x="187" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="291,-23.52 237,-23.52 237,0 291,0 291,-23.52"/>
+<text text-anchor="middle" x="264" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="363,-23.52 309,-23.52 309,0 363,0 363,-23.52"/>
+<text text-anchor="middle" x="336" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="477.13,-23.52 380.87,-23.52 380.87,0 477.13,0 477.13,-23.52"/>
+<text text-anchor="middle" x="429" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a submodule to the (sub)module which it is
+descended from. Dashed arrows point from a module or program unit to 
+modules which it uses.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+          </li>
+      </ul>
+    </div>
+
+
+    <p>set intial photon position</p>
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-packet~3"></span>
+              type(<a href='../type/photon.html'>photon</a>),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>packet</strong></td>
+            <td>
+                <p>photon object</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-grid~4"></span>
+              type(<a href='../type/cart_grid.html'>cart_grid</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>grid</strong></td>
+            <td>
+                <p>grid object</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Calls</h3>
+      </div>
+      <div class="panel-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 8.1.0 (20230707.2238)
+ -->
+<!-- Title: proc~~isotropic_point_src~~CallsGraph Pages: 1 -->
+<svg id="procisotropic_point_srcCallsGraph" width="199pt" height="32pt"
+ viewBox="0.00 0.00 198.77 31.52" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~isotropic_point_src~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 27.52)">
+<title>proc~~isotropic_point_src~~CallsGraph</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-27.52 194.77,-27.52 194.77,4 -4,4"/>
+<!-- proc~isotropic_point_src -->
+<g id="proc~~isotropic_point_src~~CallsGraph_node1" class="node">
+<title>proc~isotropic_point_src</title>
+<polygon fill="none" stroke="black" points="100.77,-23.52 0,-23.52 0,0 100.77,0 100.77,-23.52"/>
+<text text-anchor="middle" x="50.38" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50">isotropic_point_src</text>
+</g>
+<!-- proc~ran2 -->
+<g id="proc~~isotropic_point_src~~CallsGraph_node2" class="node">
+<title>proc~ran2</title>
+<g id="a_proc~~isotropic_point_src~~CallsGraph_node2"><a xlink:href=".././proc/ran2.html" xlink:title="ran2">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="190.77,-23.52 136.77,-23.52 136.77,0 190.77,0 190.77,-23.52"/>
+<text text-anchor="middle" x="163.77" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ran2</text>
+</a>
+</g>
+</g>
+<!-- proc~isotropic_point_src&#45;&gt;proc~ran2 -->
+<g id="proc~~isotropic_point_src~~CallsGraph_edge1" class="edge">
+<title>proc~isotropic_point_src&#45;&gt;proc~ran2</title>
+<path fill="none" stroke="#000000" d="M101.21,-11.76C109.39,-11.76 117.73,-11.76 125.53,-11.76"/>
+<polygon fill="#000000" stroke="#000000" points="125.48,-15.26 135.48,-11.76 125.48,-8.26 125.48,-15.26"/>
+</g>
+</g>
+</svg>
+</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
+          <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                </div>
+              <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 8.1.0 (20230707.2238)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="554pt" height="32pt"
+ viewBox="0.00 0.00 553.77 31.52" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 27.52)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-27.52 549.77,-27.52 549.77,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="63.27,-23.52 0,-23.52 0,0 63.27,0 63.27,-23.52"/>
+<text text-anchor="middle" x="31.64" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="135.63,-23.52 81.64,-23.52 81.64,0 135.63,0 135.63,-23.52"/>
+<text text-anchor="middle" x="108.64" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="207.63,-23.52 153.63,-23.52 153.63,0 207.63,0 207.63,-23.52"/>
+<text text-anchor="middle" x="180.63" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node4" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="359.89,-23.52 225.38,-23.52 225.38,0 359.89,0 359.89,-23.52"/>
+<text text-anchor="middle" x="292.63" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="431.63,-23.52 377.63,-23.52 377.63,0 431.63,0 431.63,-23.52"/>
+<text text-anchor="middle" x="404.63" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="545.77,-23.52 449.5,-23.52 449.5,0 545.77,0 545.77,-23.52"/>
+<text text-anchor="middle" x="497.63" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Called by</h3>
+      </div>
+      <div class="panel-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 8.1.0 (20230707.2238)
+ -->
+<!-- Title: proc~~isotropic_point_src~~CalledByGraph Pages: 1 -->
+<svg id="procisotropic_point_srcCalledByGraph" width="199pt" height="32pt"
+ viewBox="0.00 0.00 198.77 31.52" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~isotropic_point_src~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 27.52)">
+<title>proc~~isotropic_point_src~~CalledByGraph</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-27.52 194.77,-27.52 194.77,4 -4,4"/>
+<!-- proc~isotropic_point_src -->
+<g id="proc~~isotropic_point_src~~CalledByGraph_node1" class="node">
+<title>proc~isotropic_point_src</title>
+<polygon fill="none" stroke="black" points="190.77,-23.52 90,-23.52 90,0 190.77,0 190.77,-23.52"/>
+<text text-anchor="middle" x="140.38" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50">isotropic_point_src</text>
+</g>
+<!-- program~mcpolar -->
+<g id="proc~~isotropic_point_src~~CalledByGraph_node2" class="node">
+<title>program~mcpolar</title>
+<g id="a_proc~~isotropic_point_src~~CalledByGraph_node2"><a xlink:href=".././program/mcpolar.html" xlink:title="mcpolar">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="54,-23.52 0,-23.52 0,0 54,0 54,-23.52"/>
+<text text-anchor="middle" x="27" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mcpolar</text>
+</a>
+</g>
+</g>
+<!-- program~mcpolar&#45;&gt;proc~isotropic_point_src -->
+<g id="proc~~isotropic_point_src~~CalledByGraph_edge1" class="edge">
+<title>program~mcpolar&#45;&gt;proc~isotropic_point_src</title>
+<path fill="none" stroke="#000000" d="M54.4,-11.76C61.81,-11.76 70.2,-11.76 78.75,-11.76"/>
+<polygon fill="#000000" stroke="#000000" points="78.59,-15.26 88.59,-11.76 78.59,-8.26 78.59,-15.26"/>
+</g>
+</g>
+</svg>
+</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
+          <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                </div>
+              <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 8.1.0 (20230707.2238)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="554pt" height="32pt"
+ viewBox="0.00 0.00 553.77 31.52" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 27.52)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-27.52 549.77,-27.52 549.77,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="63.27,-23.52 0,-23.52 0,0 63.27,0 63.27,-23.52"/>
+<text text-anchor="middle" x="31.64" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="135.63,-23.52 81.64,-23.52 81.64,0 135.63,0 135.63,-23.52"/>
+<text text-anchor="middle" x="108.64" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="207.63,-23.52 153.63,-23.52 153.63,0 207.63,0 207.63,-23.52"/>
+<text text-anchor="middle" x="180.63" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node4" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="359.89,-23.52 225.38,-23.52 225.38,0 359.89,0 359.89,-23.52"/>
+<text text-anchor="middle" x="292.63" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="431.63,-23.52 377.63,-23.52 377.63,0 431.63,0 431.63,-23.52"/>
+<text text-anchor="middle" x="404.63" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="545.77,-23.52 449.5,-23.52 449.5,0 545.77,0 545.77,-23.52"/>
+<text text-anchor="middle" x="497.63" y="-7.78" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+        <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="panel panel-primary">
+      <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/isotropic_point_src.html#src">isotropic_point_src</a>
+      </div>
+    </div>
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+
+    
+    
+
+    
+    
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="highlight"><pre><span></span><span class="w">        </span><span class="k">subroutine </span><span class="n">isotropic_point_src</span><span class="p">(</span><span class="n">packet</span><span class="p">,</span><span class="w"> </span><span class="n">grid</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="c">!! set intial photon position</span>
+
+<span class="w">            </span><span class="k">use </span><span class="n">constants</span><span class="p">,</span><span class="w">    </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">TWOPI</span><span class="w"></span>
+<span class="w">            </span><span class="k">use </span><span class="n">gridset_mod</span><span class="p">,</span><span class="w">  </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="n">cart_grid</span><span class="w"></span>
+<span class="w">            </span><span class="k">use </span><span class="n">photon_class</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">photon</span><span class="w"></span>
+<span class="w">            </span><span class="k">use </span><span class="n">random_mod</span><span class="p">,</span><span class="w">   </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ran2</span><span class="w"></span>
+
+<span class="w">            </span><span class="c">!&gt; photon object</span>
+<span class="w">            </span><span class="k">type</span><span class="p">(</span><span class="n">photon</span><span class="p">),</span><span class="w">    </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">packet</span><span class="w"></span>
+<span class="w">            </span><span class="c">!&gt; grid object</span>
+<span class="w">            </span><span class="k">type</span><span class="p">(</span><span class="n">cart_grid</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">grid</span><span class="w"></span>
+
+<span class="w">            </span><span class="c">!set packet position</span>
+<span class="w">            </span><span class="n">packet</span><span class="p">%</span><span class="n">pos</span><span class="p">%</span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="w"></span>
+<span class="w">            </span><span class="n">packet</span><span class="p">%</span><span class="n">pos</span><span class="p">%</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="w"></span>
+<span class="w">            </span><span class="n">packet</span><span class="p">%</span><span class="n">pos</span><span class="p">%</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="w"></span>
+
+<span class="w">            </span><span class="c">! set packet cosines</span>
+<span class="w">            </span><span class="n">packet</span><span class="p">%</span><span class="n">phi</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">ran2</span><span class="p">()</span><span class="o">*</span><span class="n">twoPI</span><span class="w"></span>
+<span class="w">            </span><span class="n">packet</span><span class="p">%</span><span class="n">cosp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">cos</span><span class="p">(</span><span class="n">packet</span><span class="p">%</span><span class="n">phi</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="n">packet</span><span class="p">%</span><span class="n">sinp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">sin</span><span class="p">(</span><span class="n">packet</span><span class="p">%</span><span class="n">phi</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="n">packet</span><span class="p">%</span><span class="n">cost</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.</span><span class="o">*</span><span class="n">ran2</span><span class="p">()</span><span class="o">-</span><span class="mf">1.</span><span class="w"></span>
+<span class="w">            </span><span class="n">packet</span><span class="p">%</span><span class="n">sint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">sqrt</span><span class="p">(</span><span class="mf">1.</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">packet</span><span class="p">%</span><span class="n">cost</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">            </span><span class="c">! set direction vector</span>
+<span class="w">            </span><span class="n">packet</span><span class="p">%</span><span class="n">dir</span><span class="p">%</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">packet</span><span class="p">%</span><span class="n">sint</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">packet</span><span class="p">%</span><span class="n">cosp</span><span class="w">  </span>
+<span class="w">            </span><span class="n">packet</span><span class="p">%</span><span class="n">dir</span><span class="p">%</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">packet</span><span class="p">%</span><span class="n">sint</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">packet</span><span class="p">%</span><span class="n">sinp</span><span class="w"></span>
+<span class="w">            </span><span class="n">packet</span><span class="p">%</span><span class="n">dir</span><span class="p">%</span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">packet</span><span class="p">%</span><span class="n">cost</span><span class="w"></span>
+
+<span class="w">            </span><span class="c">! set packet voxel</span>
+<span class="w">            </span><span class="n">packet</span><span class="p">%</span><span class="n">xcell</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">grid</span><span class="p">%</span><span class="n">nxg</span><span class="o">*</span><span class="p">(</span><span class="n">packet</span><span class="p">%</span><span class="n">pos</span><span class="p">%</span><span class="n">x</span><span class="o">+</span><span class="n">grid</span><span class="p">%</span><span class="nb">dim</span><span class="p">%</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">2.</span><span class="o">*</span><span class="n">grid</span><span class="p">%</span><span class="nb">dim</span><span class="p">%</span><span class="n">x</span><span class="p">))</span><span class="o">+</span><span class="mi">1</span><span class="w"></span>
+<span class="w">            </span><span class="n">packet</span><span class="p">%</span><span class="n">ycell</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">grid</span><span class="p">%</span><span class="n">nyg</span><span class="o">*</span><span class="p">(</span><span class="n">packet</span><span class="p">%</span><span class="n">pos</span><span class="p">%</span><span class="n">y</span><span class="o">+</span><span class="n">grid</span><span class="p">%</span><span class="nb">dim</span><span class="p">%</span><span class="n">y</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">2.</span><span class="o">*</span><span class="n">grid</span><span class="p">%</span><span class="nb">dim</span><span class="p">%</span><span class="n">y</span><span class="p">))</span><span class="o">+</span><span class="mi">1</span><span class="w"></span>
+<span class="w">            </span><span class="n">packet</span><span class="p">%</span><span class="n">zcell</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">grid</span><span class="p">%</span><span class="n">nzg</span><span class="o">*</span><span class="p">(</span><span class="n">packet</span><span class="p">%</span><span class="n">pos</span><span class="p">%</span><span class="n">z</span><span class="o">+</span><span class="n">grid</span><span class="p">%</span><span class="nb">dim</span><span class="p">%</span><span class="n">z</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">2.</span><span class="o">*</span><span class="n">grid</span><span class="p">%</span><span class="nb">dim</span><span class="p">%</span><span class="n">z</span><span class="p">))</span><span class="o">+</span><span class="mi">1</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">packet</span><span class="p">%</span><span class="n">tflag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">end subroutine </span><span class="n">isotropic_point_src</span><span class="w"></span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-6 col-md-6"><p>gridMCRT was developed by Lewis McMillan<br>&copy; 2023 
+</p>
+          </div>
+          <div class="col-xs-6 col-md-6">
+            <p class="text-right">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+         ================================================== -->
+         <!-- Placed at the end of the document so the pages load faster -->
+    <!--
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        -->
+        <script src="../js/bootstrap.min.js"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+        <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>
