@@ -2,8 +2,9 @@
 project: gridMCRT
 src_dir: ./src
 output_dir: ./docs
-summary: Monte Carlo radiation transfer (MCRT) on a 3D grid.
+summary: ![3DGridCode](|media|/logo.png)<br> Monte Carlo radiation transfer (MCRT) on a 3D grid.
 author: Lewis McMillan, Kenny Wood
+media_dir: media
 predocmark_alt: >
 predocmark: <
 display: public
