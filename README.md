@@ -42,7 +42,9 @@ Mac: Install the xcode developer tools, found [here](https://developer.apple.com
 Linux (Debian): Open a terminal and install by typing ```sudo apt-get install build-essential```. 
 
 For GFortran (details [here](https://fortran-lang.org/learn/os_setup/install_gfortran/)): 
-Mac: Details [here](https://gcc.gnu.org/wiki/GFortranBinaries#MacOS). [Homebrew](https://brew.sh) offers an easy install via ```brew install gcc```, or get binaries directly from the gfortran maintainers [here](https://github.com/fxcoudert/gfortran-for-macOS/releases). 
+
+Mac: Details [here](https://gcc.gnu.org/wiki/GFortranBinaries#MacOS). [Homebrew](https://brew.sh) offers an easy install via ```brew install gcc```, or get binaries directly from the gfortran maintainers [here](https://github.com/fxcoudert/gfortran-for-macOS/releases).
+
 Linux (Debian): Open a terminal and install by typing ```sudo apt install gfortran```.
 
 ## References
