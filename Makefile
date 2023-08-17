@@ -2,7 +2,7 @@
 # and https://stackoverflow.com/a/30602701/6106938
 # and https://github.com/lewisfish/pMC/blob/master/src/Makefile
 FCOMP := gfortran
-FCFLAGS := -O2 -cpp -freal-4-real-8 -march=native -flto
+FCFLAGS := -O2 -march=native -flto
 FCDEBUG := -g -fbacktrace -fcheck=all -fbounds-check -ffpe-trap=invalid,overflow,underflow,denormal
 FCBUILD := -Wall -Wextra -pedantic -std=f2008
 
@@ -16,8 +16,8 @@ FCFLAGS += -J$(OBJ_DIR)
 .SUFFIXES: .f90 .o .mod
 
 EXE := $(BIN_DIR)/mcgrid
-SRC =		$(SRC_DIR)/random_mod.f90 \
-            $(SRC_DIR)/constants.f90 \
+SRC =       $(SRC_DIR)/constants.f90 \
+      	$(SRC_DIR)/random_mod.f90 \
 		$(SRC_DIR)/utils.f90 \
             $(SRC_DIR)/vector_class.f90 \
             $(SRC_DIR)/optical_properties.f90 \

@@ -1,6 +1,8 @@
 module random_mod
     !! module containg routines related to random numbers
 
+    use constants, only: wp
+
     implicit none
     
     private
@@ -29,19 +31,19 @@ contains
 
     end subroutine init_seed
 
-    real function ran2()
+    real(kind=wp) function ran2()
     !! Wrapper function to fortran internal random number generator
     !! Generates a random number in the range [0,1.)
         call random_number(ran2)
 
     end function ran2
 
-    real function ranu(a, b)
+    real(kind=wp) function ranu(a, b)
     !! sample uniformly between [a, b]
         !> input lower bound
-        real, intent(in) :: a
+        real(kind=wp), intent(in) :: a
         !> input upper bound
-        real, intent(in) ::b
+        real(kind=wp), intent(in) ::b
 
         ranu = a + ran2() * (b - a)
 

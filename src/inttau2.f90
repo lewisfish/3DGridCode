@@ -1,6 +1,9 @@
 module inttau2
 !! module contains routines related to the optical depth integration of a photon though a 3D grid.
-   implicit none
+    
+    use constants, only : wp
+    
+    implicit none
    
    private
    public :: tauint1
@@ -22,8 +25,8 @@ CONTAINS
         type(cart_grid), intent(in)    :: grid
 
         ! intermediate position
-        type(vector) :: pos
-        real    :: tau, taurun, taucell, d, dcell
+        type(vector)  :: pos
+        real(kind=wp) :: tau, taurun, taucell, d, dcell
         integer :: celli, cellj, cellk
         logical :: dir(3)
 
@@ -36,8 +39,8 @@ CONTAINS
         cellk = packet%zcell
 
         ! setup to start integrating
-        taurun = 0.
-        d = 0.
+        taurun = 0._wp
+        d = 0._wp
         dir = (/.FALSE., .FALSE., .FALSE./)
 
         !sample optical distance
@@ -76,7 +79,7 @@ CONTAINS
 
     end subroutine tauint1
    
-    real function wall_dist(packet, grid, celli, cellj, cellk, pos, dir)
+    real(kind=wp) function wall_dist(packet, grid, celli, cellj, cellk, pos, dir)
     !!function that returns distant to nearest wall and which wall that is (x ,y or z)
 
         use gridset_mod,  only : cart_grid
@@ -94,38 +97,38 @@ CONTAINS
         !> current voxel ID
         integer,         intent(inout) :: celli, cellj, cellk
         
-        real :: dx, dy, dz
+        real(kind=wp) :: dx, dy, dz
 
         ! get distance to a wall in the x direction
-        if(packet%dir%x > 0.)then
+        if(packet%dir%x > 0._wp)then
             dx = (grid%xface(celli+1) - pos%x)/packet%dir%x
-        elseif(packet%dir%x < 0.)then
+        elseif(packet%dir%x < 0._wp)then
             dx = (grid%xface(celli) - pos%x)/packet%dir%x
-        elseif(packet%dir%x == 0.)then
-            dx = 100000.
+        elseif(packet%dir%x == 0._wp)then
+            dx = 100000._wp
         end if
 
         ! get distance to a wall in the y direction
-        if(packet%dir%y > 0.)then
+        if(packet%dir%y > 0._wp)then
             dy = (grid%yface(cellj+1) - pos%y)/packet%dir%y
-        elseif(packet%dir%y < 0.)then
+        elseif(packet%dir%y < 0._wp)then
             dy = (grid%yface(cellj) - pos%y)/packet%dir%y
-        elseif(packet%dir%y == 0.)then
-            dy = 100000.
+        elseif(packet%dir%y == 0._wp)then
+            dy = 100000._wp
         end if
 
         ! get distance to a wall in the z direction
-        if(packet%dir%z > 0.)then
+        if(packet%dir%z > 0._wp)then
             dz = (grid%zface(cellk+1) - pos%z)/packet%dir%z
-        elseif(packet%dir%z < 0.)then
+        elseif(packet%dir%z < 0._wp)then
             dz = (grid%zface(cellk) - pos%z)/packet%dir%z
-        elseif(packet%dir%z == 0.)then
-            dz = 100000.
+        elseif(packet%dir%z == 0._wp)then
+            dz = 100000._wp
         end if
 
         !get closest wall
         wall_dist = min(dx, dy, dz)
-        if(wall_dist < 0.)print'(A,7F9.5)','dcell < 0.0 warning! ',wall_dist,dx,dy,dz,packet%dir
+        if(wall_dist < 0._wp)print'(A,7F9.5)','dcell < 0.0 warning! ',wall_dist,dx,dy,dz,packet%dir
         if(wall_dist == dx)dir=(/.TRUE., .FALSE., .FALSE./)
         if(wall_dist == dy)dir=(/.FALSE., .TRUE., .FALSE./)
         if(wall_dist == dz)dir=(/.FALSE., .FALSE., .TRUE./)
@@ -134,7 +137,7 @@ CONTAINS
     end function wall_dist
 
 
-    pure subroutine update_pos(packet, grid, pos, celli, cellj, cellk, dcell, wall_flag, dir)
+    subroutine update_pos(packet, grid, pos, celli, cellj, cellk, dcell, wall_flag, dir)
     !! routine that upates postions of photon and calls fresnel routines if photon leaves current voxel
 
         use gridset_mod,  only : cart_grid
@@ -150,22 +153,22 @@ CONTAINS
         !> grid object
         type(cart_grid), intent(in)    :: grid
         !> distance phton will travel across a cell
-        real,            intent(in)    :: dcell
+        real(kind=wp),   intent(in)    :: dcell
         !> current voxel ID
         integer,         intent(inout) :: celli, cellj, cellk
         !> flag is true if we hit a cell wall
         logical,         intent(in)    :: wall_flag
         !> logical array. 1 entry is always true. the true entry represents which cell wall we will hit
         logical,         intent(in)    :: dir(:)
-
+    
         ! if we hit a wall
         if(wall_flag)then
             ! in the x direction
             if(dir(1))then
-                if(packet%dir%x > 0.)then
+                if(packet%dir%x > 0._wp)then
                     pos%x = grid%xface(celli+1) + grid%delta
                     celli = celli + 1
-                elseif(packet%dir%x < 0.)then
+                elseif(packet%dir%x < 0._wp)then
                     pos%x = grid%xface(celli) - grid%delta
                     celli = celli - 1
                 else
@@ -175,10 +178,10 @@ CONTAINS
                 pos%z = pos%z + packet%dir%z*dcell
             ! y direction
             elseif(dir(2))then
-                if(packet%dir%y > 0.)then
+                if(packet%dir%y > 0._wp)then
                     pos%y = grid%yface(cellj+1) + grid%delta
                     cellj = cellj + 1
-                    elseif(packet%dir%y < 0.)then
+                    elseif(packet%dir%y < 0._wp)then
                         pos%y = grid%yface(cellj) - grid%delta
                         cellj = cellj - 1
                     else
@@ -188,10 +191,10 @@ CONTAINS
                 pos%z = pos%z + packet%dir%z*dcell
             ! z direction
             elseif(dir(3))then
-                if(packet%dir%z > 0.)then
+                if(packet%dir%z > 0._wp)then
                     pos%z = grid%zface(cellk+1) + grid%delta
                     cellk = cellk + 1
-                elseif(packet%dir%z < 0.)then
+                elseif(packet%dir%z < 0._wp)then
                     pos%z = grid%zface(cellk) - grid%delta
                     cellk = cellk - 1
                 else
@@ -227,9 +230,9 @@ CONTAINS
         !> current voxel ID. To be updated
         integer,         intent(inout) :: celli, cellj, cellk
 
-        celli = floor(grid%nxg * (pos%x) / (2. * grid%dim%x)) + 1
-        cellj = floor(grid%nyg * (pos%y) / (2. * grid%dim%y)) + 1
-        cellk = floor(grid%nzg * (pos%z) / (2. * grid%dim%z)) + 1
+        celli = floor(grid%nxg * (pos%x) / (2._wp * grid%dim%x)) + 1
+        cellj = floor(grid%nyg * (pos%y) / (2._wp * grid%dim%y)) + 1
+        cellk = floor(grid%nzg * (pos%z) / (2._wp * grid%dim%z)) + 1
 
         if(celli > grid%nxg .or. celli < 1)celli = -1
         if(cellj > grid%nyg .or. cellj < 1)cellj = -1

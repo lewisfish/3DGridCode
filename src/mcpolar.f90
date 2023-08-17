@@ -1,7 +1,7 @@
 program mcpolar
 
     !imports
-    use constants,                only : resdir
+    use constants,                only : resdir, wp
     use gridset_mod,              only : gridset, cart_grid
     use inttau2,                  only : tauint1
     use optical_properties_class, only : optical_properties, init_opt_sphere
@@ -22,7 +22,7 @@ program mcpolar
     !> number of photons to run in the simulation
     integer :: nphotons
     !> counter for number of scatterings for all photons
-    double precision :: nscatt
+    real(kind=wp) :: nscatt
     !> user defined seed
     integer :: seed
     !> temp variables related to I/O from param file
@@ -32,9 +32,9 @@ program mcpolar
     !> file handle
     integer :: u
     !> temp variables related to I/O from param file
-    real    :: xmax, ymax, zmax
+    real(kind=wp) :: xmax, ymax, zmax
     !> timing vars
-    real    :: start, finish
+    real(kind=wp) :: start, finish
 
     call cpu_time(start)
 
@@ -65,7 +65,7 @@ program mcpolar
     call gridset(grid, opt_prop, nxg, nyg, nzg, xmax, ymax, zmax)
 
     ! inialise the number of scatterings counter
-    nscatt = 0
+    nscatt = 0_wp
 
     print*,'Photons now running'
     !loop over photons 
@@ -88,7 +88,7 @@ program mcpolar
             if(ran2() < opt_prop%albedo)then
                 ! photon is scattered
                 call packet%scatter(opt_prop)
-                nscatt = nscatt + 1        
+                nscatt = nscatt + 1._wp    
             else
                 ! photon is absorbed
                 packet%tflag=.true.
@@ -108,10 +108,10 @@ program mcpolar
 
     call cpu_time(finish)
 
-    if(finish-start >= 60.)then
-        print*,floor((finish-start)/60.)+mod(finish-start,60.)/100.
+    if(finish-start >= 60._wp)then
+        print*,floor((finish-start)/60._wp)+mod(finish-start,60._wp)/100._wp
     else
-        print*, 'time taken ~'//str(floor(finish-start/60.))//'s'
+        print*, 'time taken ~'//str(floor(finish-start/60._wp))//'s'
     end if
 
 end program mcpolar

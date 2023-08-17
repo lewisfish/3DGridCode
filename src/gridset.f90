@@ -2,6 +2,7 @@ module gridset_mod
 !! Module provides a cartesian grid type to store all grid related variables in a container
 !! Also provides a way of setting up the geomerty/grid for the simulation.
 
+    use constants,    only : wp
     use vector_class, only : vector
 
     implicit none
@@ -16,9 +17,9 @@ module gridset_mod
         !> half size of grid in each dimension. cm
         type(vector) :: dim
         !> Arrays that store the location of each grid cell(voxel) wall
-        real, allocatable :: xface(:), yface(:), zface(:)
+        real(kind=wp), allocatable :: xface(:), yface(:), zface(:)
         !> ! Set small distance for use in optical depth integration routines for roundoff effects when crossing cell walls
-        real :: delta
+        real(kind=wp) :: delta
     end type cart_grid
 
     contains
@@ -35,12 +36,12 @@ module gridset_mod
             !> number of voxels in each dimension
             integer,                  intent(in)  :: nxg, nyg, nzg
             !> half size of the grid in cm
-            real,                     intent(in)  :: xmax, ymax, zmax
+            real(kind=wp),            intent(in)  :: xmax, ymax, zmax
             
             !> loop variables
             integer :: i, j, k
             !> temp variables
-            real    :: x, y, z, taueq1, taupole1, taueq2, taupole2
+            real(kind=wp) :: x, y, z, taueq1, taupole1, taueq2, taupole2
 
             print*, ' '
             print *, 'Setting up grid....'
@@ -53,7 +54,7 @@ module gridset_mod
 
             ! Set small distance for use in optical depth integration routines 
             ! for roundoff effects when crossing cell walls
-            grid%delta = 1.e-8*(2.*grid%dim%z/grid%nzg)
+            grid%delta = 1.e-8_wp*(2._wp*grid%dim%z/grid%nzg)
 
             ! allocate and set arrays to 0
             call alloc_array(grid)
@@ -61,15 +62,15 @@ module gridset_mod
 
             ! setup grid cell walls
             do i = 1, grid%nxg + 1
-                grid%xface(i) = (i - 1) * 2. * grid%dim%x/grid%nxg
+                grid%xface(i) = (i - 1) * 2._wp * grid%dim%x/grid%nxg
             end do
 
             do i = 1, grid%nyg + 1
-                grid%yface(i) = (i - 1) * 2. * grid%dim%y/grid%nyg
+                grid%yface(i) = (i - 1) * 2._wp * grid%dim%y/grid%nyg
             end do
 
             do i = 1, grid%nzg + 1
-                grid%zface(i) = (i - 1) * 2. * grid%dim%z/grid%nzg
+                grid%zface(i) = (i - 1) * 2._wp * grid%dim%z/grid%nzg
             end do
 
             !set up optical properties grid 
@@ -80,20 +81,21 @@ module gridset_mod
                     do k = 1, grid%nzg
                         z = grid%zface(k) - grid%dim%z + grid%dim%z/grid%nzg
                         ! create a sphere of radius 1.
-                        if(sqrt(x**2+y**2+z**2) <= 1.)then
+                        if(sqrt(x**2+y**2+z**2) <= 1._wp)then
                             rhokap(i,j,k) = opt_prop%kappa
                         else
-                            rhokap(i,j,k) = 0.
+                            rhokap(i,j,k) = 0._wp
                         end if
                     end do
                 end do
             end do
 
             ! Calculate equatorial and polar optical depths
-            taueq1   = 0.
-            taupole1 = 0.
-            taueq2   = 0.
-            taupole2 = 0.
+            ! useful for debugging geometry
+            taueq1   = 0._wp
+            taupole1 = 0._wp
+            taueq2   = 0._wp
+            taupole2 = 0._wp
 
             do i = 1, grid%nxg
                 taueq1 = taueq1 + rhokap(i,grid%nyg/2,grid%nzg/2)
@@ -103,8 +105,8 @@ module gridset_mod
                 taupole1 = taupole1 + rhokap(grid%nxg/2,grid%nyg/2,i)
             end do
 
-            taueq1 = taueq1 * 2. * grid%dim%x/grid%nxg
-            taupole1 = taupole1 * 2. * grid%dim%z/grid%nzg
+            taueq1 = taueq1 * 2._wp * grid%dim%x/grid%nxg
+            taupole1 = taupole1 * 2._wp * grid%dim%z/grid%nzg
             print'(A,F9.5,A,F9.5)',' taueq1 = ',taueq1,'  taupole1 = ',taupole1
 
         end subroutine gridset
@@ -116,10 +118,10 @@ module gridset_mod
 
             type(cart_grid), intent(inout) :: grid
 
-            rhokap = 0.
-            grid%xface = 0.
-            grid%yface = 0.
-            grid%zface = 0.
+            rhokap = 0._wp
+            grid%xface = 0._wp
+            grid%yface = 0._wp
+            grid%zface = 0._wp
         end subroutine zarray
 
 

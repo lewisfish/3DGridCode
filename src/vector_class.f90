@@ -1,13 +1,15 @@
 Module vector_class
     !! Module contains the vector class and associated routines.
     
+    use constants, only : wp
+
     implicit none
 
     !> Vector type used for direction and position vectors
     !> supports all possible vector operations
     type :: vector
         !> components of the vector
-        real :: x, y, z
+        real(kind=wp) :: x, y, z
         contains
 
         !> get the magnitde of a vector
@@ -61,7 +63,7 @@ Module vector_class
         !! implmentation of vector add scalar
         !! overloads the + operator
             class(vector), intent(IN) :: a
-            real,          intent(IN) :: b
+            real(kind=wp), intent(IN) :: b
 
             vec_add_scal = vector(a%x + b, a%y + b, a%z + b)
 
@@ -72,7 +74,7 @@ Module vector_class
         !! implmentation of scalar subtract vector
         !! overloads the + operator
             class(vector), intent(IN) :: b
-            real,          intent(IN) :: a
+            real(kind=wp), intent(IN) :: a
 
             scal_add_vec = vector(b%x + a, b%y + a, b%z + a)
 
@@ -95,7 +97,7 @@ Module vector_class
         !! creates the .dot. operator
             class(vector), intent(IN) :: a
             type(vector),  intent(IN) :: b
-            real :: dot
+            real(kind=wp) :: dot
 
             dot = (a%x * b%x) + (a%y * b%y) + (a%z * b%z)
 
@@ -120,7 +122,7 @@ Module vector_class
         !! implmentation of vector multiply scalar
         !! overloads the * operator
             class(vector), intent(IN) :: a
-            real,          intent(IN) :: b
+            real(kind=wp), intent(IN) :: b
 
             vec_mult_scal = vector(a%x * b, a%y * b, a%z * b)
 
@@ -131,7 +133,7 @@ Module vector_class
         !! implmentation of scalar multiply vector
         !! overloads the * operator
             class(vector), intent(IN) :: b
-            real,          intent(IN) :: a
+            real(kind=wp), intent(IN) :: a
 
             scal_mult_vec = vector(a * b%x, a * b%y, a * b%z)
 
@@ -142,7 +144,7 @@ Module vector_class
         !! implmentation of vector divide scalar
         !! overloads the / operator
             class(vector), intent(IN) :: a
-            real,         intent(IN) :: b
+            real(kind=wp), intent(IN) :: b
 
             vec_div_scal = vector(a%x / b, a%y / b, a%z / b)
 
@@ -153,7 +155,7 @@ Module vector_class
         !! implmentation of |vector|
             class(vector), intent(in) :: this
 
-            real :: tmp
+            real(kind=wp) :: tmp
 
             tmp = sqrt(this%x**2 + this%y**2 + this%z**2)
             magnitude_fn = this / tmp

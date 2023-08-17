@@ -1,5 +1,8 @@
 module utils
 !! module that contains utility functions and helper routines. 
+    
+    use constants, only: wp
+
     implicit none
 
     !>functions to turn numerical variables into strings
@@ -99,7 +102,7 @@ module utils
         !! convert an double precision float into a string
 
             !> input float to convert into string
-            double precision, intent(IN) :: i
+            real(kind=wp), intent(IN) :: i
 
             character(len=:), allocatable :: str_R8
             character(len=100) :: string
@@ -114,7 +117,7 @@ module utils
         !! convert an double precision float array into a string
 
             !> input float array to convert into string
-            double precision, intent(IN) :: a(:)
+            real(kind=wp), intent(IN) :: a(:)
 
             character(len=:), allocatable :: str_R8array
             character(len=100) :: string
