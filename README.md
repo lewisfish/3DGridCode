@@ -43,11 +43,11 @@ Linux (Debian): Open a terminal and install by typing ```sudo apt-get install bu
 
 For GFortran 
  
-Mac: [Homebrew](https://brew.sh) offers an easy install via ```brew install gcc```. The binaries can be installed directly from the [gfortran maintainers](https://github.com/fxcoudert/gfortran-for-macOS/releases). Additional details [here](https://gcc.gnu.org/wiki/GFortranBinaries#MacOS).
+Mac: [Homebrew](https://brew.sh) offers an easy install via ```brew install gcc```. The binaries can be installed directly from the [gfortran maintainers](https://github.com/fxcoudert/gfortran-for-macOS/releases), and additional info can be found [here](https://gcc.gnu.org/wiki/GFortranBinaries#MacOS).
 
 Linux (Debian): Open a terminal and install by typing ```sudo apt install gfortran```.
 
-More details on GFortran [here](https://fortran-lang.org/learn/os_setup/install_gfortran/)); other fortran compilers are available. 
+More details on GFortran may be found [here](https://fortran-lang.org/learn/os_setup/install_gfortran/)).  
 
 ## References
 
