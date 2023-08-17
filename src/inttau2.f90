@@ -130,10 +130,10 @@ CONTAINS
         if(wall_dist == dz)dir=(/.FALSE., .FALSE., .TRUE./)
         if(.not.dir(1) .and. .not.dir(2) .and. .not.dir(3))print*,'Error in dir flag'
       
-   end function wall_dist
+    end function wall_dist
 
 
-    subroutine update_pos(packet, grid, pos, celli, cellj, cellk, dcell, wall_flag, dir)
+    pure subroutine update_pos(packet, grid, pos, celli, cellj, cellk, dcell, wall_flag, dir)
     !! routine that upates postions of photon and calls fresnel routines if photon leaves current voxel
 
         use gridset_mod,  only : cart_grid
@@ -155,38 +155,43 @@ CONTAINS
             if(dir(1))then
                 if(packet%dir%x > 0.)then
                     pos%x = grid%xface(celli+1) + grid%delta
+                    celli = celli + 1
                 elseif(packet%dir%x < 0.)then
                     pos%x = grid%xface(celli) - grid%delta
+                    celli = celli - 1
                 else
-                    print*,'Error in x dir in update_pos', dir, packet%dir
+                    error stop 'Error in x dir in update_pos'
                 end if
                 pos%y = pos%y + packet%dir%y*dcell 
                 pos%z = pos%z + packet%dir%z*dcell
             ! y direction
             elseif(dir(2))then
-                pos%x = pos%x + packet%dir%x*dcell
                 if(packet%dir%y > 0.)then
                     pos%y = grid%yface(cellj+1) + grid%delta
-                elseif(packet%dir%y < 0.)then
-                    pos%y = grid%yface(cellj) - grid%delta
-                else
-                    print*,'Error in y dir in update_pos', dir, packet%dir
-                end if
+                    cellj = cellj + 1
+                    elseif(packet%dir%y < 0.)then
+                        pos%y = grid%yface(cellj) - grid%delta
+                        cellj = cellj - 1
+                    else
+                        error stop 'Error in y dir in update_pos'
+                    end if
+                pos%x = pos%x + packet%dir%x*dcell
                 pos%z = pos%z + packet%dir%z*dcell
             ! z direction
             elseif(dir(3))then
-                pos%x = pos%x + packet%dir%x*dcell
-                pos%y = pos%y + packet%dir%y*dcell 
                 if(packet%dir%z > 0.)then
                     pos%z = grid%zface(cellk+1) + grid%delta
+                    cellk = cellk + 1
                 elseif(packet%dir%z < 0.)then
                     pos%z = grid%zface(cellk) - grid%delta
+                    cellk = cellk - 1
                 else
-                    print*,'Error in z dir in update_pos', dir, packet%dir
+                    error stop 'Error in z dir in update_pos'
                 end if
+                pos%x = pos%x + packet%dir%x*dcell
+                pos%y = pos%y + packet%dir%y*dcell 
             else
-                print*,'Error in update_pos... '//str(dir)
-                error stop 1
+                error stop 'Error in update_pos...'
             end if
         else
             ! we dont hit a wall
@@ -200,7 +205,7 @@ CONTAINS
     end subroutine update_pos
 
 
-    subroutine update_voxels(pos, grid, celli, cellj, cellk)
+    pure subroutine update_voxels(pos, grid, celli, cellj, cellk)
     !! updates the current voxel based upon position
 
         use gridset_mod,  only : cart_grid
@@ -210,41 +215,13 @@ CONTAINS
         type(cart_grid), intent(in)    :: grid
         integer,         intent(inout) :: celli, cellj, cellk
 
-        celli = find(pos%x, grid%xface) 
-        cellj = find(pos%y, grid%yface)
-        cellk = find(pos%z, grid%zface) 
+        celli = floor(grid%nxg * (pos%x) / (2. * grid%dim%x)) + 1
+        cellj = floor(grid%nyg * (pos%y) / (2. * grid%dim%y)) + 1
+        cellk = floor(grid%nzg * (pos%z) / (2. * grid%dim%z)) + 1
+
+        if(celli > grid%nxg .or. celli < 1)celli = -1
+        if(cellj > grid%nyg .or. cellj < 1)cellj = -1
+        if(cellk > grid%nzg .or. cellk < 1)cellk = -1
 
     end subroutine update_voxels
-
-
-    integer function find(val, a)
-    !! searches for bracketing indicies for a value val in an array a
-
-        real, intent(in) :: val, a(:)
-
-        integer          :: n, lo, mid, hi
-
-        n = size(a)
-        lo = 0
-        hi = n + 1
-
-        if (val == a(1)) then
-            find = 1
-        else if (val == a(n)) then
-            find = n-1
-        else if((val > a(n)) .or. (val < a(1))) then
-            find = -1
-        else
-            do
-                if (hi-lo <= 1) exit
-                mid = (hi+lo)/2
-                if (val >= a(mid)) then
-                    lo = mid
-                else
-                    hi = mid
-                end if
-            end do
-            find = lo
-        end if
-    end function find
 end module inttau2

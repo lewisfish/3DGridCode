@@ -46,7 +46,7 @@ Module vector_class
 
     contains
 
-        type(vector) function vec_minus_vec(a, b)
+        pure type(vector) function vec_minus_vec(a, b)
 
             class(vector), intent(IN) :: a
             type(vector),  intent(IN) :: b
@@ -56,7 +56,7 @@ Module vector_class
         end function vec_minus_vec
 
 
-        type(vector) function vec_add_scal(a, b)
+        pure type(vector) function vec_add_scal(a, b)
 
             class(vector), intent(IN) :: a
             real,          intent(IN) :: b
@@ -66,7 +66,7 @@ Module vector_class
         end function vec_add_scal
 
 
-        type(vector) function scal_add_vec(a, b)
+        pure type(vector) function scal_add_vec(a, b)
 
             class(vector), intent(IN) :: b
             real,          intent(IN) :: a
@@ -76,7 +76,7 @@ Module vector_class
         end function scal_add_vec
 
 
-        type(vector) function vec_add_vec(a, b)
+        pure type(vector) function vec_add_vec(a, b)
 
             class(vector), intent(IN) :: a
             type(vector),  intent(IN) :: b
@@ -86,7 +86,7 @@ Module vector_class
         end function vec_add_vec
 
 
-        elemental function vec_dot(a, b) result (dot)
+        pure elemental function vec_dot(a, b) result (dot)
 
             class(vector), intent(IN) :: a
             type(vector),  intent(IN) :: b
@@ -97,7 +97,7 @@ Module vector_class
         end function vec_dot
 
 
-        type(vector) function vec_mult_vec(a, b)
+        pure type(vector) function vec_mult_vec(a, b)
 
             class(vector), intent(IN) :: a
             type(vector),  intent(IN) :: b
@@ -107,7 +107,7 @@ Module vector_class
         end function vec_mult_vec
 
 
-        type(vector) function vec_mult_scal(a, b)
+        pure type(vector) function vec_mult_scal(a, b)
 
             class(vector), intent(IN) :: a
             real,          intent(IN) :: b
@@ -117,7 +117,7 @@ Module vector_class
         end function vec_mult_scal
 
 
-        type(vector) function scal_mult_vec(a, b)
+        pure type(vector) function scal_mult_vec(a, b)
 
             class(vector), intent(IN) :: b
             real,          intent(IN) :: a
@@ -127,7 +127,7 @@ Module vector_class
         end function scal_mult_vec
 
 
-        type(vector) function vec_div_scal(a, b)
+        pure type(vector) function vec_div_scal(a, b)
 
             class(vector), intent(IN) :: a
             real,         intent(IN) :: b
@@ -137,9 +137,9 @@ Module vector_class
         end function vec_div_scal
 
 
-        type(vector) function magnitude_fn(this)
+        pure type(vector) function magnitude_fn(this)
 
-            class(vector) :: this
+            class(vector), intent(in) :: this
 
             real :: tmp
 
@@ -155,5 +155,5 @@ Module vector_class
 
                 print*,this%x, this%y, this%z
 
-        end subroutine
+        end subroutine print_sub
 end Module vector_class
