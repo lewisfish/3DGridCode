@@ -35,19 +35,19 @@ Explanation of the code and the MCRT method can be found [here](http://www-star.
 
 Check version, or whether installed, by opening terminal and typing ```make --version``` and ```gfortran --version```
 
-For Make:
+### Make
 
 Mac: Install the xcode developer tools, found [here](https://developer.apple.com/xcode/). If make is still not installed, open terminal and type ```xcode-select - - install```. 
 
 Linux (Debian): Open a terminal and install by typing ```sudo apt-get install build-essential```. 
 
-For GFortran 
+### GFortran 
  
 Mac: [Homebrew](https://brew.sh) offers an easy install via ```brew install gcc```. The binaries can be installed directly from the [gfortran maintainers](https://github.com/fxcoudert/gfortran-for-macOS/releases), and additional info can be found [here](https://gcc.gnu.org/wiki/GFortranBinaries#MacOS).
 
 Linux (Debian): Open a terminal and install by typing ```sudo apt install gfortran```.
 
-More details on GFortran may be found [here](https://fortran-lang.org/learn/os_setup/install_gfortran/)).  
+More details on GFortran may be found [here](https://fortran-lang.org/learn/os_setup/install_gfortran/). 
 
 ## References
 
