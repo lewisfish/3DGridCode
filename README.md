@@ -1,3 +1,5 @@
+<h1 id="3DGridCode"><img alt="3DGridCode" src="/media/logo.png" title="3DGridCode logo"></h1>
+
 # 3DGridCode
 3D Grid code used in PH5023 Monte Carlo Radiation Transport (MCRT) techniques @ St Andrews University
 
