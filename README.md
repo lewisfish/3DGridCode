@@ -31,6 +31,17 @@ Documentation of the API can be found [here](http://lewismcmillan.com/3DGridCode
 
 Explanation of the code and the MCRT method can be found [here](http://www-star.st-and.ac.uk/~kw25/teaching/mcrt/mcrt.html).
 
+## Make & GFortran 
+Check whether installed/ version with ```make --version``` and ```gfortran --version```
+
+For Make:
+Mac: Install the xcode developer tools, found [here](https://developer.apple.com/xcode/). If not installed after this, open terminal and type ```xcode-select - - install```. 
+Linux (Debian): Open a terminal and install by typing ```sudo apt-get install build-essential```. 
+
+For GFortran (details [here](https://fortran-lang.org/learn/os_setup/install_gfortran/)): 
+Mac: Details [here](https://gcc.gnu.org/wiki/GFortranBinaries#MacOS). [Homebrew](https://brew.sh) offers an easy install via ```brew install gcc```, or get binaries directly from the gfortran maintainers [here](https://github.com/fxcoudert/gfortran-for-macOS/releases). 
+Linux (Debian): Open a terminal and install by typing ```sudo apt install gfortran```.
+
 ## References
 
 Code was adapted and heavily modified from K. Woods code found [here](http://www-star.st-and.ac.uk/~kw25/research/montecarlo/points/points.html).
