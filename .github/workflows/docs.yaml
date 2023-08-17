@@ -6,7 +6,7 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-    - id: deploy-on-push
+    - id: deploy
       run:
         echo "::set-output name=result::${{ env.DEPLOY_BRANCH }}"
       env:
@@ -20,7 +20,7 @@ jobs:
     - name: Build Documentation
       run: ford docs.md
     - uses: JamesIves/github-pages-deploy-action@4.1.6
-      if: ${{ github.event_name == 'push' && steps.deploy-on-push.outputs.result != 0 }}
+      if: ${{&& steps.deploy.outputs.result != 0 }}
       with:
         branch: gh-pages
         folder: docs
