@@ -11,8 +11,16 @@ module photon_class
         type(vector) :: dir
         !> position vector
         type(vector) :: pos
-        !> direction angles
-        real :: sint, cost, sinp, cosp, phi
+        !> \(sin(theta)\). \(\theta\) is the polar angle in the physics spherical coordinate system 
+        real :: sint
+        !> \(cos(\theta)\) \(\theta\) is the polar angle in the physics spherical coordinate system
+        real :: cost
+        !> \(sin(\phi)\) \(\phi\) is the azimuthal angle in the physics spherical coordinate system
+        real :: sinp
+        !> \(cos(\phi)\) \(\phi\) is the azimuthal angle in the physics spherical coordinate system
+        real :: cosp
+        !> \(\phi\) \(\phi\) is the azimuthal angle in the physics spherical coordinate system
+        real :: phi
         !> Boolean flag that if true photon is alive and in the simulation
         logical :: tflag
         !> Current voxel which the photon is in
@@ -26,7 +34,7 @@ module photon_class
 
     subroutine scatter(this, opt_prop)
         !! photon scattering routine. Handles both isotropic (hgg=0) and henyey-greenstein scattering (hgg /=0)
-        !! adapted from mcxyz https://omlc.org/software/mc/mcxyz/index.html
+        !! adapted from mcxyz [https://omlc.org/software/mc/mcxyz/index.html](https://omlc.org/software/mc/mcxyz/index.html)
     
             use optical_properties_class, only : optical_properties
             use constants,    only : PI, TWOPI

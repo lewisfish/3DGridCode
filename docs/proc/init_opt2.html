@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="description" content="Monte Carlo radiation transfer (MCRT) on a 3D grid.">
-    <meta name="author" content="Lewis McMillan" >
+    <meta name="author" content="Lewis McMillan, Kenny Wood" >
     <link rel="icon" href="../favicon.png">
 
     <title>init_opt2 &ndash; gridMCRT</title>
@@ -100,7 +100,7 @@
           <li id="statements"><i class="fa fa-list-ol"></i>
             <a data-toggle="tooltip"
                data-placement="bottom" data-html="true"
-               title=" 3.8% of total for procedures.">9 statements</a>
+               title=" 2.0% of total for procedures.">9 statements</a>
           </li>
 
             <li id="source-file">
@@ -179,7 +179,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-opt_prop~3"></span>
+              <span class="anchor" id="variable-opt_prop~5"></span>
               type(<a href='../type/optical_properties.html'>optical_properties</a>),
             </td>
 <td>intent(out)</td>
@@ -189,7 +189,7 @@
             <td>::</td>
             <td><strong>opt_prop</strong></td>
             <td>
-                
+                <p>optical property container</p>
             </td>
         </tr>
     </tbody>
@@ -242,7 +242,8 @@
     <h2><span class="anchor" id="src"></span>Source Code</h2>
     <div class="highlight"><pre><span></span><span class="w">        </span><span class="k">subroutine </span><span class="n">init_opt2</span><span class="p">(</span><span class="n">opt_prop</span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="c">!!  Set tissue optical properties 420nm</span>
-<span class="w">    </span>
+
+<span class="w">            </span><span class="c">!&gt; optical property container</span>
 <span class="w">            </span><span class="k">type</span><span class="p">(</span><span class="n">optical_properties</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">opt_prop</span><span class="w"></span>
 
 <span class="w">            </span><span class="n">opt_prop</span><span class="p">%</span><span class="n">hgg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.9</span><span class="w"></span>
@@ -267,7 +268,7 @@
     <footer>
       <div class="container">
         <div class="row">
-          <div class="col-xs-6 col-md-6"><p>gridMCRT was developed by Lewis McMillan<br>&copy; 2023 
+          <div class="col-xs-6 col-md-6"><p>gridMCRT was developed by Lewis McMillan, Kenny Wood<br>&copy; 2023 
 </p>
           </div>
           <div class="col-xs-6 col-md-6">

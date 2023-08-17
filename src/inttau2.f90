@@ -85,10 +85,11 @@ CONTAINS
 
         !> photon packet
         type(photon),    intent(inout) :: packet
+        !> grid variable container
         type(cart_grid), intent(in)    :: grid
         !> current position
         type(vector),    intent(inout) :: pos
-        !> which wall will we hit
+        !> which wall will we hit. Stored as array of bools
         logical,         intent(inout) :: dir(:)
         !> current voxel ID
         integer,         intent(inout) :: celli, cellj, cellk
@@ -142,12 +143,20 @@ CONTAINS
         use utils,        only : str
         use vector_class, only : vector
 
+        !> photon object
         type(photon),    intent(in)    :: packet      
+        !> current photon position
         type(vector),    intent(inout) :: pos
+        !> grid object
         type(cart_grid), intent(in)    :: grid
+        !> distance phton will travel across a cell
         real,            intent(in)    :: dcell
+        !> current voxel ID
         integer,         intent(inout) :: celli, cellj, cellk
-        logical,         intent(in)    :: wall_flag, dir(:)
+        !> flag is true if we hit a cell wall
+        logical,         intent(in)    :: wall_flag
+        !> logical array. 1 entry is always true. the true entry represents which cell wall we will hit
+        logical,         intent(in)    :: dir(:)
 
         ! if we hit a wall
         if(wall_flag)then
@@ -211,8 +220,11 @@ CONTAINS
         use gridset_mod,  only : cart_grid
         use vector_class, only : vector
 
+        !> current photon position vector
         type(vector),    intent(in)    :: pos
+        !> grid object
         type(cart_grid), intent(in)    :: grid
+        !> current voxel ID. To be updated
         integer,         intent(inout) :: celli, cellj, cellk
 
         celli = floor(grid%nxg * (pos%x) / (2. * grid%dim%x)) + 1

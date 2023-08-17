@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="description" content="Monte Carlo radiation transfer (MCRT) on a 3D grid.">
-    <meta name="author" content="Lewis McMillan" >
+    <meta name="author" content="Lewis McMillan, Kenny Wood" >
     <link rel="icon" href="../favicon.png">
 
     <title>vector &ndash; gridMCRT </title>
@@ -100,7 +100,7 @@
           <li id="statements"><i class="fa fa-list-ol"></i>
             <a data-toggle="tooltip"
                data-placement="bottom" data-html="true"
-               title="<p>52.6% of total for derived types.</p>Including implementation: 122 statements, 69.7% of total for derived types.">20 statements</a>
+               title="<p>42.6% of total for derived types.</p>Including implementation: 122 statements, 66.3% of total for derived types.">20 statements</a>
           </li>
 
             <li id="source-file">
@@ -137,9 +137,9 @@
       </div>
       <div id="vars-0" class="panel-collapse collapse">
         <div class="list-group">
-            <a class="list-group-item" href="../type/vector.html#variable-x">x</a>
-            <a class="list-group-item" href="../type/vector.html#variable-y">y</a>
-            <a class="list-group-item" href="../type/vector.html#variable-z">z</a>
+            <a class="list-group-item" href="../type/vector.html#variable-x~2">x</a>
+            <a class="list-group-item" href="../type/vector.html#variable-y~2">y</a>
+            <a class="list-group-item" href="../type/vector.html#variable-z~2">z</a>
         </div>
       </div>
     </div>
@@ -174,6 +174,15 @@
             <a class="list-group-item" href="../type/vector.html#boundprocedure-operator%28.dot.%29">operator(.dot.)</a>
             <a class="list-group-item" href="../type/vector.html#boundprocedure-operator%28SLASH%29">operator(/)</a>
             <a class="list-group-item" href="../type/vector.html#boundprocedure-print">print</a>
+            <a class="list-group-item" href="../type/vector.html#boundprocedure-scal_add_vec">scal_add_vec</a>
+            <a class="list-group-item" href="../type/vector.html#boundprocedure-scal_mult_vec">scal_mult_vec</a>
+            <a class="list-group-item" href="../type/vector.html#boundprocedure-vec_add_scal">vec_add_scal</a>
+            <a class="list-group-item" href="../type/vector.html#boundprocedure-vec_add_vec">vec_add_vec</a>
+            <a class="list-group-item" href="../type/vector.html#boundprocedure-vec_div_scal">vec_div_scal</a>
+            <a class="list-group-item" href="../type/vector.html#boundprocedure-vec_dot">vec_dot</a>
+            <a class="list-group-item" href="../type/vector.html#boundprocedure-vec_minus_vec">vec_minus_vec</a>
+            <a class="list-group-item" href="../type/vector.html#boundprocedure-vec_mult_scal">vec_mult_scal</a>
+            <a class="list-group-item" href="../type/vector.html#boundprocedure-vec_mult_vec">vec_mult_vec</a>
         </div>
       </div>
     </div>
@@ -313,9 +322,9 @@ said component(s).
       </div>
       <div id="vars-1" class="panel-collapse collapse">
         <div class="list-group">
-            <a class="list-group-item" href="../type/vector.html#variable-x">x</a>
-            <a class="list-group-item" href="../type/vector.html#variable-y">y</a>
-            <a class="list-group-item" href="../type/vector.html#variable-z">z</a>
+            <a class="list-group-item" href="../type/vector.html#variable-x~2">x</a>
+            <a class="list-group-item" href="../type/vector.html#variable-y~2">y</a>
+            <a class="list-group-item" href="../type/vector.html#variable-z~2">z</a>
         </div>
       </div>
     </div>
@@ -350,6 +359,15 @@ said component(s).
             <a class="list-group-item" href="../type/vector.html#boundprocedure-operator%28.dot.%29">operator(.dot.)</a>
             <a class="list-group-item" href="../type/vector.html#boundprocedure-operator%28SLASH%29">operator(/)</a>
             <a class="list-group-item" href="../type/vector.html#boundprocedure-print">print</a>
+            <a class="list-group-item" href="../type/vector.html#boundprocedure-scal_add_vec">scal_add_vec</a>
+            <a class="list-group-item" href="../type/vector.html#boundprocedure-scal_mult_vec">scal_mult_vec</a>
+            <a class="list-group-item" href="../type/vector.html#boundprocedure-vec_add_scal">vec_add_scal</a>
+            <a class="list-group-item" href="../type/vector.html#boundprocedure-vec_add_vec">vec_add_vec</a>
+            <a class="list-group-item" href="../type/vector.html#boundprocedure-vec_div_scal">vec_div_scal</a>
+            <a class="list-group-item" href="../type/vector.html#boundprocedure-vec_dot">vec_dot</a>
+            <a class="list-group-item" href="../type/vector.html#boundprocedure-vec_minus_vec">vec_minus_vec</a>
+            <a class="list-group-item" href="../type/vector.html#boundprocedure-vec_mult_scal">vec_mult_scal</a>
+            <a class="list-group-item" href="../type/vector.html#boundprocedure-vec_mult_vec">vec_mult_vec</a>
         </div>
       </div>
     </div>
@@ -380,7 +398,7 @@ said component(s).
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x"></span>
+              <span class="anchor" id="variable-x~2"></span>
               real,
             </td>
               <td>public</td>
@@ -397,7 +415,7 @@ said component(s).
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-y"></span>
+              <span class="anchor" id="variable-y~2"></span>
               real,
             </td>
               <td>public</td>
@@ -414,7 +432,7 @@ said component(s).
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-z"></span>
+              <span class="anchor" id="variable-z~2"></span>
               real,
             </td>
               <td>public</td>
@@ -440,7 +458,7 @@ said component(s).
       <section>
         <h2>Type-Bound Procedures</h2>
             <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-magnitude"></span><h3>procedure, public :: <strong>magnitude</strong>  => magnitude_fn         
+    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-magnitude"></span><h3>procedure, public :: <strong>magnitude</strong>  => <a href='../proc/magnitude_fn.html'>magnitude_fn</a>         
     </h3></div>
       <div class="panel-body">
         
@@ -449,9 +467,10 @@ said component(s).
     <ul class="list-group">
         <li class="list-group-item">
                   <h3>
-    private  function magnitude_fn(this)  
+    private pure function <a href='../proc/magnitude_fn.html'>magnitude_fn</a>(this)  
 </h3>
-  
+    
+  <p>implmentation of |vector|</p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -467,16 +486,16 @@ said component(s).
         <tr>
             <td>
               <span class="anchor" ></span>
-              class(<a href='../type/vector.html'>vector</a>)
+              class(<a href='../type/vector.html'>vector</a>),
             </td>
-<td></td>
+<td>intent(in)</td>
               <td></td>            <td>
               
             </td>
             <td>::</td>
             <td><strong>this</strong></td>
             <td>
-                
+
             </td>
         </tr>
     </tbody>
@@ -493,7 +512,7 @@ said component(s).
   </div>
 
             <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-operator%28ASTERISK%29"></span><h3>generic, public :: <strong>operator(*)</strong>  => vec_mult_vec, vec_mult_scal, scal_mult_vec         
+    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-operator%28ASTERISK%29"></span><h3>generic, public :: <strong>operator(*)</strong>  => <a href='../type/vector.html#boundprocedure-vec_mult_vec'>vec_mult_vec</a>, <a href='../type/vector.html#boundprocedure-vec_mult_scal'>vec_mult_scal</a>, <a href='../type/vector.html#boundprocedure-scal_mult_vec'>scal_mult_vec</a>         
     </h3></div>
       <div class="panel-body">
         
@@ -502,9 +521,11 @@ said component(s).
     <ul class="list-group">
         <li class="list-group-item">
                   <h3>
-    private  function vec_mult_vec(a, b)  
+    private pure function <a href='../proc/vec_mult_vec.html'>vec_mult_vec</a>(a, b)  
 </h3>
-  
+    
+  <p>implmentation of vector multiply vector
+overloads the * operator</p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -529,7 +550,7 @@ said component(s).
             <td>::</td>
             <td><strong>a</strong></td>
             <td>
-                
+
             </td>
         </tr>
         <tr>
@@ -544,7 +565,7 @@ said component(s).
             <td>::</td>
             <td><strong>b</strong></td>
             <td>
-                
+
             </td>
         </tr>
     </tbody>
@@ -559,9 +580,11 @@ said component(s).
         </li>
         <li class="list-group-item">
                   <h3>
-    private  function vec_mult_scal(a, b)  
+    private pure function <a href='../proc/vec_mult_scal.html'>vec_mult_scal</a>(a, b)  
 </h3>
-  
+    
+  <p>implmentation of vector multiply scalar
+overloads the * operator</p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -586,7 +609,7 @@ said component(s).
             <td>::</td>
             <td><strong>a</strong></td>
             <td>
-                
+
             </td>
         </tr>
         <tr>
@@ -601,7 +624,7 @@ said component(s).
             <td>::</td>
             <td><strong>b</strong></td>
             <td>
-                
+
             </td>
         </tr>
     </tbody>
@@ -616,9 +639,11 @@ said component(s).
         </li>
         <li class="list-group-item">
                   <h3>
-    private  function scal_mult_vec(a, b)  
+    private pure function <a href='../proc/scal_mult_vec.html'>scal_mult_vec</a>(a, b)  
 </h3>
-  
+    
+  <p>implmentation of scalar multiply vector
+overloads the * operator</p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -643,7 +668,7 @@ said component(s).
             <td>::</td>
             <td><strong>a</strong></td>
             <td>
-                
+
             </td>
         </tr>
         <tr>
@@ -658,7 +683,7 @@ said component(s).
             <td>::</td>
             <td><strong>b</strong></td>
             <td>
-                
+
             </td>
         </tr>
     </tbody>
@@ -675,7 +700,7 @@ said component(s).
   </div>
 
             <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-operator%28%2B%29"></span><h3>generic, public :: <strong>operator(+)</strong>  => vec_add_vec, vec_add_scal, scal_add_vec         
+    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-operator%28%2B%29"></span><h3>generic, public :: <strong>operator(+)</strong>  => <a href='../type/vector.html#boundprocedure-vec_add_vec'>vec_add_vec</a>, <a href='../type/vector.html#boundprocedure-vec_add_scal'>vec_add_scal</a>, <a href='../type/vector.html#boundprocedure-scal_add_vec'>scal_add_vec</a>         
     </h3></div>
       <div class="panel-body">
         
@@ -684,9 +709,11 @@ said component(s).
     <ul class="list-group">
         <li class="list-group-item">
                   <h3>
-    private  function vec_add_vec(a, b)  
+    private pure function <a href='../proc/vec_add_vec.html'>vec_add_vec</a>(a, b)  
 </h3>
-  
+    
+  <p>implmentation of vector add vector
+overloads the + operator</p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -711,7 +738,7 @@ said component(s).
             <td>::</td>
             <td><strong>a</strong></td>
             <td>
-                
+
             </td>
         </tr>
         <tr>
@@ -726,7 +753,7 @@ said component(s).
             <td>::</td>
             <td><strong>b</strong></td>
             <td>
-                
+
             </td>
         </tr>
     </tbody>
@@ -741,9 +768,11 @@ said component(s).
         </li>
         <li class="list-group-item">
                   <h3>
-    private  function vec_add_scal(a, b)  
+    private pure function <a href='../proc/vec_add_scal.html'>vec_add_scal</a>(a, b)  
 </h3>
-  
+    
+  <p>implmentation of vector add scalar
+overloads the + operator</p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -768,7 +797,7 @@ said component(s).
             <td>::</td>
             <td><strong>a</strong></td>
             <td>
-                
+
             </td>
         </tr>
         <tr>
@@ -783,7 +812,7 @@ said component(s).
             <td>::</td>
             <td><strong>b</strong></td>
             <td>
-                
+
             </td>
         </tr>
     </tbody>
@@ -798,9 +827,11 @@ said component(s).
         </li>
         <li class="list-group-item">
                   <h3>
-    private  function scal_add_vec(a, b)  
+    private pure function <a href='../proc/scal_add_vec.html'>scal_add_vec</a>(a, b)  
 </h3>
-  
+    
+  <p>implmentation of scalar subtract vector
+overloads the + operator</p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -825,7 +856,7 @@ said component(s).
             <td>::</td>
             <td><strong>a</strong></td>
             <td>
-                
+
             </td>
         </tr>
         <tr>
@@ -840,7 +871,7 @@ said component(s).
             <td>::</td>
             <td><strong>b</strong></td>
             <td>
-                
+
             </td>
         </tr>
     </tbody>
@@ -857,7 +888,7 @@ said component(s).
   </div>
 
             <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-operator%28-%29"></span><h3>generic, public :: <strong>operator(-)</strong>  => vec_minus_vec         
+    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-operator%28-%29"></span><h3>generic, public :: <strong>operator(-)</strong>  => <a href='../type/vector.html#boundprocedure-vec_minus_vec'>vec_minus_vec</a>         
     </h3></div>
       <div class="panel-body">
         
@@ -866,9 +897,11 @@ said component(s).
     <ul class="list-group">
         <li class="list-group-item">
                   <h3>
-    private  function vec_minus_vec(a, b)  
+    private pure function <a href='../proc/vec_minus_vec.html'>vec_minus_vec</a>(a, b)  
 </h3>
-  
+    
+  <p>implmentation of vector subtract vector
+overloads the - operator</p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -893,7 +926,7 @@ said component(s).
             <td>::</td>
             <td><strong>a</strong></td>
             <td>
-                
+
             </td>
         </tr>
         <tr>
@@ -908,7 +941,7 @@ said component(s).
             <td>::</td>
             <td><strong>b</strong></td>
             <td>
-                
+
             </td>
         </tr>
     </tbody>
@@ -925,7 +958,7 @@ said component(s).
   </div>
 
             <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-operator%28.dot.%29"></span><h3>generic, public :: <strong>operator(.dot.)</strong>  => vec_dot         
+    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-operator%28.dot.%29"></span><h3>generic, public :: <strong>operator(.dot.)</strong>  => <a href='../type/vector.html#boundprocedure-vec_dot'>vec_dot</a>         
     </h3></div>
       <div class="panel-body">
         
@@ -934,9 +967,11 @@ said component(s).
     <ul class="list-group">
         <li class="list-group-item">
                   <h3>
-    private elemental function vec_dot(a, b) result(dot)  
+    private pure elemental function <a href='../proc/vec_dot.html'>vec_dot</a>(a, b) result(dot)  
 </h3>
-  
+    
+  <p>implmentation of vector dot vector
+creates the .dot. operator</p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -961,7 +996,7 @@ said component(s).
             <td>::</td>
             <td><strong>a</strong></td>
             <td>
-                
+
             </td>
         </tr>
         <tr>
@@ -976,7 +1011,7 @@ said component(s).
             <td>::</td>
             <td><strong>b</strong></td>
             <td>
-                
+
             </td>
         </tr>
     </tbody>
@@ -993,7 +1028,7 @@ said component(s).
   </div>
 
             <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-operator%28SLASH%29"></span><h3>generic, public :: <strong>operator(/)</strong>  => vec_div_scal         
+    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-operator%28SLASH%29"></span><h3>generic, public :: <strong>operator(/)</strong>  => <a href='../type/vector.html#boundprocedure-vec_div_scal'>vec_div_scal</a>         
     </h3></div>
       <div class="panel-body">
         
@@ -1002,9 +1037,11 @@ said component(s).
     <ul class="list-group">
         <li class="list-group-item">
                   <h3>
-    private  function vec_div_scal(a, b)  
+    private pure function <a href='../proc/vec_div_scal.html'>vec_div_scal</a>(a, b)  
 </h3>
-  
+    
+  <p>implmentation of vector divide scalar
+overloads the / operator</p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -1029,7 +1066,7 @@ said component(s).
             <td>::</td>
             <td><strong>a</strong></td>
             <td>
-                
+
             </td>
         </tr>
         <tr>
@@ -1044,7 +1081,7 @@ said component(s).
             <td>::</td>
             <td><strong>b</strong></td>
             <td>
-                
+
             </td>
         </tr>
     </tbody>
@@ -1061,7 +1098,7 @@ said component(s).
   </div>
 
             <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-print"></span><h3>procedure, public :: <strong>print</strong>  => print_sub         
+    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-print"></span><h3>procedure, public :: <strong>print</strong>  => <a href='../proc/print_sub.html'>print_sub</a>         
     </h3></div>
       <div class="panel-body">
         
@@ -1070,9 +1107,10 @@ said component(s).
     <ul class="list-group">
         <li class="list-group-item">
                   <h3>
-    private  subroutine print_sub(this)  
+    private  subroutine <a href='../proc/print_sub.html'>print_sub</a>(this)  
 </h3>
-  
+    
+  <p>prints the vector</p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -1097,12 +1135,606 @@ said component(s).
             <td>::</td>
             <td><strong>this</strong></td>
             <td>
-                
+
             </td>
         </tr>
     </tbody>
   </table>
 
+
+        </li>
+    </ul>
+  </div>
+
+            <div class="panel panel-default">
+    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-scal_add_vec"></span><h3>procedure, private, pass(b) :: <strong>scal_add_vec</strong>          
+    </h3></div>
+    <ul class="list-group">
+        <li class="list-group-item">
+                  <h3>
+    private pure function <a href='../proc/scal_add_vec.html'>scal_add_vec</a>(a, b)  
+</h3>
+    
+  <p>implmentation of scalar subtract vector
+overloads the + operator</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              real,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>a</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              class(<a href='../type/vector.html'>vector</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>b</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>type(<a href='../type/vector.html'>vector</a>)</small>
+    </h4>
+    
+
+        </li>
+    </ul>
+  </div>
+
+            <div class="panel panel-default">
+    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-scal_mult_vec"></span><h3>procedure, private, pass(b) :: <strong>scal_mult_vec</strong>          
+    </h3></div>
+    <ul class="list-group">
+        <li class="list-group-item">
+                  <h3>
+    private pure function <a href='../proc/scal_mult_vec.html'>scal_mult_vec</a>(a, b)  
+</h3>
+    
+  <p>implmentation of scalar multiply vector
+overloads the * operator</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              real,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>a</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              class(<a href='../type/vector.html'>vector</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>b</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>type(<a href='../type/vector.html'>vector</a>)</small>
+    </h4>
+    
+
+        </li>
+    </ul>
+  </div>
+
+            <div class="panel panel-default">
+    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-vec_add_scal"></span><h3>procedure, private, pass(a) :: <strong>vec_add_scal</strong>          
+    </h3></div>
+    <ul class="list-group">
+        <li class="list-group-item">
+                  <h3>
+    private pure function <a href='../proc/vec_add_scal.html'>vec_add_scal</a>(a, b)  
+</h3>
+    
+  <p>implmentation of vector add scalar
+overloads the + operator</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              class(<a href='../type/vector.html'>vector</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>a</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              real,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>b</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>type(<a href='../type/vector.html'>vector</a>)</small>
+    </h4>
+    
+
+        </li>
+    </ul>
+  </div>
+
+            <div class="panel panel-default">
+    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-vec_add_vec"></span><h3>procedure, private, pass(a) :: <strong>vec_add_vec</strong>          
+    </h3></div>
+    <ul class="list-group">
+        <li class="list-group-item">
+                  <h3>
+    private pure function <a href='../proc/vec_add_vec.html'>vec_add_vec</a>(a, b)  
+</h3>
+    
+  <p>implmentation of vector add vector
+overloads the + operator</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              class(<a href='../type/vector.html'>vector</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>a</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              type(<a href='../type/vector.html'>vector</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>b</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>type(<a href='../type/vector.html'>vector</a>)</small>
+    </h4>
+    
+
+        </li>
+    </ul>
+  </div>
+
+            <div class="panel panel-default">
+    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-vec_div_scal"></span><h3>procedure, private, pass(a) :: <strong>vec_div_scal</strong>          
+    </h3></div>
+    <ul class="list-group">
+        <li class="list-group-item">
+                  <h3>
+    private pure function <a href='../proc/vec_div_scal.html'>vec_div_scal</a>(a, b)  
+</h3>
+    
+  <p>implmentation of vector divide scalar
+overloads the / operator</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              class(<a href='../type/vector.html'>vector</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>a</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              real,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>b</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>type(<a href='../type/vector.html'>vector</a>)</small>
+    </h4>
+    
+
+        </li>
+    </ul>
+  </div>
+
+            <div class="panel panel-default">
+    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-vec_dot"></span><h3>procedure, private, pass(a) :: <strong>vec_dot</strong>          
+    </h3></div>
+    <ul class="list-group">
+        <li class="list-group-item">
+                  <h3>
+    private pure elemental function <a href='../proc/vec_dot.html'>vec_dot</a>(a, b) result(dot)  
+</h3>
+    
+  <p>implmentation of vector dot vector
+creates the .dot. operator</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              class(<a href='../type/vector.html'>vector</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>a</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              type(<a href='../type/vector.html'>vector</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>b</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>real</small>
+    </h4>
+    
+
+        </li>
+    </ul>
+  </div>
+
+            <div class="panel panel-default">
+    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-vec_minus_vec"></span><h3>procedure, private, pass(a) :: <strong>vec_minus_vec</strong>          
+    </h3></div>
+    <ul class="list-group">
+        <li class="list-group-item">
+                  <h3>
+    private pure function <a href='../proc/vec_minus_vec.html'>vec_minus_vec</a>(a, b)  
+</h3>
+    
+  <p>implmentation of vector subtract vector
+overloads the - operator</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              class(<a href='../type/vector.html'>vector</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>a</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              type(<a href='../type/vector.html'>vector</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>b</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>type(<a href='../type/vector.html'>vector</a>)</small>
+    </h4>
+    
+
+        </li>
+    </ul>
+  </div>
+
+            <div class="panel panel-default">
+    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-vec_mult_scal"></span><h3>procedure, private, pass(a) :: <strong>vec_mult_scal</strong>          
+    </h3></div>
+    <ul class="list-group">
+        <li class="list-group-item">
+                  <h3>
+    private pure function <a href='../proc/vec_mult_scal.html'>vec_mult_scal</a>(a, b)  
+</h3>
+    
+  <p>implmentation of vector multiply scalar
+overloads the * operator</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              class(<a href='../type/vector.html'>vector</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>a</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              real,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>b</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>type(<a href='../type/vector.html'>vector</a>)</small>
+    </h4>
+    
+
+        </li>
+    </ul>
+  </div>
+
+            <div class="panel panel-default">
+    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-vec_mult_vec"></span><h3>procedure, private, pass(a) :: <strong>vec_mult_vec</strong>          
+    </h3></div>
+    <ul class="list-group">
+        <li class="list-group-item">
+                  <h3>
+    private pure function <a href='../proc/vec_mult_vec.html'>vec_mult_vec</a>(a, b)  
+</h3>
+    
+  <p>implmentation of vector multiply vector
+overloads the * operator</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              class(<a href='../type/vector.html'>vector</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>a</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              type(<a href='../type/vector.html'>vector</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>b</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>type(<a href='../type/vector.html'>vector</a>)</small>
+    </h4>
+    
 
         </li>
     </ul>
@@ -1159,7 +1791,7 @@ said component(s).
     <footer>
       <div class="container">
         <div class="row">
-          <div class="col-xs-6 col-md-6"><p>gridMCRT was developed by Lewis McMillan<br>&copy; 2023 
+          <div class="col-xs-6 col-md-6"><p>gridMCRT was developed by Lewis McMillan, Kenny Wood<br>&copy; 2023 
 </p>
           </div>
           <div class="col-xs-6 col-md-6">

@@ -20,16 +20,21 @@ program mcpolar
     !> optical properties variable
     type(optical_properties) :: opt_prop
     !> number of photons to run in the simulation
-    integer          :: nphotons
+    integer :: nphotons
     !> counter for number of scatterings for all photons
     double precision :: nscatt
     !> user defined seed
     integer :: seed
-    !> temp variable or related to I/O from param file
-    integer          :: nxg, nyg, nzg, j, u
-    real             :: xmax, ymax, zmax, ran
+    !> temp variables related to I/O from param file
+    integer :: nxg, nyg, nzg
+    !> loop variable
+    integer :: j
+    !> file handle
+    integer :: u
+    !> temp variables related to I/O from param file
+    real    :: xmax, ymax, zmax
     !> timing vars
-    real             :: start, finish
+    real    :: start, finish
 
     call cpu_time(start)
 
@@ -79,9 +84,8 @@ program mcpolar
         ! Photon scatters in grid until it exits (tflag=TRUE) 
         do while(.not. packet%tflag)
 
-            ran = ran2()
             !interact with medium
-            if(ran < opt_prop%albedo)then
+            if(ran2() < opt_prop%albedo)then
                 ! photon is scattered
                 call packet%scatter(opt_prop)
                 nscatt = nscatt + 1        

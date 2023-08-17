@@ -10,9 +10,12 @@ contains
     
     subroutine init_seed(seed)
     !! user convenience function for setting random generator seed
+        !> user defined seed
         integer, intent(in) :: seed
 
+        !> size of internal seed array
         integer :: n
+        !> internal seed array to be filled with user defined seed
         integer, allocatable :: iseed(:)
 
         ! get seed size
@@ -35,7 +38,10 @@ contains
 
     real function ranu(a, b)
     !! sample uniformly between [a, b]
-        real, intent(IN) :: a, b
+        !> input lower bound
+        real, intent(in) :: a
+        !> input upper bound
+        real, intent(in) ::b
 
         ranu = a + ran2() * (b - a)
 

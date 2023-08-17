@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="description" content="Monte Carlo radiation transfer (MCRT) on a 3D grid.">
-    <meta name="author" content="Lewis McMillan" >
+    <meta name="author" content="Lewis McMillan, Kenny Wood" >
     <link rel="icon" href="../favicon.png">
 
     <title>inttau2 &ndash; gridMCRT</title>
@@ -100,7 +100,7 @@
           <li id="statements"><i class="fa fa-list-ol"></i>
             <a data-toggle="tooltip"
                data-placement="bottom" data-html="true"
-               title="29.6% of total for modules and submodules.">177 statements</a>
+               title="28.6% of total for modules and submodules.">161 statements</a>
           </li>
 
             <li id="source-file">
@@ -138,7 +138,19 @@
   
   
   
-  
+      <div class="panel panel-primary">
+      <div class="panel-heading text-left">
+        <h3 class="panel-title">
+          <a data-toggle="collapse" href="#funcs-0">Functions</a>
+        </h3>
+      </div>
+      <div id="funcs-0" class="panel-collapse collapse">
+        <div class="list-group">
+            <a class="list-group-item" href="../module/inttau2.html#proc-wall_dist">wall_dist</a>
+        </div>
+      </div>
+    </div>
+
       <div class="panel panel-primary">
       <div class="panel-heading text-left">
         <h3 class="panel-title">
@@ -148,6 +160,8 @@
       <div id="subs-0" class="panel-collapse collapse">
         <div class="list-group">
             <a class="list-group-item" href="../module/inttau2.html#proc-tauint1">tauint1</a>
+            <a class="list-group-item" href="../module/inttau2.html#proc-update_pos">update_pos</a>
+            <a class="list-group-item" href="../module/inttau2.html#proc-update_voxels">update_voxels</a>
         </div>
       </div>
     </div>
@@ -296,7 +310,19 @@ modules which it uses.
   
   
   
-  
+      <div class="panel panel-primary">
+      <div class="panel-heading text-left">
+        <h3 class="panel-title">
+          <a data-toggle="collapse" href="#funcs-1">Functions</a>
+        </h3>
+      </div>
+      <div id="funcs-1" class="panel-collapse collapse">
+        <div class="list-group">
+            <a class="list-group-item" href="../module/inttau2.html#proc-wall_dist">wall_dist</a>
+        </div>
+      </div>
+    </div>
+
       <div class="panel panel-primary">
       <div class="panel-heading text-left">
         <h3 class="panel-title">
@@ -306,6 +332,8 @@ modules which it uses.
       <div id="subs-1" class="panel-collapse collapse">
         <div class="list-group">
             <a class="list-group-item" href="../module/inttau2.html#proc-tauint1">tauint1</a>
+            <a class="list-group-item" href="../module/inttau2.html#proc-update_pos">update_pos</a>
+            <a class="list-group-item" href="../module/inttau2.html#proc-update_voxels">update_voxels</a>
         </div>
       </div>
     </div>
@@ -327,6 +355,145 @@ modules which it uses.
 
 
 
+        <section>
+          <h2>Functions</h2>
+              <div class="panel panel-default">
+    <div class="panel-heading codesum"><span class="anchor" id="proc-wall_dist"></span><h3>private  function <a href='../proc/wall_dist.html'>wall_dist</a>(packet, grid, celli, cellj, cellk, pos, dir)  
+</h3></div>
+    <div class="panel-body">
+          
+  <p>function that returns distant to nearest wall and which wall that is (x ,y or z)</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              type(<a href='../type/photon.html'>photon</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>packet</strong></td>
+            <td>
+<p>photon packet</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              type(<a href='../type/cart_grid.html'>cart_grid</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>grid</strong></td>
+            <td>
+<p>grid variable container</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              integer,
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>celli</strong></td>
+            <td>
+<p>current voxel ID</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              integer,
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>cellj</strong></td>
+            <td>
+<p>current voxel ID</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              integer,
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>cellk</strong></td>
+            <td>
+<p>current voxel ID</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              type(<a href='../type/vector.html'>vector</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>pos</strong></td>
+            <td>
+<p>current position</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              logical,
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>dir</strong>(:)</td>
+            <td>
+<p>which wall will we hit. Stored as array of bools</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>real</small>
+    </h4>
+    
+
+    </div>
+  </div>
+
+        </section>
+        <br>
 
         <section>
           <h2>Subroutines</h2>
@@ -385,6 +552,266 @@ modules which it uses.
     </div>
   </div>
 
+              <div class="panel panel-default">
+    <div class="panel-heading codesum"><span class="anchor" id="proc-update_pos"></span><h3>private pure subroutine <a href='../proc/update_pos.html'>update_pos</a>(packet, grid, pos, celli, cellj, cellk, dcell, wall_flag, dir)  
+</h3></div>
+    <div class="panel-body">
+          
+  <p>routine that upates postions of photon and calls fresnel routines if photon leaves current voxel</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              type(<a href='../type/photon.html'>photon</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>packet</strong></td>
+            <td>
+<p>photon object</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              type(<a href='../type/cart_grid.html'>cart_grid</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>grid</strong></td>
+            <td>
+<p>grid object</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              type(<a href='../type/vector.html'>vector</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>pos</strong></td>
+            <td>
+<p>current photon position</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              integer,
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>celli</strong></td>
+            <td>
+<p>current voxel ID</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              integer,
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>cellj</strong></td>
+            <td>
+<p>current voxel ID</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              integer,
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>cellk</strong></td>
+            <td>
+<p>current voxel ID</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              real,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>dcell</strong></td>
+            <td>
+<p>distance phton will travel across a cell</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              logical,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>wall_flag</strong></td>
+            <td>
+<p>flag is true if we hit a cell wall</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              logical,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>dir</strong>(:)</td>
+            <td>
+<p>logical array. 1 entry is always true. the true entry represents which cell wall we will hit</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="panel panel-default">
+    <div class="panel-heading codesum"><span class="anchor" id="proc-update_voxels"></span><h3>private pure subroutine <a href='../proc/update_voxels.html'>update_voxels</a>(pos, grid, celli, cellj, cellk)  
+</h3></div>
+    <div class="panel-body">
+          
+  <p>updates the current voxel based upon position</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              type(<a href='../type/vector.html'>vector</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>pos</strong></td>
+            <td>
+<p>current photon position vector</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              type(<a href='../type/cart_grid.html'>cart_grid</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>grid</strong></td>
+            <td>
+<p>grid object</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              integer,
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>celli</strong></td>
+            <td>
+<p>current voxel ID. To be updated</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              integer,
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>cellj</strong></td>
+            <td>
+<p>current voxel ID. To be updated</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              integer,
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>cellk</strong></td>
+            <td>
+<p>current voxel ID. To be updated</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
         </section>
         <br>
 
@@ -398,7 +825,7 @@ modules which it uses.
     <footer>
       <div class="container">
         <div class="row">
-          <div class="col-xs-6 col-md-6"><p>gridMCRT was developed by Lewis McMillan<br>&copy; 2023 
+          <div class="col-xs-6 col-md-6"><p>gridMCRT was developed by Lewis McMillan, Kenny Wood<br>&copy; 2023 
 </p>
           </div>
           <div class="col-xs-6 col-md-6">

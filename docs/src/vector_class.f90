@@ -46,8 +46,9 @@ Module vector_class
 
     contains
 
-        type(vector) function vec_minus_vec(a, b)
-
+        pure type(vector) function vec_minus_vec(a, b)
+        !! implmentation of vector subtract vector
+        !! overloads the - operator
             class(vector), intent(IN) :: a
             type(vector),  intent(IN) :: b
 
@@ -56,8 +57,9 @@ Module vector_class
         end function vec_minus_vec
 
 
-        type(vector) function vec_add_scal(a, b)
-
+        pure type(vector) function vec_add_scal(a, b)
+        !! implmentation of vector add scalar
+        !! overloads the + operator
             class(vector), intent(IN) :: a
             real,          intent(IN) :: b
 
@@ -66,8 +68,9 @@ Module vector_class
         end function vec_add_scal
 
 
-        type(vector) function scal_add_vec(a, b)
-
+        pure type(vector) function scal_add_vec(a, b)
+        !! implmentation of scalar subtract vector
+        !! overloads the + operator
             class(vector), intent(IN) :: b
             real,          intent(IN) :: a
 
@@ -76,8 +79,9 @@ Module vector_class
         end function scal_add_vec
 
 
-        type(vector) function vec_add_vec(a, b)
-
+        pure type(vector) function vec_add_vec(a, b)
+        !! implmentation of vector add vector
+        !! overloads the + operator
             class(vector), intent(IN) :: a
             type(vector),  intent(IN) :: b
 
@@ -86,8 +90,9 @@ Module vector_class
         end function vec_add_vec
 
 
-        elemental function vec_dot(a, b) result (dot)
-
+        pure elemental function vec_dot(a, b) result (dot)
+        !! implmentation of vector dot vector
+        !! creates the .dot. operator
             class(vector), intent(IN) :: a
             type(vector),  intent(IN) :: b
             real :: dot
@@ -97,8 +102,12 @@ Module vector_class
         end function vec_dot
 
 
-        type(vector) function vec_mult_vec(a, b)
-
+        pure type(vector) function vec_mult_vec(a, b)
+        !! implmentation of vector multiply vector
+        !! overloads the * operator
+        !@note
+        !    This is ELEMENT wise multiplication
+        !@end note
             class(vector), intent(IN) :: a
             type(vector),  intent(IN) :: b
 
@@ -107,8 +116,9 @@ Module vector_class
         end function vec_mult_vec
 
 
-        type(vector) function vec_mult_scal(a, b)
-
+        pure type(vector) function vec_mult_scal(a, b)
+        !! implmentation of vector multiply scalar
+        !! overloads the * operator
             class(vector), intent(IN) :: a
             real,          intent(IN) :: b
 
@@ -117,8 +127,9 @@ Module vector_class
         end function vec_mult_scal
 
 
-        type(vector) function scal_mult_vec(a, b)
-
+        pure type(vector) function scal_mult_vec(a, b)
+        !! implmentation of scalar multiply vector
+        !! overloads the * operator
             class(vector), intent(IN) :: b
             real,          intent(IN) :: a
 
@@ -127,8 +138,9 @@ Module vector_class
         end function scal_mult_vec
 
 
-        type(vector) function vec_div_scal(a, b)
-
+        pure type(vector) function vec_div_scal(a, b)
+        !! implmentation of vector divide scalar
+        !! overloads the / operator
             class(vector), intent(IN) :: a
             real,         intent(IN) :: b
 
@@ -137,9 +149,9 @@ Module vector_class
         end function vec_div_scal
 
 
-        type(vector) function magnitude_fn(this)
-
-            class(vector) :: this
+        pure type(vector) function magnitude_fn(this)
+        !! implmentation of |vector|
+            class(vector), intent(in) :: this
 
             real :: tmp
 
@@ -150,10 +162,10 @@ Module vector_class
 
 
         subroutine print_sub(this)
-
+        !! prints the vector
             class(vector) :: this
 
                 print*,this%x, this%y, this%z
 
-        end subroutine
+        end subroutine print_sub
 end Module vector_class

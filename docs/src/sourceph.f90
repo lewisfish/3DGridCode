@@ -4,7 +4,7 @@ module sourceph_mod
 
     contains
         subroutine isotropic_point_src(packet, grid)
-        !! set intial photon position
+        !! set intial photon position at (0.0, 0.0, 0.0) and sample photon direction in an isotropic manner.
 
             use constants,    only : TWOPI
             use gridset_mod,  only :cart_grid

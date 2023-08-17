@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="description" content="Monte Carlo radiation transfer (MCRT) on a 3D grid.">
-    <meta name="author" content="Lewis McMillan" >
+    <meta name="author" content="Lewis McMillan, Kenny Wood" >
     <link rel="icon" href="../favicon.png">
 
     <title>constants &ndash; gridMCRT</title>
@@ -100,7 +100,7 @@
           <li id="statements"><i class="fa fa-list-ol"></i>
             <a data-toggle="tooltip"
                data-placement="bottom" data-html="true"
-               title=" 0.8% of total for modules and submodules.">5 statements</a>
+               title=" 1.2% of total for modules and submodules.">7 statements</a>
           </li>
 
             <li id="source-file">
@@ -138,7 +138,6 @@
         <div class="list-group">
             <a class="list-group-item" href="../module/constants.html#variable-pi">PI</a>
             <a class="list-group-item" href="../module/constants.html#variable-twopi">TWOPI</a>
-            <a class="list-group-item" href="../module/constants.html#variable-cwd">cwd</a>
             <a class="list-group-item" href="../module/constants.html#variable-fileplace">fileplace</a>
             <a class="list-group-item" href="../module/constants.html#variable-homedir">homedir</a>
             <a class="list-group-item" href="../module/constants.html#variable-resdir">resdir</a>
@@ -361,7 +360,6 @@ modules which it uses.
         <div class="list-group">
             <a class="list-group-item" href="../module/constants.html#variable-pi">PI</a>
             <a class="list-group-item" href="../module/constants.html#variable-twopi">TWOPI</a>
-            <a class="list-group-item" href="../module/constants.html#variable-cwd">cwd</a>
             <a class="list-group-item" href="../module/constants.html#variable-fileplace">fileplace</a>
             <a class="list-group-item" href="../module/constants.html#variable-homedir">homedir</a>
             <a class="list-group-item" href="../module/constants.html#variable-resdir">resdir</a>
@@ -440,23 +438,6 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-cwd"></span>
-              character(len=255),
-            </td>
-              <td>public</td>
-            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>cwd</strong></td>
-                <td></td>
-                <td></td>
-            <td>
-                <p>variables that store directories for files etc</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
               <span class="anchor" id="variable-fileplace"></span>
               character(len=255),
             </td>
@@ -469,7 +450,7 @@ parameter
                 <td></td>
                 <td></td>
             <td>
-                <p>variables that store directories for files etc</p>
+                <p>variables that stores the directory where output files are saved</p>
             </td>
         </tr>
         <tr>
@@ -486,7 +467,7 @@ parameter
                 <td></td>
                 <td></td>
             <td>
-                <p>variables that store directories for files etc</p>
+                <p>variables that stores the home (root) directory</p>
             </td>
         </tr>
         <tr>
@@ -503,7 +484,7 @@ parameter
                 <td></td>
                 <td></td>
             <td>
-                <p>variables that store directories for files etc</p>
+                <p>variables that stores the directory for input files.</p>
             </td>
         </tr>
     </tbody>
@@ -528,7 +509,7 @@ parameter
     <footer>
       <div class="container">
         <div class="row">
-          <div class="col-xs-6 col-md-6"><p>gridMCRT was developed by Lewis McMillan<br>&copy; 2023 
+          <div class="col-xs-6 col-md-6"><p>gridMCRT was developed by Lewis McMillan, Kenny Wood<br>&copy; 2023 
 </p>
           </div>
           <div class="col-xs-6 col-md-6">

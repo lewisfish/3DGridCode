@@ -9,10 +9,11 @@ module gridset_mod
     private
     public :: gridset, cart_grid
 
+    !> 3D cartesian grid. Stores information about the linear voxel grid
     type :: cart_grid
         !> Size of grid in voxels in each direction
         integer :: nxg, nyg, nzg
-        !> half size of grid in cm
+        !> half size of grid in each dimension. cm
         type(vector) :: dim
         !> Arrays that store the location of each grid cell(voxel) wall
         real, allocatable :: xface(:), yface(:), zface(:)
@@ -27,13 +28,18 @@ module gridset_mod
             use iarray,   only : rhokap, rhokap
             use optical_properties_class, only : optical_properties
 
-            !> cart_grid varible is assigned in this routine
+            !> grid variable that is assigned in this routine
             type(cart_grid),          intent(out) :: grid
+            !> optical properties used to setup voxel geometry
             type(optical_properties), intent(in)  :: opt_prop
+            !> number of voxels in each dimension
             integer,                  intent(in)  :: nxg, nyg, nzg
+            !> half size of the grid in cm
             real,                     intent(in)  :: xmax, ymax, zmax
             
+            !> loop variables
             integer :: i, j, k
+            !> temp variables
             real    :: x, y, z, taueq1, taupole1, taueq2, taupole2
 
             print*, ' '

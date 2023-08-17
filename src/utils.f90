@@ -12,35 +12,19 @@ module utils
         module procedure str_logicalarray
     end interface str
 
-    !>subroutines to swap numerical variables
-    interface swap
-        module procedure swap_I
-        module procedure swap_R8
-    end interface swap
-
-    !>change current directory
-    interface
-        function c_chdir(path) bind(C, name="chdir")
-                
-            use iso_c_binding
-
-            character(kind=c_char), intent(IN) :: path(*)
-            integer(kind=C_int) :: c_chdir
-        end function c_chdir
-    end interface
-
     private
-    public :: str, swap, chdir, set_directories
+    public :: str, set_directories
 
     contains
 
         subroutine set_directories()
         !! define variables to hold paths to various folders   
 
-            use constants, only : cwd, homedir, fileplace, resdir
+            use constants, only : homedir, fileplace, resdir
+
+            character(len=255) :: cwd
 
             !get current working directory
-
             call get_environment_variable('PWD', cwd)
 
             ! get 'home' dir from cwd
@@ -60,49 +44,12 @@ module utils
         end subroutine set_directories
 
 
-        subroutine chdir(path, error)
-        !! change current directory via c-lib call
-
-            use iso_c_binding, only : c_null_char
-
-            character(*), intent(IN)       :: path
-            integer, optional, intent(OUT) :: error
-
-            integer :: err
-
-            err = c_chdir(trim(path)//c_null_char)
-            if(present(error))error = err
-        end subroutine chdir
-
-        subroutine swap_I(a, b)
-        !! swap two integer variables
-
-            integer, intent(INOUT) :: a, b
-            integer :: tmp
-
-            tmp = a
-            a = b
-            b = tmp
-        end subroutine swap_I
-
-        subroutine swap_R8(a, b)
-        !! swap double precision variables
-
-            double precision, intent(INOUT) :: a, b
-
-            double precision :: tmp
-
-            tmp = a
-            a = b
-            b = tmp
-        end subroutine swap_R8
-
-
         function str_I32(i)
         !! convert an int32 integer into a string
 
             use iso_fortran_env, only : Int32
 
+            !> input int to convert into string
             integer(int32), intent(IN) :: i
 
             character(len=:), allocatable :: str_I32
@@ -119,6 +66,7 @@ module utils
 
             use iso_fortran_env, only : Int64
 
+            !> input int to convert into string
             integer(Int64), intent(IN) :: i
 
             character(len=:), allocatable :: str_I64
@@ -133,6 +81,7 @@ module utils
         function str_iarray(i)
         !! convert an int32 integer array into a string
 
+            !> input int array to convert into string
             integer, intent(IN) :: i(:)
 
             character(len=:), allocatable :: str_iarray
@@ -149,6 +98,7 @@ module utils
         function str_R8(i)
         !! convert an double precision float into a string
 
+            !> input float to convert into string
             double precision, intent(IN) :: i
 
             character(len=:), allocatable :: str_R8
@@ -163,6 +113,7 @@ module utils
         function str_R8array(a)
         !! convert an double precision float array into a string
 
+            !> input float array to convert into string
             double precision, intent(IN) :: a(:)
 
             character(len=:), allocatable :: str_R8array
@@ -180,6 +131,7 @@ module utils
         function str_logicalarray(a)
         !! convert an logical array into a string
 
+            !> input logical array to convert into string
             logical, intent(IN) :: a(:)
 
             character(len=:), allocatable :: str_logicalarray

@@ -4,8 +4,20 @@ module optical_properties_class
 
     implicit none
 
+    !> Stores the optical properties of the medium. Currently only 1 media type. Can expand by making these arrays.
     type :: optical_properties
-        real :: mus, mua, hgg, g2, kappa, albedo
+        !> \(\mu_s\) is the scattering coefficent. in cm\(^{-1}\)   
+        real :: mus
+        !> \(\mu_a\) is the absorption coefficent. in cm\(^{-1}\)
+        real :: mua
+        !> hgg is the g factor. Describes the bias of the scattering direction. 1 means forward, 0 isotropic and -1 backscattering. unitless   
+        real :: hgg
+        !> Is the g factor squared
+        real :: g2
+        !> \(\kappa\) is \(\mu_s\) + \(\mu_a\) 
+        real :: kappa
+        !> The albedo is \(\frac{\mu_s}{\mu_a+\mu_s}\)
+        real :: albedo
     end type optical_properties
 
     private
@@ -15,7 +27,7 @@ module optical_properties_class
     
         subroutine init_opt_sphere(opt_prop)
         !!  Set tissue optical properties so that total optical depth in a sphere of radius 1cm is 10.
-            
+            !> optical property container
             type(optical_properties), intent(out) :: opt_prop
 
                 opt_prop%hgg = 0.0d0
@@ -30,7 +42,8 @@ module optical_properties_class
         
         subroutine init_opt2(opt_prop)
         !!  Set tissue optical properties 420nm
-    
+
+            !> optical property container
             type(optical_properties), intent(out) :: opt_prop
 
             opt_prop%hgg = 0.9

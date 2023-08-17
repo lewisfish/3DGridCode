@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="description" content="Monte Carlo radiation transfer (MCRT) on a 3D grid.">
-    <meta name="author" content="Lewis McMillan" >
+    <meta name="author" content="Lewis McMillan, Kenny Wood" >
     <link rel="icon" href="../favicon.png">
 
     <title>ranu &ndash; gridMCRT</title>
@@ -100,7 +100,7 @@
           <li id="statements"><i class="fa fa-list-ol"></i>
             <a data-toggle="tooltip"
                data-placement="bottom" data-html="true"
-               title=" 1.7% of total for procedures.">4 statements</a>
+               title=" 1.1% of total for procedures.">5 statements</a>
           </li>
 
             <li id="source-file">
@@ -179,7 +179,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-a~10"></span>
+              <span class="anchor" id="variable-a~3"></span>
               real,
             </td>
 <td>intent(in)</td>
@@ -189,12 +189,12 @@
             <td>::</td>
             <td><strong>a</strong></td>
             <td>
-                
+                <p>input lower bound</p>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-b~10"></span>
+              <span class="anchor" id="variable-b"></span>
               real,
             </td>
 <td>intent(in)</td>
@@ -204,7 +204,7 @@
             <td>::</td>
             <td><strong>b</strong></td>
             <td>
-                
+                <p>input upper bound</p>
             </td>
         </tr>
     </tbody>
@@ -377,7 +377,10 @@ implementation in a submodule of an interface in a parent module.
     <h2><span class="anchor" id="src"></span>Source Code</h2>
     <div class="highlight"><pre><span></span><span class="w">    </span><span class="kt">real </span><span class="k">function </span><span class="n">ranu</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"></span>
 <span class="w">    </span><span class="c">!! sample uniformly between [a, b]</span>
-<span class="w">        </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"></span>
+<span class="w">        </span><span class="c">!&gt; input lower bound</span>
+<span class="w">        </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">a</span><span class="w"></span>
+<span class="w">        </span><span class="c">!&gt; input upper bound</span>
+<span class="w">        </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="n">b</span><span class="w"></span>
 
 <span class="w">        </span><span class="n">ranu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">ran2</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="w"></span>
 
@@ -395,7 +398,7 @@ implementation in a submodule of an interface in a parent module.
     <footer>
       <div class="container">
         <div class="row">
-          <div class="col-xs-6 col-md-6"><p>gridMCRT was developed by Lewis McMillan<br>&copy; 2023 
+          <div class="col-xs-6 col-md-6"><p>gridMCRT was developed by Lewis McMillan, Kenny Wood<br>&copy; 2023 
 </p>
           </div>
           <div class="col-xs-6 col-md-6">

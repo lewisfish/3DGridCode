@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="description" content="Monte Carlo radiation transfer (MCRT) on a 3D grid.">
-    <meta name="author" content="Lewis McMillan" >
+    <meta name="author" content="Lewis McMillan, Kenny Wood" >
     <link rel="icon" href="../favicon.png">
 
     <title>isotropic_point_src &ndash; gridMCRT</title>
@@ -100,7 +100,7 @@
           <li id="statements"><i class="fa fa-list-ol"></i>
             <a data-toggle="tooltip"
                data-placement="bottom" data-html="true"
-               title=" 9.8% of total for procedures.">23 statements</a>
+               title=" 5.1% of total for procedures.">23 statements</a>
           </li>
 
             <li id="source-file">
@@ -351,7 +351,7 @@ modules which it uses.
     </div>
 
 
-    <p>set intial photon position</p>
+    <p>set intial photon position at (0.0, 0.0, 0.0) and sample photon direction in an isotropic manner.</p>
 
     <h3>Arguments</h3>
         <table class="table table-striped varlist">
@@ -366,7 +366,7 @@ modules which it uses.
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-packet~3"></span>
+              <span class="anchor" id="variable-packet~5"></span>
               type(<a href='../type/photon.html'>photon</a>),
             </td>
 <td>intent(out)</td>
@@ -381,7 +381,7 @@ modules which it uses.
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-grid~4"></span>
+              <span class="anchor" id="variable-grid~8"></span>
               type(<a href='../type/cart_grid.html'>cart_grid</a>),
             </td>
 <td>intent(in)</td>
@@ -668,7 +668,7 @@ implementation in a submodule of an interface in a parent module.
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
     <div class="highlight"><pre><span></span><span class="w">        </span><span class="k">subroutine </span><span class="n">isotropic_point_src</span><span class="p">(</span><span class="n">packet</span><span class="p">,</span><span class="w"> </span><span class="n">grid</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="c">!! set intial photon position</span>
+<span class="w">        </span><span class="c">!! set intial photon position at (0.0, 0.0, 0.0) and sample photon direction in an isotropic manner.</span>
 
 <span class="w">            </span><span class="k">use </span><span class="n">constants</span><span class="p">,</span><span class="w">    </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">TWOPI</span><span class="w"></span>
 <span class="w">            </span><span class="k">use </span><span class="n">gridset_mod</span><span class="p">,</span><span class="w">  </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="n">cart_grid</span><span class="w"></span>
@@ -718,7 +718,7 @@ implementation in a submodule of an interface in a parent module.
     <footer>
       <div class="container">
         <div class="row">
-          <div class="col-xs-6 col-md-6"><p>gridMCRT was developed by Lewis McMillan<br>&copy; 2023 
+          <div class="col-xs-6 col-md-6"><p>gridMCRT was developed by Lewis McMillan, Kenny Wood<br>&copy; 2023 
 </p>
           </div>
           <div class="col-xs-6 col-md-6">
