@@ -27,14 +27,14 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:window-width="1920"
-     inkscape:window-height="1043"
+     inkscape:window-height="1016"
      id="namedview43"
      showgrid="false"
      inkscape:zoom="2.3786088"
-     inkscape:cx="132.03733"
+     inkscape:cx="55.101602"
      inkscape:cy="1030.1738"
-     inkscape:window-x="1920"
-     inkscape:window-y="0"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1" />
   <defs
@@ -178,14 +178,14 @@
        style="fill:none;stroke:#734f96;stroke-width:0.12822193px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        inkscape:connector-curvature="0" />
     <path
-       id="path2040-5"
-       d="M 36.614653,15.160533 H 47.437929"
-       style="fill:none;stroke:#734f96;stroke-width:0.12829316;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       inkscape:connector-curvature="0" />
-    <path
        id="path1410"
        d="m 40.001404,12.385947 -1.42185,5.283468 2.182813,1.408567 -0.826823,0.871402 0.74414,0.549102 -0.644922,2.291906 -5.010546,1.706992 0.214975,-2.005417 2.364714,-0.811716 -0.380339,-2.63808 5.953125,-0.393921 19.91896,-0.04066 v 0"
        style="fill:none;stroke:#ffed00;stroke-width:0.22515023;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#Arrow2Mstart);marker-end:url(#Arrow2Mend)"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path2040-5"
+       d="M 36.614653,15.160533 H 47.437929"
+       style="fill:none;stroke:#734f96;stroke-width:0.12829316;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        inkscape:connector-curvature="0" />
     <path
        id="path821"
