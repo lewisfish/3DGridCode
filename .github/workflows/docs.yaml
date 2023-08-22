@@ -29,7 +29,9 @@ jobs:
           python-version: '3.x'
       - name: Install ford
         run: pip install ford
-      - name: Install graphviz
+      - name: Setup Graphviz
+        uses: ts-graphviz/setup-graphviz@v1
+      - name: Install graphviz-python
         run: pip install graphviz
       - name: Build Documentation
         run: ford docs.md
