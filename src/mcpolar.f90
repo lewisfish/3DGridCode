@@ -32,7 +32,7 @@ program mcpolar
     !> file handle
     integer :: u
     !> temp variables related to I/O from param file
-    real(kind=wp) :: xmax, ymax, zmax
+    real(kind=wp) :: xmax, ymax, zmax, mus, mua, hgg
     !> timing vars
     real(kind=wp) :: start, finish
 
@@ -40,27 +40,30 @@ program mcpolar
 
     !set directory paths
     call set_directories()
-    !set optical properties
-    call init_opt_sphere(opt_prop)
-
+    
     !set random seed
     seed = 42
     call init_seed(seed)
-
+    
     !**** Read in parameters from the file input.params
     open(newunit=u,file=trim(resdir)//'input.params',status='old')
-        read(u,*) nphotons
-        read(u,*) xmax
-        read(u,*) ymax
-        read(u,*) zmax
-        read(u,*) nxg
-        read(u,*) nyg
-        read(u,*) nzg
+    read(u,*) nphotons
+    read(u,*) xmax
+    read(u,*) ymax
+    read(u,*) zmax
+    read(u,*) nxg
+    read(u,*) nyg
+    read(u,*) nzg
+    read(u,*) mus
+    read(u,*) mua
+    read(u,*) hgg
     close(u)
-
+    
     print*, ''      
     print*,'# of photons to run',nphotons
-
+    
+    !set optical properties
+    call init_opt_sphere(mus, mua, hgg, opt_prop)
     ! Set up grid
     call gridset(grid, opt_prop, nxg, nyg, nzg, xmax, ymax, zmax)
 

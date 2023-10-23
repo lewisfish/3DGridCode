@@ -27,15 +27,16 @@ module optical_properties_class
 
     contains
     
-        subroutine init_opt_sphere(opt_prop)
-        !!  Set tissue optical properties so that total optical depth in a sphere of radius 1cm is 10.
+        subroutine init_opt_sphere(mus, mua, hgg, opt_prop)
+        !!  Set tissue optical properties to that of the input parameter file.
             !> optical property container
             type(optical_properties), intent(out) :: opt_prop
+            real(kind=wp),            intent(in)  :: mus, mua, hgg
 
-                opt_prop%hgg = 0.0_wp
+                opt_prop%hgg = hgg
                 opt_prop%g2  = opt_prop%hgg**2._wp
-                opt_prop%mua = 0.0_wp
-                opt_prop%mus = 10.0_wp
+                opt_prop%mus = mus
+                opt_prop%mua = mua
 
                 opt_prop%kappa  = opt_prop%mus + opt_prop%mua
                 opt_prop%albedo = opt_prop%mus / opt_prop%kappa
