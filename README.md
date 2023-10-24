@@ -7,7 +7,7 @@
 
 ### Using Make
 
-First Download the code from this [link](https://github.com/lewisfish/3DGridCode/archive/refs/tags/v1.1.1.zip)
+First Download the code from this [link](https://github.com/lewisfish/3DGridCode/archive/refs/tags/v1.2.zip)
 
 Then open a terminal and change directories to the codes location and unzip it.
 
@@ -17,7 +17,7 @@ Then type ```./mcgrid``` to run the code.
 
 ### Using FPM
 
-First Download the code from this [link](https://github.com/lewisfish/3DGridCode/archive/refs/tags/v1.1.1.zip)
+First Download the code from this [link](https://github.com/lewisfish/3DGridCode/archive/refs/tags/v1.2.zip)
 
 Then open a terminal and change directories to the codes location and unzip it.
 
