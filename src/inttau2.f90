@@ -41,12 +41,11 @@ CONTAINS
         ! setup to start integrating
         taurun = 0._wp
         d = 0._wp
-        dir = (/.FALSE., .FALSE., .FALSE./)
 
         !sample optical distance
         tau = -log(ran2())
         do
-            dir = (/.FALSE., .FALSE., .FALSE./)
+            dir = [.false., .false., .false.]
             !get distance to nearest wall in direction dir
             dcell = wall_dist(packet, grid, celli, cellj, cellk, pos, dir)
             !calculate optical distnace to cell wall
@@ -56,13 +55,13 @@ CONTAINS
                 taurun = taurun + taucell
                 d = d + dcell
 
-                call update_pos(packet, grid, pos, celli, cellj, cellk, dcell, .TRUE., dir)
+                call update_pos(packet, grid, pos, celli, cellj, cellk, dcell, .true., dir)
             else!moved full distance
 
                 dcell = (tau - taurun) / rhokap(celli,cellj,cellk)
                 d = d + dcell
 
-                call update_pos(packet, grid, pos, celli, cellj, cellk, dcell, .FALSE., dir)
+                call update_pos(packet, grid, pos, celli, cellj, cellk, dcell, .false., dir)
                 exit
             end if
             if(celli == -1 .or. cellj == -1 .or. cellk == -1)then
@@ -99,39 +98,37 @@ CONTAINS
         
         real(kind=wp) :: dx, dy, dz
 
+        dx = 10000._wp
+        dy = 10000._wp
+        dz = 10000._wp
+
         ! get distance to a wall in the x direction
         if(packet%dir%x > 0._wp)then
-            dx = (grid%xface(celli+1) - pos%x)/packet%dir%x
+            dx = (grid%xface(celli+1) - pos%x)*packet%inv_dir%x
         elseif(packet%dir%x < 0._wp)then
-            dx = (grid%xface(celli) - pos%x)/packet%dir%x
-        elseif(packet%dir%x == 0._wp)then
-            dx = 100000._wp
+            dx = (grid%xface(celli) - pos%x)*packet%inv_dir%x
         end if
 
         ! get distance to a wall in the y direction
         if(packet%dir%y > 0._wp)then
-            dy = (grid%yface(cellj+1) - pos%y)/packet%dir%y
+            dy = (grid%yface(cellj+1) - pos%y)*packet%inv_dir%y
         elseif(packet%dir%y < 0._wp)then
-            dy = (grid%yface(cellj) - pos%y)/packet%dir%y
-        elseif(packet%dir%y == 0._wp)then
-            dy = 100000._wp
+            dy = (grid%yface(cellj) - pos%y)*packet%inv_dir%y
         end if
 
         ! get distance to a wall in the z direction
         if(packet%dir%z > 0._wp)then
-            dz = (grid%zface(cellk+1) - pos%z)/packet%dir%z
+            dz = (grid%zface(cellk+1) - pos%z)*packet%inv_dir%z
         elseif(packet%dir%z < 0._wp)then
-            dz = (grid%zface(cellk) - pos%z)/packet%dir%z
-        elseif(packet%dir%z == 0._wp)then
-            dz = 100000._wp
+            dz = (grid%zface(cellk) - pos%z)*packet%inv_dir%z
         end if
 
         !get closest wall
         wall_dist = min(dx, dy, dz)
         if(wall_dist < 0._wp)print'(A,7F9.5)','dcell < 0.0 warning! ',wall_dist,dx,dy,dz,packet%dir
-        if(wall_dist == dx)dir=(/.TRUE., .FALSE., .FALSE./)
-        if(wall_dist == dy)dir=(/.FALSE., .TRUE., .FALSE./)
-        if(wall_dist == dz)dir=(/.FALSE., .FALSE., .TRUE./)
+        if(wall_dist == dx)dir=[.true., .false., .false.]
+        if(wall_dist == dy)dir=[.false., .true., .false.]
+        if(wall_dist == dz)dir=[.false., .false., .true.]
         if(.not.dir(1) .and. .not.dir(2) .and. .not.dir(3))print*,'Error in dir flag'
       
     end function wall_dist
@@ -166,8 +163,8 @@ CONTAINS
             ! in the x direction
             if(dir(1))then
                 if(packet%dir%x > 0._wp)then
-                    pos%x = grid%xface(celli+1) + grid%delta
                     celli = celli + 1
+                    pos%x = grid%xface(celli) + grid%delta
                 elseif(packet%dir%x < 0._wp)then
                     pos%x = grid%xface(celli) - grid%delta
                     celli = celli - 1
@@ -179,8 +176,8 @@ CONTAINS
             ! y direction
             elseif(dir(2))then
                 if(packet%dir%y > 0._wp)then
-                    pos%y = grid%yface(cellj+1) + grid%delta
                     cellj = cellj + 1
+                    pos%y = grid%yface(cellj) + grid%delta
                     elseif(packet%dir%y < 0._wp)then
                         pos%y = grid%yface(cellj) - grid%delta
                         cellj = cellj - 1
@@ -192,8 +189,8 @@ CONTAINS
             ! z direction
             elseif(dir(3))then
                 if(packet%dir%z > 0._wp)then
-                    pos%z = grid%zface(cellk+1) + grid%delta
                     cellk = cellk + 1
+                    pos%z = grid%zface(cellk) + grid%delta
                 elseif(packet%dir%z < 0._wp)then
                     pos%z = grid%zface(cellk) - grid%delta
                     cellk = cellk - 1
@@ -209,34 +206,10 @@ CONTAINS
             ! we dont hit a wall
             pos = pos + packet%dir * dcell
         end if
-
-        if(wall_flag)then
-            ! if we hit a wall, get current voxel
-            call update_voxels(pos, grid, celli, cellj, cellk)
-        end if
-    end subroutine update_pos
-
-
-    pure subroutine update_voxels(pos, grid, celli, cellj, cellk)
-    !! updates the current voxel based upon position
-
-        use gridset_mod,  only : cart_grid
-        use vector_class, only : vector
-
-        !> current photon position vector
-        type(vector),    intent(in)    :: pos
-        !> grid object
-        type(cart_grid), intent(in)    :: grid
-        !> current voxel ID. To be updated
-        integer,         intent(inout) :: celli, cellj, cellk
-
-        celli = floor(grid%nxg * (pos%x) / (2._wp * grid%dim%x)) + 1
-        cellj = floor(grid%nyg * (pos%y) / (2._wp * grid%dim%y)) + 1
-        cellk = floor(grid%nzg * (pos%z) / (2._wp * grid%dim%z)) + 1
-
+        !check if we are still in the grid
         if(celli > grid%nxg .or. celli < 1)celli = -1
         if(cellj > grid%nyg .or. cellj < 1)cellj = -1
         if(cellk > grid%nzg .or. cellk < 1)cellk = -1
 
-    end subroutine update_voxels
+    end subroutine update_pos
 end module inttau2

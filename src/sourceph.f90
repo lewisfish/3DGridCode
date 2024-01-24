@@ -10,6 +10,7 @@ module sourceph_mod
             use gridset_mod,  only :cart_grid
             use photon_class, only : photon
             use random_mod,   only : ran2
+            use vector_class
 
             !> photon object
             type(photon),    intent(out) :: packet
@@ -32,6 +33,7 @@ module sourceph_mod
             packet%dir%x = packet%sint * packet%cosp  
             packet%dir%y = packet%sint * packet%sinp
             packet%dir%z = packet%cost
+            packet%inv_dir = inverse(packet%dir)
 
             ! set packet voxel
             packet%xcell=int(grid%nxg*(packet%pos%x+grid%dim%x)/(2._wp*grid%dim%x))+1

@@ -16,6 +16,7 @@ Module vector_class
         procedure :: magnitude       => magnitude_fn
         !> print a vector
         procedure :: print           => print_sub
+        procedure :: inverse
         !> get the dot product of two vectors
         generic   :: operator(.dot.) => vec_dot
         !> divide a vector by a float
@@ -44,11 +45,19 @@ Module vector_class
     end type vector
 
     private
-    public :: vector
+    public :: vector, inverse
 
     contains
 
-        pure type(vector) function vec_minus_vec(a, b)
+        pure type(vector) function inverse(a)
+
+            class(vector), intent(in) :: a
+
+            inverse = vector(1.0_wp / a%x, 1.0_wp / a%y, 1.0_wp / a%z)
+
+        end function inverse
+
+        pure elemental type(vector) function vec_minus_vec(a, b)
         !! implmentation of vector subtract vector
         !! overloads the - operator
             class(vector), intent(IN) :: a
@@ -118,7 +127,7 @@ Module vector_class
         end function vec_mult_vec
 
 
-        pure type(vector) function vec_mult_scal(a, b)
+        pure elemental type(vector) function vec_mult_scal(a, b)
         !! implmentation of vector multiply scalar
         !! overloads the * operator
             class(vector), intent(IN) :: a

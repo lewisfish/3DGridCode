@@ -2,7 +2,7 @@ module photon_class
 !! Module defines the photon class and scattering routines
     
     use constants,    only : wp
-    use vector_class, only : vector
+    use vector_class, only : vector, inverse
 
     implicit none
 
@@ -10,6 +10,8 @@ module photon_class
     type :: photon
         !> direction vector
         type(vector) :: dir
+        !> Inverse direction vector (1.0 / dir). Saves some compute time
+        type(vector) :: inv_dir
         !> position vector
         type(vector) :: pos
         !> \(sin(theta)\). \(\theta\) is the polar angle in the physics spherical coordinate system 
@@ -83,6 +85,8 @@ module photon_class
             this%dir%x = uxx
             this%dir%y = uyy
             this%dir%z = uzz
+
+            this%inv_dir = inverse(this%dir)
     
         end subroutine scatter
 
