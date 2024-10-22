@@ -45,7 +45,7 @@ Either:
 
 - Open a Terminal and run this command:
   
-  ```wget https://github.com/lewisfish/3DGridCode/archive/refs/tags/3DGridCode.zip```
+  ```wget https://github.com/lewisfish/3DGridCode/archive/refs/tags/3DGridCode.zip -O 3DGridCode.zip```
 
 or:
 
@@ -53,7 +53,7 @@ or:
 
 Note if you've not used a Terminal before or need a refresher this [link](https://ubuntu.com/tutorials/command-line-for-beginners#1-overview) provides a nice intorduction to the Terminal basics.
 
-The next step is to open a Terminal (if not already open) and change directory (```cd dir``` where dir is the directory to change to) to the codes location and unzip it (```unzip 3DGridCode.zip```)
+The next step is to open a Terminal (if not already open) and change directory (```cd dir``` where dir is the directory to change to) to the codes location and unzip it (```unzip 3DGridCode.zip``` note the name of the downloaded zip file may differ)
 
 Next change directory into the unzip folder and type ```make``` into your terminal to compile the code.
 
