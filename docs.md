@@ -44,6 +44,7 @@ Original code was by K. Wood. Current version was heavily modified converted to 
 Either:
 
 - Open a Terminal and run this command:
+  
   ```wget https://github.com/lewisfish/3DGridCode/archive/refs/tags/3DGridCode.zip```
 
 or:
