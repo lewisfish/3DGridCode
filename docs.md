@@ -44,23 +44,24 @@ Original code was by K. Wood. Current version was heavily modified converted to 
 Either:
 
 - Open a Terminal and run this command:
-  ```wget https://github.com/lewisfish/3DGridCode/archive/refs/tags/v1.2.zip -O 3DGridCode```
+  ```wget https://github.com/lewisfish/3DGridCode/archive/refs/tags/3DGridCode.zip```
 
 or:
 
-- Download the code from this [link](https://github.com/lewisfish/3DGridCode/archive/refs/tags/v1.2.zip) and upload it to Jupyter Lab.
+- Download the code from this [link](https://github.com/lewisfish/3DGridCode/archive/refs/tags/3DGridCode.zip) and upload it to Jupyter Lab.
 
 Note if you've not used a Terminal before or need a refresher this [link](https://ubuntu.com/tutorials/command-line-for-beginners#1-overview) provides a nice intorduction to the Terminal basics.
 
-The next step is to open a Terminal (if not already open) and change directory (```cd dir``` where dir is the directory to change to) to the codes location and unzip it (```unzip 3DGridCode``` or ```unzip v1.2.zip```)
+The next step is to open a Terminal (if not already open) and change directory (```cd dir``` where dir is the directory to change to) to the codes location and unzip it (```unzip 3DGridCode.zip```)
 
 Next change directory into the unzip folder and type ```make``` into your terminal to compile the code.
 
 Finally to run the code, type ```./mcgrid```.
+Each time you make a change to the code, you need to recompile then run the code (```make``` then ```./mcgrid```).
 
 ### Using Fortran Package Manager (FPM)
 
-First Download the code from this [link](https://github.com/lewisfish/3DGridCode/archive/refs/tags/v1.2.zip)
+First Download the code from this [link](wget https://github.com/lewisfish/3DGridCode/archive/refs/tags/3DGridCode.zip)
 
 Then open a terminal and change directories to the codes location and unzip it.
 
