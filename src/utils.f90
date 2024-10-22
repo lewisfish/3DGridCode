@@ -1,5 +1,5 @@
 module utils
-!! module that contains utility functions and helper routines. 
+!! Module that contains utility functions and helper routines. 
     
     use constants, only: wp
 

@@ -1,5 +1,5 @@
 module random_mod
-    !! module containg routines related to random numbers
+    !! Module containg routines related to random numbers
 
     use constants, only: wp
 

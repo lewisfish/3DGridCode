@@ -1,5 +1,5 @@
 module inttau2
-!! module contains routines related to the optical depth integration of a photon though a 3D grid.
+!! Module contains routines related to the optical depth integration of a photon though a 3D grid.
     
     use constants, only : wp
     
@@ -8,7 +8,7 @@ module inttau2
    private
    public :: tauint1
 
-CONTAINS
+contains
 
     subroutine tauint1(packet, grid)
     !! optical depth integration subroutine. The main workhorse of MCRT
