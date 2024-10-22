@@ -39,17 +39,21 @@ Original code was by K. Wood. Current version was heavily modified converted to 
 # How to run
 ----------
 
-### Using Make
+### Using Jupyter Lab and Make
 
-First Download the code from this [link](https://github.com/lewisfish/3DGridCode/archive/refs/tags/v1.2.zip)
+Either:
+- Open a Terminal and run this command: `wget https://github.com/lewisfish/3DGridCode/archive/refs/tags/v1.2.zip -O 3DGridCode`
 
-Then open a terminal and change directories to the codes location and unzip it.
+or:
+- Download the code from this [link](https://github.com/lewisfish/3DGridCode/archive/refs/tags/v1.2.zip) and upload it to Jupyter Lab
 
-Then type ```make``` into your terminal to compile the code.
+The next step is to open a Terminal (if not already open) and change directory (`cd dir` where dir is the directory to change to) to the codes location and unzip it (`unzip 3DGridCode` or `unzip v1.2.zip`)
 
-Then type ```./mcgrid``` to run the code.
+Next change directory into the unzip folder and type ```make``` into your terminal to compile the code.
 
-### Using FPM
+Finally to run the code, type ```./mcgrid```.
+
+### Using Fortran Package Manager (FPM)
 
 First Download the code from this [link](https://github.com/lewisfish/3DGridCode/archive/refs/tags/v1.2.zip)
 
@@ -76,6 +80,11 @@ Mac: [Homebrew](https://brew.sh) offers an easy install via ```brew install gcc`
 Linux (Debian): Open a terminal and install by typing ```sudo apt install gfortran```.
 
 More details on GFortran may be found [here](https://fortran-lang.org/learn/os_setup/install_gfortran/). 
+
+### Windows
+
+Fortran can also be used on Windows, we recommend using the Windows subsytem for Linux (WSL), more information on this [here](https://learn.microsoft.com/en-us/windows/wsl/install).
+Other ways of installing Fortran can be found [here](https://fortran-lang.org/learn/os_setup/install_gfortran/#windows).
 
 ## References
 
