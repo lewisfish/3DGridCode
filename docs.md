@@ -2,7 +2,7 @@
 project: gridMCRT
 src_dir: ./src
 output_dir: ./docs
-summary: ![3DGridCode](|media|/logo.png)<br> Monte Carlo radiation transfer (MCRT) on a 3D grid.
+summary: ![3DGridCode](https://raw.githubusercontent.com/lewisfish/3DGridCode/refs/heads/main/media/logo.png)<br> Monte Carlo radiation transfer (MCRT) on a 3D grid.
 author: Lewis McMillan, Kenny Wood, Isla Barnard
 media_dir: media
 favicon: ./media/favicon-32x32.png
@@ -42,12 +42,17 @@ Original code was by K. Wood. Current version was heavily modified converted to 
 ### Using Jupyter Lab and Make
 
 Either:
-- Open a Terminal and run this command: `wget https://github.com/lewisfish/3DGridCode/archive/refs/tags/v1.2.zip -O 3DGridCode`
+
+- Open a Terminal and run this command:
+  ```wget https://github.com/lewisfish/3DGridCode/archive/refs/tags/v1.2.zip -O 3DGridCode```
 
 or:
-- Download the code from this [link](https://github.com/lewisfish/3DGridCode/archive/refs/tags/v1.2.zip) and upload it to Jupyter Lab
 
-The next step is to open a Terminal (if not already open) and change directory (`cd dir` where dir is the directory to change to) to the codes location and unzip it (`unzip 3DGridCode` or `unzip v1.2.zip`)
+- Download the code from this [link](https://github.com/lewisfish/3DGridCode/archive/refs/tags/v1.2.zip) and upload it to Jupyter Lab.
+
+Note if you've not used a Terminal before or need a refresher this [link](https://ubuntu.com/tutorials/command-line-for-beginners#1-overview) provides a nice intorduction to the Terminal basics.
+
+The next step is to open a Terminal (if not already open) and change directory (```cd dir``` where dir is the directory to change to) to the codes location and unzip it (```unzip 3DGridCode``` or ```unzip v1.2.zip```)
 
 Next change directory into the unzip folder and type ```make``` into your terminal to compile the code.
 
