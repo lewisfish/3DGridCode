@@ -26,7 +26,7 @@ module gridset_mod
         subroutine gridset(grid, opt_prop, nxg, nyg, nzg, xmax, ymax, zmax)
         !! Set up grids and create geometry
 
-            use iarray,   only : rhokap, rhokap
+            use iarray,   only : rhokap
             use optical_properties_class, only : optical_properties
 
             !> grid variable that is assigned in this routine
