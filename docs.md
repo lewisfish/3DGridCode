@@ -62,7 +62,7 @@ Each time you make a change to the code, you need to recompile then run the code
 
 ### Using Fortran Package Manager (FPM)
 
-First Download the code from this [link](wget https://github.com/lewisfish/3DGridCode/archive/refs/tags/3DGridCode.zip)
+First Download the code from this as shown above.
 
 Then open a terminal and change directories to the codes location and unzip it.
 
