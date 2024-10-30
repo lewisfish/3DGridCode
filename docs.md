@@ -45,7 +45,7 @@ Either:
 
 - Open a Terminal and run this command:
   
-  ```wget https://github.com/lewisfish/3DGridCode/archive/refs/tags/3DGridCode.zip -O 3DGridCode.zip```
+  ```curl -L -O https://github.com/lewisfish/3DGridCode/archive/refs/tags/3DGridCode.zip```
 
 or:
 
