@@ -14,10 +14,16 @@ implicit none
             type(cart_grid), intent(in) :: grid
             !> number of photons to normalise by
             integer, intent(in) :: nphotons
+
+            integer :: u
             
             ! normalise fluence assuming power is 1W
 
             ! write out fluence
+            open(newunit=u, file=, form="unformatted", access="stream")
+            write(u)
+            close(u)
+
         
         end subroutine writer
 end module writer_mod
